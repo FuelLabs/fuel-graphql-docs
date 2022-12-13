@@ -14,6 +14,21 @@ import type { DocType, NodeHeading, SidebarLinkItem } from '~/src/types';
 
 const DOCS_DIRECTORY = join(process.cwd(), './docs');
 
+const REFERENCE_MENU_ORDER = [
+  'Scalars',
+  'Enums',
+  'Unions',
+  'Objects',
+  'Queries',
+  'Mutations',
+  'Subscriptions'
+]
+
+const HOW_TO_USE_GRAPHQL_ORDER = [
+  'What is GraphQL?',
+  'Schema & Type System'
+]
+
 export async function getDocsSlugs() {
   const paths = await globby(['**.mdx']);
   return paths.map((item) => item.replace('docs/', ''));
@@ -86,15 +101,16 @@ export async function getSidebarLinks(order: string[]) {
     if (!doc.category) {
       return list.concat({ slug: doc.slug, label: doc.title });
     }
-
-    const categoryIdx = list.findIndex((l) => l?.label === doc.category);
+    
+    const categoryIdx = list.findIndex((l) => {
+      return l?.label === doc.category
+    });
     /** Insert category item based on order prop */
-    if (categoryIdx > 0) {
+    if (categoryIdx >= 0) {
       const submenu = list[categoryIdx]?.submenu || [];
       submenu.push({ slug: doc.slug, label: doc.title });
       return list;
     }
-
     const categorySlug = doc.slug.split('/')[0];
     const submenu = [{ slug: doc.slug, label: doc.title }];
     return list.concat({
@@ -126,11 +142,12 @@ export async function getSidebarLinks(order: string[]) {
     /** Sort categoried links */
     .map((link) => {
       if (!link.submenu) return link;
-      const catOrder = order.filter((i) => i.startsWith(link.label));
-      const submenu = link.submenu.sort(
-        (a, b) =>
-          catOrder.indexOf(`${link.label}/${a.label}`) -
-          catOrder.indexOf(`${link.label}/${b.label}`)
+      const catOrder = link.label == "Reference" ? REFERENCE_MENU_ORDER : HOW_TO_USE_GRAPHQL_ORDER
+      const submenu = link.submenu
+      .sort(
+        (a, b) => {
+        return catOrder.indexOf(`${a.label}`) - catOrder.indexOf(`${b.label}`)
+        }
       );
       return { ...link, submenu };
     });

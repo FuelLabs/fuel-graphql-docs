@@ -24,26 +24,29 @@ export function SidebarSubmenu({
 
   return (
     <Flex css={styles.root}>
+      <div style={{display: "flex", justifyContent: "space-between"}}>
+        <SidebarLink item={{label, slug: label.replace(/\s+/g, '-').toLowerCase()}}/>
       <Button
         variant="link"
         rightIcon={isOpened ? Icon.is('CaretUp') : Icon.is('CaretDown')}
         onPress={toggle}
         className={cx({ active: isActive })}
-      >
-        {label}
-      </Button>
+        />
+      </div>
       {isOpened && (
         <List>
-          {submenu?.map((item) => (
-            <List.Item
+          {submenu?.map((item) => {
+            if(item.label.replace(/\s+/g, '-').toLowerCase() != subpath){
+            return ( <List.Item
               key={item.slug}
               icon={Icon.is('ArrowRight')}
               iconSize={10}
               iconColor="gray6"
             >
+              
               <SidebarLink item={item} />
-            </List.Item>
-          ))}
+            </List.Item>)}
+          })}
         </List>
       )}
     </Flex>
@@ -52,7 +55,7 @@ export function SidebarSubmenu({
 
 const styles = {
   root: cssObj({
-    px: '$2',
+    // px: '$2',
     mt: '$2',
     flexDirection: 'column',
 

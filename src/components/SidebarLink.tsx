@@ -40,7 +40,7 @@ export const SidebarLink = forwardRef<unknown, SidebarLinkProps>(
         pathname.includes(fullSlug),
     });
     return (
-      <Link ref={ref} as={NextLink as any} href={fullSlug} className={isActive}>
+      <Link style={{flexGrow: 1}} ref={ref} as={NextLink as any} href={fullSlug} className={isActive}>
         {item.label}
       </Link>
     );
