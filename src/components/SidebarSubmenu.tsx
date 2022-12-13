@@ -1,5 +1,4 @@
 import { cssObj, cx } from '@fuel-ui/css';
-import Link from 'next/link';
 import { Button, Flex, Icon, List } from '@fuel-ui/react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
