@@ -10,16 +10,18 @@ This section covers just a few options available to get you started.
 ## JavaScript
 
 ```javascript
-fetch('https://node-beta-2.fuel.network/graphql', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-  },
-  body: JSON.stringify({query: "{ health }"})
-})
-  .then(r => r.json())
-  .then(data => console.log("DATA:", data));
+export async function getHealth() {
+  let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ query: "{ health }" }),
+  });
+  let data = await response.json();
+  console.log("DATA:", data);
+}
 ```
 ## [Apollo Client](https://www.apollographql.com/apollo-client/)
 

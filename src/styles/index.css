@@ -95,7 +95,7 @@ code {
 
 .accordion-content {
   max-height: 0;
-  overflow: hidden;
+  overflow: scroll;
 }
 .accordion-content p {
   margin: 0;
@@ -105,5 +105,5 @@ code {
 }
 
 .accordion-toggle:checked + .accordion-title + .accordion-content {
-  max-height: 1000px;
+  max-height: 500px;
 }
