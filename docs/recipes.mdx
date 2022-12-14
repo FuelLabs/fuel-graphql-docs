@@ -18,6 +18,73 @@ query Balance($address: Address, $assetId: AssetId) {
 
 <Examples.Balance />
 
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId) {
+        balance(owner: $address, assetId: $assetId) {
+          owner
+          amount
+          assetId
+        }
+      }`;
+
+        const args = {
+          address:
+            "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+          assetId:
+            "0x0000000000000000000000000000000000000000000000000000000000000000",
+        };
+  
+        fetch('https://node-beta-2.fuel.network/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            query: BALANCE_QUERY,
+            variables: args,
+          }),
+        })
+          .then(r => r.json())
+          .then(data => console.log("DATA:", data));
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        let count = 1;
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        let count = 2;
+        ```
+      </div>
+    </div>
+
+  </div>
+
 ## List all asset balances of an address
 
 ```graphql

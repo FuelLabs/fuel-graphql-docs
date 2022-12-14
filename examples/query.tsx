@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { Flex, Button } from "@fuel-ui/react";
 import { useState } from "react";
-import { MDXRemote } from "next-mdx-remote";
 
 import { ExampleBox } from "~/src/components/ExampleBox";
 

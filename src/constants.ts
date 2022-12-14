@@ -6,7 +6,8 @@ export const MENU_ORDER = [
   'Overview',
   'How To Use GraphQL',
   'Reference',
-  'Recipes',
+  'Querying From A Dapp',
+  'Recipes'
 ];
 
 export const FIELDS = ['title', 'slug', 'content', 'category'];
