@@ -41,7 +41,7 @@ export function Query(props: QueryProps) {
 
   const PrettyPrintJson = ({data}: IPrettyPrintJson) => {
     // (destructured) data could be a prop for example
-    return (<div><pre style={{overflow: "scroll"}}>{ JSON.stringify(data, null, 2) }</pre></div>);
+    return (<div><pre style={{overflow: "scroll", maxHeight: "500px"}}>{ JSON.stringify(data, null, 2) }</pre></div>);
 }
 
   return (
