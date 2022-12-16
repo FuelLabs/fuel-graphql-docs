@@ -53,7 +53,7 @@ export function MobileMenu() {
         <Flex>
           <FuelLogo size={40} />
           <a
-            href="https://github.com/fuellabs/"
+            href="https://github.com/FuelLabs/fuel-graphql-docs"
             target="_blank"
             rel="noreferrer"
           >

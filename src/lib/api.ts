@@ -47,10 +47,12 @@ export async function getDocBySlug(
   const fullpath = getDocFullPath(slug);
   const fileContents = fs.readFileSync(fullpath, 'utf8');
   const { data, content } = matter(fileContents);
-  const pageLink = join(
+  const tempPageLink = join(
     DOCS_REPO_LINK,
     fullpath.replace(process.cwd(), '')
   ).replace('https:/', 'https://');
+
+  let pageLink = tempPageLink.replace("/docs/","/blob/main/docs/")
 
   const doc = {
     pageLink,
