@@ -29,7 +29,7 @@ export function TableOfContent() {
         <Text as="div" css={styles.feedback}>
           <Link
             isExternal
-            href="https://github.com/fuellabs/fuels-wallet/issues/new/choose"
+            href="https://github.com/FuelLabs/fuel-graphql-docs/issues/new/choose"
           >
             Questions? Give us a feedback
           </Link>

@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { Flex, Button } from "@fuel-ui/react";
 import { useState } from "react";
-import { MDXRemote } from "next-mdx-remote";
 
 import { ExampleBox } from "~/src/components/ExampleBox";
 
@@ -36,6 +35,15 @@ export function Query(props: QueryProps) {
       });
   }
 
+  interface IPrettyPrintJson {
+    data: string
+  }
+
+  const PrettyPrintJson = ({data}: IPrettyPrintJson) => {
+    // (destructured) data could be a prop for example
+    return (<div><pre style={{overflow: "scroll", maxHeight: "500px"}}>{ JSON.stringify(data, null, 2) }</pre></div>);
+}
+
   return (
     <ExampleBox>
       <Flex direction="column" gap="$4">
@@ -44,13 +52,8 @@ export function Query(props: QueryProps) {
           
           {resp && 
           <>
-          {keys.length > 0 && <>
-          <div>Args:</div>
-          {JSON.stringify(props.args)}
-          </>
-          }
           <div>Response:</div>
-          <div>{JSON.stringify(resp)}</div>
+          <PrettyPrintJson data={resp}/>
           </>
           }
         </>

@@ -26,7 +26,7 @@ export function Header() {
       <Box css={styles.desktop}>
         <Flex css={styles.menu}>
           <a
-            href="https://github.com/fuellabs/"
+            href="https://github.com/FuelLabs/fuel-graphql-docs"
             target="_blank"
             rel="noreferrer"
           >

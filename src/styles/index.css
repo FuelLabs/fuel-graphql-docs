@@ -64,3 +64,46 @@ code {
 .fuel_logo {
   width: 40px;
 }
+
+
+.accordion-toggle {
+  display: none;
+}
+
+.accordion-option {
+  /* position: relative; */
+  margin-bottom: 1em;
+}
+
+.accordion-title,
+.accordion-content {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: all 0.2s;
+}
+
+.accordion-title {
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px dashed var(--colors-gray3);
+  margin-top: 1rem;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: scroll;
+}
+.accordion-content p {
+  margin: 0;
+  padding: 0.5em 1em 1em;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.accordion-toggle:checked + .accordion-title + .accordion-content {
+  max-height: 500px;
+}

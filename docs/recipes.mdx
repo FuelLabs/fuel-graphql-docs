@@ -16,7 +16,122 @@ query Balance($address: Address, $assetId: AssetId) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "address": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+  "assetId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
+```
+
 <Examples.Balance />
+
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId) {
+            balance(owner: $address, assetId: $assetId) {
+              owner
+              amount
+              assetId
+            }
+          }`;
+
+        export async function getBalance() {
+          const args = {
+            address: "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+            assetId: "0x0000000000000000000000000000000000000000000000000000000000000000",
+          };
+
+          let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              query: BALANCE_QUERY,
+              variables: args,
+            }),
+          });
+          let data = await response.json();
+          console.log("DATA:", data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId) {
+          balance(owner: $address, assetId: $assetId) {
+            owner
+            amount
+            assetId
+          }
+        }`;
+
+        export const getBalance = async () => {
+          const args = {
+            address:
+              "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+            assetId:
+              "0x0000000000000000000000000000000000000000000000000000000000000000",
+          };
+
+          const response = await apolloClient.query({
+            query: gql(BALANCE_QUERY),
+            variables: args,
+          });
+          
+          console.log("DATA", response.data);
+        };
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId) {
+          balance(owner: $address, assetId: $assetId) {
+            owner
+            amount
+            assetId
+          }
+        }`;
+
+        export async function getBalance(){
+          const args = {
+            address:
+              "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+            assetId:
+              "0x0000000000000000000000000000000000000000000000000000000000000000",
+          };
+          const response = await urqlClient.query(BALANCE_QUERY, args).toPromise();
+          console.log("DATA:", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+  </div>
 
 ## List all asset balances of an address
 
@@ -31,7 +146,127 @@ query Balances($filter: BalanceFilterInput) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "filter": {
+    "owner": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871"
+  }
+}
+```
+
 <Examples.Balances />
+
+ <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="balances-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="balances-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
+          balances(filter: $filter, first: 5) {
+            nodes {
+              amount
+              assetId
+            }
+          }
+        }`;
+
+      export async function getBalances() {
+        const args = {
+          filter: {
+            owner:
+              "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+          },
+        };
+
+        let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            query: BALANCES_QUERY,
+            variables: args,
+          }),
+        });
+          let data = await response.json();
+          console.log("DATA:", data);
+      }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="balances-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="balances-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
+          balances(filter: $filter, first: 5) {
+            nodes {
+              amount
+              assetId
+            }
+          }
+        }`;
+
+        export async function getBalances() {
+          const args = {
+            filter: {
+              owner:
+                "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+            },
+          };
+
+          const response = await apolloClient.query({
+            query: gql(BALANCES_QUERY),
+            variables: args,
+          });
+          console.log("DATA", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="balances-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="balances-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
+        balances(filter: $filter, first: 5) {
+          nodes {
+            amount
+            assetId
+          }
+        }
+      }`;
+
+      export async function getBalances() {
+          const args = {
+            filter: {
+              owner:
+                "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+            },
+          };
+          const response = await urqlClient.query(BALANCES_QUERY, args).toPromise();
+          console.log("DATA:", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+  </div>
 
 ## List all transactions from an address
 
@@ -109,7 +344,311 @@ query Transactions($address: Address) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "address": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871"
+}
+```
+
 <Examples.Transactions/>
+
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="transactions-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="transactions-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const TRANSACTIONS_BY_OWNER_QUERY = `
+          query Transactions($address: Address) {
+            transactionsByOwner(owner: $address, first: 5) {
+              nodes {
+                id
+                inputs {
+                  __typename
+                  ... on InputCoin {
+                    owner
+                    utxoId
+                    amount
+                    assetId
+                  }
+                  ... on InputContract {
+                    utxoId
+                    contract {
+                      id
+                    }
+                  }
+                  ... on InputMessage {
+                    messageId
+                    sender
+                    recipient
+                    amount
+                    data
+                  }
+                }
+                outputs {
+                  __typename
+                  ... on CoinOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on ContractOutput {
+                    inputIndex
+                    balanceRoot
+                    stateRoot
+                  }
+                  ... on MessageOutput {
+                    recipient
+                    amount
+                  }
+                  ... on ChangeOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on VariableOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on ContractCreated {
+                    contract {
+                      id
+                    }
+                    stateRoot
+                  }
+                }
+                status {
+                  __typename
+                  ... on FailureStatus {
+                    reason
+                    programState {
+                      returnType
+                    }
+                  }
+                }
+              }
+            }
+          }`;
+
+        export async function getTransactionsByOwner() {
+          const args = {
+            address:
+              "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+          };
+
+          let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              query: TRANSACTIONS_BY_OWNER_QUERY,
+              variables: args,
+            }),
+          });
+          let data = await response.json();
+          console.log("DATA:", data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="transactions-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="transactions-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const TRANSACTIONS_BY_OWNER_QUERY = `
+          query Transactions($address: Address) {
+            transactionsByOwner(owner: $address, first: 5) {
+              nodes {
+                id
+                inputs {
+                  __typename
+                  ... on InputCoin {
+                    owner
+                    utxoId
+                    amount
+                    assetId
+                  }
+                  ... on InputContract {
+                    utxoId
+                    contract {
+                      id
+                    }
+                  }
+                  ... on InputMessage {
+                    messageId
+                    sender
+                    recipient
+                    amount
+                    data
+                  }
+                }
+                outputs {
+                  __typename
+                  ... on CoinOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on ContractOutput {
+                    inputIndex
+                    balanceRoot
+                    stateRoot
+                  }
+                  ... on MessageOutput {
+                    recipient
+                    amount
+                  }
+                  ... on ChangeOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on VariableOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on ContractCreated {
+                    contract {
+                      id
+                    }
+                    stateRoot
+                  }
+                }
+                status {
+                  __typename
+                  ... on FailureStatus {
+                    reason
+                    programState {
+                      returnType
+                    }
+                  }
+                }
+              }
+            }
+          }`;
+
+          export async function getTransactionsByOwner() {
+            const args = {
+              address:
+                "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+            };
+
+            const response = await apolloClient.query({
+              query: gql(TRANSACTIONS_BY_OWNER_QUERY),
+              variables: args,
+            });
+            console.log("DATA", response.data);
+          }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="transactions-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="transactions-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const TRANSACTIONS_BY_OWNER_QUERY = `
+      query Transactions($address: Address) {
+        transactionsByOwner(owner: $address, first: 5) {
+          nodes {
+            id
+            inputs {
+              __typename
+              ... on InputCoin {
+                owner
+                utxoId
+                amount
+                assetId
+              }
+              ... on InputContract {
+                utxoId
+                contract {
+                  id
+                }
+              }
+              ... on InputMessage {
+                messageId
+                sender
+                recipient
+                amount
+                data
+              }
+            }
+            outputs {
+              __typename
+              ... on CoinOutput {
+                to
+                amount
+                assetId
+              }
+              ... on ContractOutput {
+                inputIndex
+                balanceRoot
+                stateRoot
+              }
+              ... on MessageOutput {
+                recipient
+                amount
+              }
+              ... on ChangeOutput {
+                to
+                amount
+                assetId
+              }
+              ... on VariableOutput {
+                to
+                amount
+                assetId
+              }
+              ... on ContractCreated {
+                contract {
+                  id
+                }
+                stateRoot
+              }
+            }
+            status {
+              __typename
+              ... on FailureStatus {
+                reason
+                programState {
+                  returnType
+                }
+              }
+            }
+          }
+        }
+      }`;
+
+      export async function getTransactionsByOwner() {
+          const args = {
+            address:
+              "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+          };
+          const response = await urqlClient.query(TRANSACTIONS_BY_OWNER_QUERY, args).toPromise();
+          console.log("DATA:", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+  </div>
 
 ## List the latest transactions
 
@@ -189,6 +728,287 @@ query LatestTransactions {
 
 <Examples.LatestTransactions />
 
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="latest-txns-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="latest-txns-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const LATEST_TRANSACTIONS_QUERY = `
+          query LatestTransactions {
+              transactions(last: 5) {
+                nodes {
+                  id
+                  inputs {
+                    __typename
+                    ... on InputCoin {
+                      owner
+                      utxoId
+                      amount
+                      assetId
+                    }
+                    ... on InputContract {
+                      utxoId
+                      contract {
+                        id
+                      }
+                    }
+                    ... on InputMessage {
+                      messageId
+                      sender
+                      recipient
+                      amount
+                      data
+                    }
+                  }
+                  outputs {
+                    __typename
+                    ... on CoinOutput {
+                      to
+                      amount
+                      assetId
+                    }
+                    ... on ContractOutput {
+                      inputIndex
+                      balanceRoot
+                      stateRoot
+                    }
+                    ... on MessageOutput {
+                      recipient
+                      amount
+                    }
+                    ... on ChangeOutput {
+                      to
+                      amount
+                      assetId
+                    }
+                    ... on VariableOutput {
+                      to
+                      amount
+                      assetId
+                    }
+                    ... on ContractCreated {
+                      contract {
+                        id
+                      }
+                      stateRoot
+                    }
+                  }
+                  status {
+                    __typename
+                    ... on FailureStatus {
+                      reason
+                      programState {
+                        returnType
+                      }
+                    }
+                  }
+                }
+              }
+            }`;
+
+          export async function getLatestTransactions() {
+            let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                query: LATEST_TRANSACTIONS_QUERY,
+              }),
+            });
+            let data = await response.json();
+            console.log("DATA:", data);
+          }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="latest-txns-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="latest-txns-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const LATEST_TRANSACTIONS_QUERY = `
+        query LatestTransactions {
+          transactions(last: 5) {
+            nodes {
+              id
+              inputs {
+                __typename
+                ... on InputCoin {
+                  owner
+                  utxoId
+                  amount
+                  assetId
+                }
+                ... on InputContract {
+                  utxoId
+                  contract {
+                    id
+                  }
+                }
+                ... on InputMessage {
+                  messageId
+                  sender
+                  recipient
+                  amount
+                  data
+                }
+              }
+              outputs {
+                __typename
+                ... on CoinOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractOutput {
+                  inputIndex
+                  balanceRoot
+                  stateRoot
+                }
+                ... on MessageOutput {
+                  recipient
+                  amount
+                }
+                ... on ChangeOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on VariableOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractCreated {
+                  contract {
+                    id
+                  }
+                  stateRoot
+                }
+              }
+              status {
+                __typename
+                ... on FailureStatus {
+                  reason
+                  programState {
+                    returnType
+                  }
+                }
+              }
+            }
+          }
+        }`;
+
+        export async function getLatestTransactions() {
+          const response = await apolloClient.query({
+            query: gql(LATEST_TRANSACTIONS_QUERY)
+          });
+
+          console.log("DATA", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="latest-txns-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="latest-txns-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const LATEST_TRANSACTIONS_QUERY = `
+        query LatestTransactions {
+          transactions(last: 5) {
+            nodes {
+              id
+              inputs {
+                __typename
+                ... on InputCoin {
+                  owner
+                  utxoId
+                  amount
+                  assetId
+                }
+                ... on InputContract {
+                  utxoId
+                  contract {
+                    id
+                  }
+                }
+                ... on InputMessage {
+                  messageId
+                  sender
+                  recipient
+                  amount
+                  data
+                }
+              }
+              outputs {
+                __typename
+                ... on CoinOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractOutput {
+                  inputIndex
+                  balanceRoot
+                  stateRoot
+                }
+                ... on MessageOutput {
+                  recipient
+                  amount
+                }
+                ... on ChangeOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on VariableOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractCreated {
+                  contract {
+                    id
+                  }
+                  stateRoot
+                }
+              }
+              status {
+                __typename
+                ... on FailureStatus {
+                  reason
+                  programState {
+                    returnType
+                  }
+                }
+              }
+            }
+          }
+        }`;
+
+        export async function getLatestTransactions() {
+          const response = await urqlClient.query(LATEST_TRANSACTIONS_QUERY).toPromise();
+          console.log("DATA:", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+  </div>
+
 ## Get an asset balance of a contract
 
 ```graphql
@@ -201,7 +1021,120 @@ query ContractBalance($contract: ContractId, $asset: AssetId) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "contract": "0xc9a5366c269438d294ef942bc962dd2e6c86121e3bca00192723eb7eb58fa87d",
+  "asset": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
+```
+
 <Examples.ContractBalance />
+
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="contract-balance-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="contract-balance-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const CONTRACT_BALANCE_QUERY = `query ContractBalance($contract: ContractId, $asset: AssetId) {
+          contractBalance(contract: $contract, asset: $asset) {
+            contract
+            amount
+            assetId
+          }
+        }`;
+
+      export async function getContractBalance() {
+          const args = {
+            contract:
+              "0xc9a5366c269438d294ef942bc962dd2e6c86121e3bca00192723eb7eb58fa87d",
+            asset: "0x0000000000000000000000000000000000000000000000000000000000000000",
+          };
+
+          let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              query: CONTRACT_BALANCE_QUERY,
+              variables: args,
+            }),
+          });
+          let data = await response.json();
+          console.log("DATA:", data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="contract-balance-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="contract-balance-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const CONTRACT_BALANCE_QUERY = `query ContractBalance($contract: ContractId, $asset: AssetId) {
+        contractBalance(contract: $contract, asset: $asset) {
+          contract
+          amount
+          assetId
+        }
+      }`;
+
+      export async function getContractBalance() {
+          const args = {
+            contract:
+              "0xc9a5366c269438d294ef942bc962dd2e6c86121e3bca00192723eb7eb58fa87d",
+            asset: "0x0000000000000000000000000000000000000000000000000000000000000000",
+          };
+          const response = await apolloClient.query({
+            query: gql(CONTRACT_BALANCE_QUERY),
+            variables: args,
+          });
+
+          console.log("DATA", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="contract-balance-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="contract-balance-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const CONTRACT_BALANCE_QUERY = `query ContractBalance($contract: ContractId, $asset: AssetId) {
+          contractBalance(contract: $contract, asset: $asset) {
+            contract
+            amount
+            assetId
+          }
+        }`;
+
+      export async function getContractBalance() {
+        const args = {
+          contract:
+            "0xc9a5366c269438d294ef942bc962dd2e6c86121e3bca00192723eb7eb58fa87d",
+          asset: "0x0000000000000000000000000000000000000000000000000000000000000000",
+        };
+        const response = await urqlClient.query(CONTRACT_BALANCE_QUERY, args).toPromise();
+        console.log("DATA:", response.data);
+      }
+        ```
+      </div>
+    </div>
+
+  </div>
 
 ## List all asset balances of a contract
 
@@ -216,7 +1149,130 @@ query ContractBalances($filter: ContractBalanceFilterInput!) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "filter": {
+    "contract": "0x0a98320d39c03337401a4e46263972a9af6ce69ec2f35a5420b1bd35784c74b1"
+  }
+}
+```
+
 <Examples.ContractBalances />
+
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="contract-balances-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="contract-balances-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const CONTRACT_BALANCES_QUERY = `
+          query ContractBalances($filter: ContractBalanceFilterInput!) {
+            contractBalances(filter: $filter, first: 5) {
+              nodes {
+                amount
+                assetId
+              }
+            }
+          }`;
+
+        export async function getContractBalances() {
+          const args = {
+            filter: {
+              contract:
+                "0x0a98320d39c03337401a4e46263972a9af6ce69ec2f35a5420b1bd35784c74b1",
+            },
+          };
+
+          let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              query: CONTRACT_BALANCES_QUERY,
+              variables: args,
+            }),
+          });
+          let data = await response.json();
+          console.log("DATA:", data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="contract-balances-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="contract-balances-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const CONTRACT_BALANCES_QUERY = `
+        query ContractBalances($filter: ContractBalanceFilterInput!) {
+          contractBalances(filter: $filter, first: 5) {
+            nodes {
+              amount
+              assetId
+            }
+          }
+        }`;
+
+        export async function getContractBalances() {
+          const args = {
+            filter: {
+              contract:
+                "0x0a98320d39c03337401a4e46263972a9af6ce69ec2f35a5420b1bd35784c74b1",
+            },
+          };
+          const response = await apolloClient.query({
+            query: gql(CONTRACT_BALANCES_QUERY),
+            variables: args,
+          });
+
+          console.log("DATA", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="contract-balances-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="contract-balances-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const CONTRACT_BALANCES_QUERY = `
+        query ContractBalances($filter: ContractBalanceFilterInput!) {
+          contractBalances(filter: $filter, first: 5) {
+            nodes {
+              amount
+              assetId
+            }
+          }
+        }`;
+
+        export async function getContractBalances() {
+            const args = {
+              filter: {
+                contract:
+                  "0x0a98320d39c03337401a4e46263972a9af6ce69ec2f35a5420b1bd35784c74b1",
+              },
+            };
+            const response = await urqlClient.query(CONTRACT_BALANCES_QUERY, args).toPromise();
+            console.log("DATA:", response.data);
+          }
+        ```
+      </div>
+    </div>
+
+  </div>
 
 ## List the latest blocks
 
@@ -292,6 +1348,272 @@ query LatestBlocks {
 
 <Examples.LatestBlocks />
 
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="latest-blocks-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="latest-blocks-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const LATEST_BLOCKS_QUERY = `query LatestBlocks {
+          blocks(last: 5) {
+            nodes {
+              id
+              transactions {
+                id
+                inputAssetIds
+                inputs {
+                  __typename
+                  ... on InputCoin {
+                    owner
+                    utxoId
+                    amount
+                    assetId
+                  }
+                  ... on InputContract {
+                    utxoId
+                    contract {
+                      id
+                    }
+                  }
+                  ... on InputMessage {
+                    messageId
+                    sender
+                    recipient
+                    amount
+                    data
+                  }
+                }
+                outputs {
+                  __typename
+                  ... on CoinOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on ContractOutput {
+                    inputIndex
+                    balanceRoot
+                    stateRoot
+                  }
+                  ... on MessageOutput {
+                    recipient
+                    amount
+                  }
+                  ... on ChangeOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on VariableOutput {
+                    to
+                    amount
+                    assetId
+                  }
+                  ... on ContractCreated {
+                    contract {
+                      id
+                    }
+                    stateRoot
+                  }
+                }
+                gasPrice
+              }
+            }
+          }
+        }`;
+
+      export async function getLatestBlocks() {
+          let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              query: LATEST_BLOCKS_QUERY,
+            }),
+          });
+          let data = await response.json();
+          console.log("DATA:", data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="latest-blocks-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="latest-blocks-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const LATEST_BLOCKS_QUERY = `query LatestBlocks {
+        blocks(last: 5) {
+          nodes {
+            id
+            transactions {
+              id
+              inputAssetIds
+              inputs {
+                __typename
+                ... on InputCoin {
+                  owner
+                  utxoId
+                  amount
+                  assetId
+                }
+                ... on InputContract {
+                  utxoId
+                  contract {
+                    id
+                  }
+                }
+                ... on InputMessage {
+                  messageId
+                  sender
+                  recipient
+                  amount
+                  data
+                }
+              }
+              outputs {
+                __typename
+                ... on CoinOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractOutput {
+                  inputIndex
+                  balanceRoot
+                  stateRoot
+                }
+                ... on MessageOutput {
+                  recipient
+                  amount
+                }
+                ... on ChangeOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on VariableOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractCreated {
+                  contract {
+                    id
+                  }
+                  stateRoot
+                }
+              }
+              gasPrice
+            }
+          }
+        }
+      }`;
+
+      export async function getLatestBlocks() {
+          const response = await apolloClient.query({
+            query: gql(LATEST_BLOCKS_QUERY)
+          });
+
+          console.log("DATA", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="latest-blocks-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="latest-blocks-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const LATEST_BLOCKS_QUERY = `query LatestBlocks {
+        blocks(last: 5) {
+          nodes {
+            id
+            transactions {
+              id
+              inputAssetIds
+              inputs {
+                __typename
+                ... on InputCoin {
+                  owner
+                  utxoId
+                  amount
+                  assetId
+                }
+                ... on InputContract {
+                  utxoId
+                  contract {
+                    id
+                  }
+                }
+                ... on InputMessage {
+                  messageId
+                  sender
+                  recipient
+                  amount
+                  data
+                }
+              }
+              outputs {
+                __typename
+                ... on CoinOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractOutput {
+                  inputIndex
+                  balanceRoot
+                  stateRoot
+                }
+                ... on MessageOutput {
+                  recipient
+                  amount
+                }
+                ... on ChangeOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on VariableOutput {
+                  to
+                  amount
+                  assetId
+                }
+                ... on ContractCreated {
+                  contract {
+                    id
+                  }
+                  stateRoot
+                }
+              }
+              gasPrice
+            }
+          }
+        }
+      }`;
+
+      export async function getLatestBlocks() {
+          const response = await urqlClient.query(LATEST_BLOCKS_QUERY).toPromise();
+          console.log("DATA:", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+  </div>
+
 ## Get block information by height
 
 ```graphql
@@ -302,7 +1624,104 @@ query Block($height: U64) {
 }
 ```
 
+Variables:
+
+```json
+{ 
+  "height": "378485" 
+}
+```
+
 <Examples.BlockByHeight />
+
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="block-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="block-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BLOCK_BY_HEIGHT_QUERY = `
+          query Block($height: U64) {
+            block(height: $height) {
+              id
+            }
+          }`;
+
+        export async function getBlockByHeight() {
+          const args = { height: "378485" };
+
+          let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              query: BLOCK_BY_HEIGHT_QUERY,
+              variables: args,
+            }),
+          });
+          let data = await response.json();
+          console.log("DATA:", data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="block-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="block-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BLOCK_BY_HEIGHT_QUERY = `
+        query Block($height: U64) {
+          block(height: $height) {
+            id
+          }
+        }`;
+
+        export async function getBlockByHeight() {
+          const args = { height: "378485" };
+          const response = await apolloClient.query({
+            query: gql(BLOCK_BY_HEIGHT_QUERY),
+            variables: args,
+          });
+
+          console.log("DATA", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="block-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="block-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const BLOCK_BY_HEIGHT_QUERY = `
+        query Block($height: U64) {
+          block(height: $height) {
+            id
+          }
+        }`;
+
+        export async function getBlockByHeight() {
+          const args = { height: "378485" };
+          const response = await urqlClient.query(BLOCK_BY_HEIGHT_QUERY, args).toPromise();
+          console.log("DATA:", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+  </div>
 
 ## List all messages owned by address
 
@@ -322,7 +1741,137 @@ query MessageInfo($address: Address) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "address": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871"
+}
+```
+
 <Examples.MessageInfo />
+
+  <div class="accordion">
+
+  <div class="accordion-option">
+      <input type="checkbox" id="message-toggle1" class="accordion-toggle"></input>
+      <label class="accordion-title" for="message-toggle1">
+        JavaScript
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const MESSAGES_QUERY = `
+          query MessageInfo($address: Address) {
+              messages(owner: $address, first: 5) {
+                nodes {
+                  amount
+                  sender
+                  recipient
+                  nonce
+                  data
+                  daHeight
+                  fuelBlockSpend
+                }
+              }
+            }`;
+
+          export async function getMessagesByOwner() {
+            const args = {
+              address:
+                "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+            };
+
+            let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                query: MESSAGES_QUERY,
+                variables: args,
+              }),
+            });
+            let data = await response.json();
+            console.log("DATA:", data);
+          }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="message-toggle2" class="accordion-toggle"></input>
+      <label class="accordion-title" for="message-toggle2">
+        Apollo Client
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const MESSAGES_QUERY = `
+        query MessageInfo($address: Address) {
+          messages(owner: $address, first: 5) {
+            nodes {
+              amount
+              sender
+              recipient
+              nonce
+              data
+              daHeight
+              fuelBlockSpend
+            }
+          }
+        }`;
+
+        export async function getMessagesByOwner() {
+          const args = {
+            address:
+              "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+          };
+          const response = await apolloClient.query({
+            query: gql(MESSAGES_QUERY),
+            variables: args,
+          });
+
+          console.log("DATA", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+    <div class="accordion-option">
+      <input type="checkbox" id="message-toggle3" class="accordion-toggle"></input>
+      <label class="accordion-title" for="message-toggle3">
+        urql
+      </label>
+      <div class="accordion-content">
+        ```javascript
+        const MESSAGES_QUERY = `
+        query MessageInfo($address: Address) {
+          messages(owner: $address, first: 5) {
+            nodes {
+              amount
+              sender
+              recipient
+              nonce
+              data
+              daHeight
+              fuelBlockSpend
+            }
+          }
+        }`;
+
+        export async function getMessagesByOwner() {
+          const args = {
+            address:
+              "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+          };
+          const response = await urqlClient.query(MESSAGES_QUERY, args).toPromise();
+          console.log("DATA:", response.data);
+        }
+        ```
+      </div>
+    </div>
+
+  </div>
 
 ## Dry run a transaction
 
