@@ -16,6 +16,15 @@ query Balance($address: Address, $assetId: AssetId) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "address": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+  "assetId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
+```
+
 <Examples.Balance />
 
   <div class="accordion">
@@ -133,6 +142,16 @@ query Balances($filter: BalanceFilterInput) {
       amount
       assetId
     }
+  }
+}
+```
+
+Variables:
+
+```json
+{
+  "filter": {
+    "owner": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871"
   }
 }
 ```
@@ -322,6 +341,14 @@ query Transactions($address: Address) {
       }
     }
   }
+}
+```
+
+Variables:
+
+```json
+{
+  "address": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871"
 }
 ```
 
@@ -994,6 +1021,15 @@ query ContractBalance($contract: ContractId, $asset: AssetId) {
 }
 ```
 
+Variables:
+
+```json
+{
+  "contract": "0xc9a5366c269438d294ef942bc962dd2e6c86121e3bca00192723eb7eb58fa87d",
+  "asset": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
+```
+
 <Examples.ContractBalance />
 
   <div class="accordion">
@@ -1109,6 +1145,16 @@ query ContractBalances($filter: ContractBalanceFilterInput!) {
       amount
       assetId
     }
+  }
+}
+```
+
+Variables:
+
+```json
+{
+  "filter": {
+    "contract": "0x0a98320d39c03337401a4e46263972a9af6ce69ec2f35a5420b1bd35784c74b1"
   }
 }
 ```
@@ -1578,6 +1624,14 @@ query Block($height: U64) {
 }
 ```
 
+Variables:
+
+```json
+{ 
+  "height": "378485" 
+}
+```
+
 <Examples.BlockByHeight />
 
   <div class="accordion">
@@ -1684,6 +1738,14 @@ query MessageInfo($address: Address) {
       fuelBlockSpend
     }
   }
+}
+```
+
+Variables:
+
+```json
+{
+  "address": "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871"
 }
 ```
 
