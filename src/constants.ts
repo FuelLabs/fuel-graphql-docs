@@ -8,7 +8,7 @@ export const MENU_ORDER = [
   'Recipes'
 ];
 
-const URL = "https://fuel-graphql-docs.vercel.app"
+const URL = "https://graphql-docs.fuel.network/"
 
 export const FIELDS = ['title', 'slug', 'content', 'category'];
 export const REPO_LINK = 'https://github.com/FuelLabs/fuel-graphql-docs/';
