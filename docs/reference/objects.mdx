@@ -11,13 +11,16 @@ The balance of a particular asset for a wallet address.
 
 **fields:**
 
-`owner: Address!`:
+`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 An EOA account represented by 32 bytes.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of the selected asset id as an unsigned 64 bit number.
 
-`assetId: AssetId!`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+
 A 32 byte representation of the asset.
 
 ## `BalanceFilterInput`
@@ -26,7 +29,8 @@ The filter input type used to filter the `balances` query.
 
 **fields:**
 
-`owner: Address!`:
+`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The owner address of the balances.
 
 ## `Block`
@@ -35,23 +39,29 @@ Information about a block in the network.
 
 **fields:**
 
-`id: BlockId!`:
+`id`: <a href="/docs/reference/scalars/#blockid">`BlockId!`</a>
+
 A unique identifier for the block.
 
-`header: Header!` <sup>_(beta-2 only)_</sup>:
+`header`: <a href="#header">`Header!`</a> <sup>_(beta-2 only)_</sup>
+
 Metadata about a block.
 
-`transactions: [Transaction!]!`:
+`transactions`: <a href="#transaction">`[Transaction!]!`</a>
+
 An array of transactions included in the block.
 
-> `height: U64!`<sup>_(beta-1 only)_</sup>:
-> The total number of blocks on the chain.
+> `height`: <a href="/docs/reference/scalars/#u64">`U64!`</a><sup>_(beta-1 only)_</sup>
 
-> `time: DateTime!`<sup>_(beta-1 only)_</sup>:
-> The timestamp when the block was produced.
+The total number of blocks on the chain.
 
-> `producer: Address!`<sup>_(beta-1 only)_</sup>:
-> The address of the block producer.
+> `time`: <a href="/docs/reference/scalars/#datetime">`DateTime!`</a><sup>_(beta-1 only)_</sup>
+
+The timestamp when the block was produced.
+
+> `producer`: <a href="/docs/reference/scalars/#address">`Address!`</a><sup>_(beta-1 only)_</sup>
+
+The address of the block producer.
 
 ## `ChainInfo`
 
@@ -59,19 +69,24 @@ Information about the base chain. At a very high level `chainInfo` helps you und
 
 **fields:**
 
-`name: String!`:
+`name: String!`
+
 The human-readable string name of the chain. i.e. beta-2
 
-`latestBlock: Block!`:
+`latestBlock`: <a href="#block">`Block!`</a>
+
 The most recently created block.
 
-`baseChainHeight: U64!`:
+`baseChainHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 Returns 0 (in development mode, this will change). This should return the height of the chain at start.
 
-`peerCount: Int!`:
+`peerCount: Int!`
+
 The number of nodes that node is peered with.
 
-`consensusParameters: ConsensusParameters!`:
+`consensusParameters`: <a href="#consensusparameters">`ConsensusParameters!`</a>
+
 The consensus parameters used to validate blocks.
 
 ## `ChangeOutput`
@@ -80,13 +95,16 @@ A transaction output that changes the unspent coins in a UTXO.
 
 **fields:**
 
-`to: Address!`:
+`to`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The recipient address of the coins.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of coins.
 
-`assetId: AssetId!`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+
 The asset id for the coins.
 
 ## `Coin`
@@ -95,26 +113,47 @@ Information about a coin.
 
 **fields:**
 
-`utxoId: UtxoId!`:
+`utxoId`: <a href="/docs/reference/scalars/#utxoid">`UtxoId!`</a>
+
 A unique 32 byte identifier for a UTXO.
 
-`owner: Address!`:
+`owner`: <a href="/docs/reference/scalars/#address">Address!`</a>
+
 The owner address of the coins.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of coins.
 
-`assetId: AssetId!`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+
 The asset id of the coin.
 
-`maturity: U64!`:
+`maturity`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The UTXO being spent must have been created at least this many blocks ago.
 
-`status: CoinStatus!`:
+`status`: <a href="/docs/reference/enums/#coinstatus">`CoinStatus!`</a>
+
 The status of the coin, either `SPENT` or `UNSPENT`.
 
-`blockCreated: U64!`:
+`blockCreated`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The block when the coins were created.
+
+## `CoinFilterInput`
+
+The filter input type for the `coins` query.
+
+**fields:**
+
+`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
+The owner of the coins.
+
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId`</a>
+
+The asset id of the coins.
 
 ## `CoinOutput`
 
@@ -122,13 +161,16 @@ A type representing a coin output.
 
 **fields:**
 
-`to: Address!`:
+`to`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The receiver address of the output coins.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of coins in the output.
 
-`assetId: AssetId!`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+
 The asset id for the output coins.
 
 ## `ConsensusParameters`
@@ -137,43 +179,56 @@ The consensus parameters used for validating blocks.
 
 **fields:**
 
-`contractMaxSize: U64!`:
+`contractMaxSize`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum contract size, in bytes.
 
-`maxInputs: U64!`:
+`maxInputs`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum number of inputs.
 
-`maxOutputs: U64!`:
+`maxOutputs`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum number of outputs.
 
-`maxWitnesses: U64!`:
+`maxWitnesses`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum number of witnesses.
 
-`maxGasPerTx: U64!`:
+`maxGasPerTx`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum gas per transaction.
 
-`maxScriptLength: U64!`:
+`maxScriptLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum length of a script, in instructions.
 
-`maxScriptDataLength: U64!`:
+`maxScriptDataLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum length of script data, in bytes.
 
-`maxStorageSlots: U64!`:
+`maxStorageSlots`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum number of initial storage slots.
 
-`maxPredicateLength: U64!`:
+`maxPredicateLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum length of a predicate, in instructions.
 
-`maxPredicateDataLength: U64!`:
+`maxPredicateDataLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum length of predicate data, in bytes.
 
-`gasPriceFactor: U64!`:
+`gasPriceFactor`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 A factor to convert between gas and the transaction assets value.
 
-`gasPerByte: U64!`:
+`gasPerByte`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 A fixed ratio linking metered bytes to a gas price.
 
-`maxMessageDataLength: U64!`:
+`maxMessageDataLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum length of message data, in bytes.
 
 ## `Contract`
@@ -182,13 +237,16 @@ An object representing a deployed contract.
 
 **fields:**
 
-`id: ContractId!`:
+`id`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+
 The contract address.
 
-`bytecode: HexString!`:
+`bytecode`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The contract bytecode.
 
-`salt: Salt!`:
+`salt`: <a href="/docs/reference/scalars/#salt">`Salt!`</a>
+
 A unique identifier for the contract.
 
 ## `ContractBalance`
@@ -197,13 +255,16 @@ An object representing the balance of a deployed contract for a certain asset.
 
 **fields:**
 
-`contract: ContractId!`:
+`contract`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+
 The contract address.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The contract balance for the given asset.
 
-`assetId: AssetId!`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+
 The asset id for the coins.
 
 ## `ContractBalanceFilterInput`
@@ -212,7 +273,8 @@ The filter input type for the `contractBalances` query.
 
 **fields:**
 
-`contract: ContractId!`:
+`contract`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+
 The contract id that the query will return balances for.
 
 ## `ContractCreated`
@@ -220,10 +282,13 @@ The contract id that the query will return balances for.
 The output type from deploying a contract.
 
 **fields:**
-`contract: Contract!`:
+
+`contract`: <a href="#contract">`Contract!`</a>
+
 The contract that was created.
 
-`stateRoot: Bytes32!`:
+`stateRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The initial state root of contract.
 
 ## `ContractOutput`
@@ -232,14 +297,31 @@ The output type from a transaction that changed the state of a contract.
 
 **fields:**
 
-`inputIndex: Int!`:
+`inputIndex: Int!`
+
 The index of the input.
 
-`balanceRoot: Bytes32!`:
+`balanceRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The root of amount of coins owned by contract after transaction execution.
 
-`stateRoot: Bytes32!`:
+`stateRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The state root of contract after transaction execution.
+
+## `ExcludeInput`
+
+The input type for the `resourcesToSpend` query that defines what utxos and messages to exclude.
+
+**fields:**
+
+`utxos`: <a href="/docs/reference/scalars/#utxoid">`[UtxoId!]!`</a>
+
+An array of utxo IDs to exclude.
+
+`messages`: <a href="/docs/reference/scalars/#messageid">`[MessageId!]!`</a>
+
+An array of message IDs to exclude.
 
 ## `FailureStatus`
 
@@ -247,50 +329,65 @@ The status type of a transaction that has failed.
 
 **fields:**
 
-`block: Block!`:
+`block`: <a href="#block">`Block!`</a>
+
 The block number for the failed transaction.
 
-`time: Tai64Timestamp!`:
+`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+
 The time the transaction failed. Returns a `DateTime!` for the beta-1 network.
 
 `reason: String!`
 The reason why the transaction failed.
 
-`programState: ProgramState`:
+`programState`: <a href="#programstate">`ProgramState`</a>
+
 The state of the program execution.
 
 ## `Header`
 
 The header contains metadata about a certain block. Only available for the beta-2 testnet.
 
-`id: BlockId!`:
+**fields:**
+
+`id`: <a href="/docs/reference/scalars/#blockid">`BlockId!`</a>
+
 The current block id.
 
-`daHeight: U64!`:
+`daHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The block height for the data availability layer up to which (inclusive) input messages are processed.
 
-`transactionsCount: U64!`:
+`transactionsCount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The number of transactions in the block.
 
-`outputMessagesCount: U64!`:
+`outputMessagesCount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The number of output messages in the block.
 
-`transactionsRoot: Bytes32!`:
+`transactionsRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The merkle root of the transactions in the block.
 
-`outputMessagesRoot: Bytes32!`:
+`outputMessagesRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The merkle root of the output messages in the block.
 
-`height: U64!`:
+`height`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The block height.
 
-`prevRoot: Bytes32!`:
+`prevRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The merkle root of all previous consensus header hashes (not including this block).
 
-`time: Tai64Timestamp!`:
+`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+
 The timestamp for the block.
 
-`applicationHash: Bytes32!`:
+`applicationHash`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The hash of the serialized application header for this block.
 
 ## `InputCoin`
@@ -299,31 +396,39 @@ Information about a coin input.
 
 **fields:**
 
-`utxoId: UtxoId!`:
+`utxoId`: <a href="/docs/reference/scalars/#utxoid">`UtxoId!`</a>
+
 A unique 32 byte identifier for the UTXO.
 
-`owner: Address!`:
+`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The owning address or predicate root.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of coins.
 
-`assetId: AssetId!`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+
 The asset ID of the coins.
 
-`txPointer: TxPointer!`:
+`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer!`</a>
+
 A pointer to the transaction whose output is being spent.
 
 `witnessIndex: Int!`:
 The index of the witness that authorizes spending the coin.
 
-`maturity: U64!`:
+`maturity`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The UTXO being spent must have been created at least this many blocks ago.
 
-`predicate: HexString!`:
+`predicate`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The predicate bytecode.
 
-`predicateData: HexString!`:
+`predicateData`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The predicate input parameters.
 
 ## `InputContract`
@@ -332,19 +437,24 @@ Information about a contract input.
 
 **fields:**
 
-`utxoId: UtxoId!`:
+`utxoId`: <a href="/docs/reference/scalars/#utxoid">`UtxoId!`</a>
+
 A unique 32 byte identifier for the UTXO.
 
-`balanceRoot: Bytes32!`:
+`balanceRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The root of amount of coins owned by contract before transaction execution.
 
-`stateRoot: Bytes32!`:
+`stateRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The state root of contract before transaction execution.
 
-`txPointer: TxPointer!`:
+`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer!`</a>
+
 A pointer to the TX whose output is being spent.
 
-`contract: Contract!`:
+`contract`: <a href="#contract">`Contract!`</a>
+
 The input contract.
 
 ## `InputMessage`
@@ -353,7 +463,8 @@ Information about a message input.
 
 **fields:**
 
-`messageId: MessageId!`:
+`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a>
+
 A unique id for the message. The ID of a message is computed as the hash of:
 
 - the sender address as byte[32],
@@ -362,32 +473,41 @@ A unique id for the message. The ID of a message is computed as the hash of:
 - the amount being sent with the message as uint64,
 - the message data as byte[]
 
-`sender: Address!`:
+`sender`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The sender address of the message.
 
-`recipient: Address!`:
+`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The recipient address of the message.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount sent in the message.
 
-`nonce: U64!`:
+`nonce`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 A nonce value for the message input, which is determined by the sending system and is published at the time the message is sent.
 
-`witnessIndex: Int!`:
+`witnessIndex: Int!`
+
 The index of witness that authorizes spending the coin.
 
-`data: HexString!`:
+`data`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The message data.
 
-`predicate: HexString!`:
+`predicate`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The predicate bytecode.
 
-`predicateData: HexString!`:
+`predicateData`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The predicate input parameters.
 
-> `owner: Address!`<sup>_(beta-1 only)_</sup>:
-> The owner address of the message.
+> `owner`: <a href="/docs/reference/scalars/#address">`Address!`</a><sup>_(beta-1 only)_</sup>
+
+The owner address of the message.
 
 ## `Message`
 
@@ -395,32 +515,41 @@ Contains information about a message.
 
 **fields:**
 
-`messageId: MessageId!`<sup>_(beta-2 only)_</sup>:
+`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a><sup>_(beta-2 only)_</sup>
+
 A unique id for the message.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of base asset coins sent with the message.
 
-`sender: Address!`:
+`sender`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The address of the message sender.
 
-`recipient: Address!`:
+`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The recipient of the message.
 
-`nonce: U64!`:
+`nonce`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The nonce value for the message.
 
-`data: [Int!]!`:
+`data: [Int!]!`
+
 The vector with the message data.
 
-`daHeight: U64!`:
+`daHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The block height of the data availability layer up to which (inclusive) input messages are processed.
 
-`fuelBlockSpend: U64`:
+`fuelBlockSpend`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The block in which the message is spent.
 
-> `owner: Address!`<sup>_(beta-1 only)_</sup>
-> The owner address of the message.
+> `owner`: <a href="/docs/reference/scalars/#address">`Address!`</a><sup>_(beta-1 only)_</sup>
+
+The owner address of the message.
 
 ## `MessageOutput`
 
@@ -428,41 +557,54 @@ The output type for a message. When signing a transaction recipient and amount a
 
 **fields:**
 
-`recipient: Address!`:
+`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The recipient of the message.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of base asset coins sent with the message.
 
 ## `MessageProof`
 
 Information about the message proof.
 
-`proofSet: [Bytes32!]!`:
+**fields:**
+
+`proofSet`: <a href="/docs/reference/scalars/#bytes32">`[Bytes32!]!`</a>
+
 The proof set of the message proof.
 
-`proofIndex: U64!`:
+`proofIndex`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The index used to generate this proof.
 
-`sender: Address!`:
+`sender`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The message sender.
 
-`recipient: Address!`:
+`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+
 The message recipient.
 
-`nonce: Bytes32!`:
+`nonce`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
 The message nonce.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount sent in the message.
 
-`data: HexString!`
+`data`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The data from the message.
 
-`signature: Signature!`:
+`signature`: <a href="/docs/reference/scalars/#signature">`Signature!`</a>
+
 The signature of the Fuel block.
 
-`header: Header!`:
+`header`: <a href="#header">`Header!`</a>
+
 The Fuel block header that contains the message.
 
 ## `NodeInfo`
@@ -471,26 +613,33 @@ Information about a node.
 
 **fields:**
 
-`utxoValidation: Boolean!`:
+`utxoValidation: Boolean!`
+
 Whether or not the node is using UTXO validation.
 
-`vmBacktrace: Boolean!`:
+`vmBacktrace: Boolean!`
+
 Whether or not logging of backtraces from VM errors is enabled.
 
-`minGasPrice: U64!`:
+`minGasPrice`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The minimum gas price for the node.
 
-`maxTx: U64!`:
+`maxTx`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum number of transactions.
 
-`maxDepth: U64!`:
+`maxDepth`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The maximum number of connected UTXOs allowed, excluding contracts.
 
-`nodeVersion: String!`:
+`nodeVersion: String!`
+
 The node version.
 
 > `predicates: Boolean!`<sup>_(beta-1 only)_</sup>
-> Whether or not predicates are enabled.
+
+Whether or not predicates are enabled.
 
 ## `ProgramState`
 
@@ -498,123 +647,190 @@ An object representing the state of execution of a transaction.
 
 **fields:**
 
-`returnType: ReturnType!`:
+`returnType`: <a href="/docs/reference/enums/#returntype">`ReturnType!`</a>
+
 The type of return response for the transaction.
 
-`data: HexString!`:
+`data`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The data returned from the transaction.
 
 ## `Receipt`
 
 An object representing all possible types of receipts.
 
-`contract: Contract`:
+**fields:**
+
+`contract`: <a href="#contract">`Contract`</a>
+
 The contract that produced the receipt.
 
-`pc: U64`:
+`pc`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of the program counter register `$pc`, which is the memory address of the current instruction.
 
-`is: U64`:
+`is`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of register `$is`, which is the pointer to the start of the currently-executing code.
 
-`to: Contract`:
+`to`: <a href="#contract">`Contract`</a>
+
 The recipient contract.
 
-`toAddress: Address`:
+`toAddress`: <a href="/docs/reference/scalars/#address">`Address`</a>
+
 The recipient address.
 
-`amount: U64`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The amount of coins transferred.
 
-`assetId: AssetId`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId`</a>
+
 The asset id of the coins transferred.
 
-`gas: U64`:
+`gas`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The gas used for the transaction.
 
-`param1: U64`:
+`param1`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The first parameter for a `CALL` receipt type, holds the function selector.
 
-`param2: U64`:
+`param2`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The second parameter for a `CALL` receipt type, typically used for the user-specified input to the ABI function being selected.
 
-`val: U64`:
+`val`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of registers at the end of execution, used for debugging.
 
-`ptr: U64`:
+`ptr`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of the pointer register, used for debugging.
 
-`digest: Bytes32`:
+`digest`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
+
 A 32-byte hash of `MEM[$rC, $rD]`. The syntax `MEM[x, y]` means the memory range starting at byte `x`, of length `y` bytes.
 
-`reason: U64`:
+`reason`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The decimal string representation of an 8-bit unsigned integer for the panic reason. Only returned if the receipt type is `PANIC`.
 
-`ra: U64`:
+`ra`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of register `$rA`.
 
-`rb: U64`:
+`rb`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of register `$rB`.
 
-`rc: U64`:
+`rc`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of register `$rC`.
 
-`rd: U64`:
+`rd`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The value of register `$rD`.
 
-`len: U64`:
+`len`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The length of the receipt.
 
-`receiptType: ReceiptType!`:
+`receiptType`: <a href="/docs/reference/enums/#receipttype">`ReceiptType!`</a>
+
 The type of receipt.
 
-`rawPayload: HexString!`:
+`rawPayload`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 The raw payload hex string.
 
-`result: U64`:
+`result`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 `0` if script exited successfully, `any` otherwise.
 
-`gasUsed: U64`:
+`gasUsed`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The amount of gas consumed by the script.
 
-`data: HexString`:
+`data`: <a href="/docs/reference/scalars/#hexstring">`HexString`</a>
+
 The receipt data.
 
-`messageId: MessageId`:
+`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId`</a>
+
 The message id.
 
-`sender: Address`:
+`sender`: <a href="/docs/reference/scalars/#address">`Address`</a>
+
 The address of the message sender.
 
-`recipient: Address`:
+`recipient`: <a href="/docs/reference/scalars/#address">`Address`</a>
+
 The address of the message recipient.
 
-`nonce: Bytes32`:
+`nonce`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
+
 The nonce value for a message.
 
-`contractId: ContractId`<sup>_(beta-2 only)_</sup>:
+`contractId`: <a href="/docs/reference/scalars/#contractid">`ContractId`</a><sup>_(beta-2 only)_</sup>
+
 The contract id.
 
 ## `SpendQueryElementInput`
 
 A type used in the `queryPerAsset` argument for the `resourcesToSpend` query.
 
-`assetId: AssetId!`:
+**fields:**
+
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+
 The asset id for the asset.
 
-`amount: U64!`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+
 The amount of coins to send.
 
-`max: U64`<sup>_(beta-2 only)_</sup>:
+`max`: <a href="/docs/reference/scalars/#u64">`U64`</a><sup>_(beta-2 only)_</sup>
+
 The max number of resources in the selection.
 
-## `SubmittedStatus`
+## `SqueezedOutStatus`
 
-The status for a submitted transaction
+The status for a transaction that was squeezed out of the transaction pool. Only available for the beta-2 testnet.
 
 **fields:**
 
-`time: Tai64Timestamp!`:
+`reason: String!`
+
+The reason why the transaction was squeezed out.
+
+## `SuccessStatus`
+
+The status of a successful transaction.
+
+**fields:**
+
+`block`: <a href="#block">`Block!`</a>
+
+The block of the transaction.
+
+`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+
+The time of the transaction.
+
+`programState`: <a href="#programstate">`ProgramState`</a>
+
+The state of the program execution.
+
+## `SubmittedStatus`
+
+The status for a submitted transaction.
+
+**fields:**
+
+`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+
 The time a transaction was submitted. Returns a `DateTime` for the beta-1 network.
 
 ## `Transaction`
@@ -623,73 +839,96 @@ An object containing information about a transaction.
 
 **fields:**
 
-`id: TransactionId!`:
+`id`: <a href="/docs/reference/scalars/#transactionid">`TransactionId!`</a>
+
 A unique transaction id.
 
-`inputAssetIds: [AssetId!]`:
+`inputAssetIds`: <a href="/docs/reference/scalars/#assetid">`[AssetId!]`</a>
+
 An array of asset ids used for the transaction inputs.
 
-`inputContracts: [Contract!]`:
+`inputContracts`: <a href="#contract">`[Contract!]`</a>
+
 An array of contracts used for the transaction inputs.
 
-`gasPrice: U64`:
+`gasPrice`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The gas price for the transaction.
 
-`gasLimit: U64`:
+`gasLimit`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The gas limit for the transaction.
 
-`maturity: U64`
+`maturity`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The minimum block height that the transaction can be included at.
 
-`txPointer: TxPointer`<sup>_(beta-2 only)_</sup>:
+`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer`</a><sup>_(beta-2 only)_</sup>
+
 The location of the transaction in the block.
 
-`isScript: Boolean!`:
+`isScript: Boolean!`
+
 Whether or not the transaction is a script.
 
-`isCreate: Boolean!`<sup>_(beta-2 only)_</sup>:
+`isCreate: Boolean!`<sup>_(beta-2 only)_</sup>
+
 Whether or not the transaction is creating a new contract.
 
-`isMint: Boolean!`<sup>_(beta-2 only)_</sup>:
+`isMint: Boolean!`<sup>_(beta-2 only)_</sup>
+
 Whether or not the transaction is minting new coins.
 
-`inputs: [Input!]`:
+`inputs`: <a href="/docs/reference/unions/#input">`[Input!]`</a>
+
 An array of inputs for the transaction.
 
-`outputs: [Output!]!`:
+`outputs`: <a href="/docs/reference/unions/#output">`[Output!]!`</a>
+
 An array of outputs for the transaction.
 
-`witnesses: [HexString!]`:
+`witnesses`: <a href="/docs/reference/scalars/#hexstring">`[HexString!]`</a>
+
 An array of witnesses.
 
-`receiptsRoot: Bytes32`:
+`receiptsRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
+
 The root of the receipts.
 
-`status: TransactionStatus`:
+`status`: <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus`</a>
+
 The status of the transaction.
 
-`receipts: [Receipt!]`:
+`receipts`: <a href="#receipt">`[Receipt!]`</a>
+
 An array of the receipts produced by the transaction.
 
-`script: HexString`:
+`script`: <a href="/docs/reference/scalars/#hexstring">`HexString`</a>
+
 The script to execute.
 
-`scriptData: HexString`:
+`scriptData`: <a href="/docs/reference/scalars/#hexstring">`HexString`</a>
+
 The script input parameters.
 
-`bytecodeWitnessIndex: Int`:
+`bytecodeWitnessIndex: Int`
+
 The witness index of contract bytecode.
 
-`bytecodeLength: U64`:
+`bytecodeLength`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The length of the transaction bytecode.
 
-`salt: Salt`:
+`salt`: <a href="/docs/reference/scalars/#salt">`Salt`</a>
+
 The salt value for the transaction.
 
-`storageSlots: [HexString!]`:
+`storageSlots`: <a href="/docs/reference/scalars/#hexstring">`[HexString!]`</a>
+
 An array of storage slot.
 
-`rawPayload: HexString!`:
+`rawPayload`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
 A hex string of the raw transaction payload.
 
 ## `VariableOutput`
@@ -698,11 +937,14 @@ The output type for a transaction that outputs an amount that may vary based on 
 
 **fields:**
 
-`to: Address`:
+`to`: <a href="/docs/reference/scalars/#address">`Address`</a>
+
 The address the coins were sent to.
 
-`amount: U64`:
+`amount`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+
 The amount of coins in the output.
 
-`assetId: AssetId`:
+`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId`</a>
+
 The asset id for the coins sent.

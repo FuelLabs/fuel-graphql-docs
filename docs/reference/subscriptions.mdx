@@ -5,7 +5,7 @@ category: Reference
 
 # Subscriptions
 
-## `statusChange(...): TransactionStatus!`
+## `statusChange(...)`: <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus!`</a>
 
 Returns a stream of status updates for the given transaction id if the current status is `[TransactionStatus::Submitted]`. Only available for the beta-2 testnet.
 
@@ -13,5 +13,6 @@ This stream will wait forever so it's advised to use within a timeout. It is pos
 
 **args:**
 
-`id: TransactionId!`:
+`id`: <a href="/docs/reference/scalars/#transactionid">`TransactionId!`</a>
+
 The id of the transaction to stream status updates for.

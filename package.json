@@ -7,9 +7,11 @@
     "build": "next build",
     "export": "DOCS_DIST=${DOCS_DIST:=dist} next export -o $DOCS_DIST",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest -c jest.config.js"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.3",
     "@docsearch/css": "^3.3.0",
     "@docsearch/react": "3.3.0",
     "@fuel-ui/css": "^0.9.3",
@@ -22,6 +24,7 @@
     "framer-motion": "^7.6.15",
     "fuels": "0.22.1",
     "globby": "^13.1.2",
+    "graphql": "^16.6.0",
     "gray-matter": "^4.0.3",
     "hast-util-heading-rank": "^2.1.0",
     "hast-util-to-string": "^2.0.0",
@@ -37,6 +40,7 @@
     "remark-slug": "^7.0.1",
     "strip-indent": "^4.0.0",
     "unist-util-visit": "^4.1.1",
+    "urql": "^3.0.3",
     "vfile": "^5.3.6"
   },
   "devDependencies": {
@@ -47,6 +51,8 @@
     "@types/react-dom": "^18.0.9",
     "@types/react-syntax-highlighter": "^15.5.5",
     "eslint": "^8.28.0",
-    "eslint-config-next": "13.0.5"
+    "eslint-config-next": "13.0.5",
+    "isomorphic-fetch": "^3.0.0",
+    "ts-jest": "^29.0.3"
   }
 }

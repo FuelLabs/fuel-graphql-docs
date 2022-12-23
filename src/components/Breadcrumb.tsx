@@ -1,5 +1,6 @@
 import { cssObj } from '@fuel-ui/css';
 import { Flex, Icon, Text } from '@fuel-ui/react';
+import Link from 'next/link';
 
 import type { DocType } from '~/src/types';
 
@@ -11,11 +12,11 @@ export function Breadcrumb({ doc }: BreadcrumbProps) {
   return (
     <Flex css={styles.root}>
       <Text as="span" rightIcon={Icon.is('CaretRight')}>
-        Docs
+        <Link href="/">Docs</Link>
       </Text>
       {doc.category && (
         <Text as="span" rightIcon={Icon.is('CaretRight')}>
-          {doc.category}
+          <Link href={`/docs/${doc.category.toLowerCase()}`}>{doc.category}</Link>
         </Text>
       )}
       <Text as="span">{doc.title}</Text>

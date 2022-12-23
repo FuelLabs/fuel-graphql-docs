@@ -11,13 +11,13 @@ An input type for a transaction.
 
 **Types:**
 
-`InputCoin`:
+<a href="/docs/reference/objects/#inputcoin">`InputCoin`</a>:
 An input type for a coin.
 
-`InputContract`:
+<a href="/docs/reference/objects/#inputcontract">`InputContract`</a>:
 An input type for a contract.
 
-`InputMessage`:
+<a href="/docs/reference/objects/#inputmessage">`InputMessage`</a>:
 An input type for a message.
 
 ## `Output`
@@ -26,36 +26,40 @@ An output type for a transaction.
 
 **Types:**
 
-`CoinOutput`:
+<a href="/docs/reference/objects/#coinoutput">`CoinOutput`</a>:
 Indicates coins were forwarded from one address to another.
 
-`ContractOutput`:
+<a href="/docs/reference/objects/#contractoutput">`ContractOutput`</a>:
 Indicates the transaction updated the state of a contract.
 
-`MessageOutput`:
+<a href="/docs/reference/objects/#messageoutput">`MessageOutput`</a>:
 Indicates a message output.
 
-`ChangeOutput`:
+<a href="/docs/reference/objects/#changeoutput">`ChangeOutput`</a>:
 Indicates that the output's amount may vary based on transaction execution, but is otherwise identical to a Coin output. Output changes are always guaranteed to have an amount of zero since they're only set after execution terminates.
 
-`VariableOutput`:
+<a href="/docs/reference/objects/#variableoutput">`VariableOutput`</a>:
 Similar to `ChangeOutput`, this output type indicates that the output's amount may vary based on transaction execution, but is otherwise identical to a Coin output. On initialization, the amount on variable outputs is zero, but during execution they could be set to a non-zero value.
 
-`ContractCreated`:
+<a href="/docs/reference/objects/#contractcreated">`ContractCreated`</a>:
 Indicates a contract was deployed.
+
+## `Resource`
+
+Either a <a href="/docs/reference/objects/#coin">`Coin`</a> or a <a href="/docs/reference/objects/#message">`Message`</a>.
 
 ## `TransactionStatus`
 
 The status type of a transaction.
 
-`SubmitedStatus`:
+<a href="/docs/reference/objects/#submittedstatus">`SubmitedStatus`</a>:
 The transaction has been submitted.
 
-`SucessStatus`:
+<a href="/docs/reference/objects/#successstatus">`SuccessStatus`</a>:
 The transaction has succeeded.
 
-`SqueezedOutStatus`<sup>_(beta-2 only)_</sup>:
+<a href="/docs/reference/objects/#squeezedoutstatus">`SqueezedOutStatus`</a><sup>_(beta-2 only)_</sup>:
 The transaction was kicked out of the mempool.
 
-`FailureStatus`:
+<a href="/docs/reference/objects/#failurestatus">`FailureStatus`</a>:
 The transaction has failed.
