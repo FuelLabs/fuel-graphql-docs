@@ -16,9 +16,9 @@ export function Sidebar({handleClick}: SidebarProps) {
     <Box as="nav" css={styles.root}>
       {links.map((link) => {
         return link.slug ? (
-          <SidebarLink handleClick={() => handleClick()} key={link.slug} item={link} />
+          <SidebarLink handleClick={handleClick} key={link.slug} item={link} />
         ) : (
-          <SidebarSubmenu handleClick={() => handleClick()} key={link.subpath} {...link} />
+          <SidebarSubmenu handleClick={handleClick} key={link.subpath} {...link} />
         );
       })}
     </Box>

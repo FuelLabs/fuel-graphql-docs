@@ -28,7 +28,7 @@ export function SidebarSubmenu({
   return (
     <Flex css={styles.root}>
       <div style={{display: "flex", justifyContent: "space-between"}}>
-        <SidebarLink handleClick={() => handleClick()} item={{label, slug: label.replace(/\s+/g, '-').toLowerCase()}}/>
+        <SidebarLink handleClick={handleClick} item={{label, slug: label.replace(/\s+/g, '-').toLowerCase()}}/>
       <Button
         variant="link"
         rightIcon={isOpened ? Icon.is('CaretUp') : Icon.is('CaretDown')}
@@ -47,7 +47,7 @@ export function SidebarSubmenu({
               iconColor="gray6"
             >
               
-              <SidebarLink handleClick={() => handleClick()} item={item} />
+              <SidebarLink handleClick={handleClick} item={item} />
             </List.Item>)}
           })}
         </List>
