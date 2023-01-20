@@ -11,6 +11,7 @@ import * as Examples from '../../examples';
 import { Blockquote } from './Blockquote';
 import { Code } from './Code';
 import { CodeImport } from './CodeImport';
+import { CodeExamples } from './CodeExamples';
 import { Heading } from './Heading';
 import { Link } from './Link';
 import { UL } from './List';
@@ -36,6 +37,7 @@ const components = {
   CodeImport,
   Player,
   Examples,
+  CodeExamples
 };
 
 type ProviderProps = {
