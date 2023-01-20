@@ -6,15 +6,19 @@ import { SidebarSubmenu } from './SidebarSubmenu';
 
 import { useDocContext } from '~/src/hooks/useDocContext';
 
-export function Sidebar() {
+interface SidebarProps {
+  handleClick: () => void
+}
+
+export function Sidebar({handleClick}: SidebarProps) {
   const { links } = useDocContext();
   return (
     <Box as="nav" css={styles.root}>
       {links.map((link) => {
         return link.slug ? (
-          <SidebarLink key={link.slug} item={link} />
+          <SidebarLink handleClick={() => handleClick()} key={link.slug} item={link} />
         ) : (
-          <SidebarSubmenu key={link.subpath} {...link} />
+          <SidebarSubmenu handleClick={() => handleClick()} key={link.subpath} {...link} />
         );
       })}
     </Box>
