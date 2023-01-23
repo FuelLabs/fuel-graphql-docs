@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Flex, Button } from "@fuel-ui/react";
+import { Flex, Button, Spinner } from "@fuel-ui/react";
 import { useState } from "react";
 
 import { ExampleBox } from "~/src/components/ExampleBox";
@@ -13,8 +13,6 @@ export function Query(props: QueryProps) {
   const [resp, setResp] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-
-  const keys = Object.keys(props.args)
 
   function runQuery() {
     setLoading(true);
@@ -48,7 +46,7 @@ export function Query(props: QueryProps) {
     <ExampleBox>
       <Flex direction="column" gap="$4">
         <>
-          <Button onPress={runQuery}>{loading ? "Loading..." : "Run"}</Button>
+          <Button onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
           
           {resp && 
           <>

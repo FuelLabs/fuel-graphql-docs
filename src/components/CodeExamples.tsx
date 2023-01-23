@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cssObj } from "@fuel-ui/css";
-import { Link, Button, Flex, Box } from "@fuel-ui/react";
+import { Link, Tabs, Box } from "@fuel-ui/react";
 
 import { Pre } from "./Pre";
 
 import { REPO_LINK } from "~/src/constants";
+import { stringRegEx } from "fuels";
 
 export type CodeExamplesProps = {
   file: string;
@@ -45,18 +46,23 @@ export function CodeExamples({
   __apollo_lineEnd: apollo_lineEnd,
   __urql_lineEnd: urql_lineEnd,
 }: CodeExamplesProps) {
-  const [content, setContent] = useState<string>();
   const [link, setLink] = useState<string>();
 
   const ts_lines = `L${ts_lineStart}${ts_lineEnd ? `-L${ts_lineEnd}` : ""}`;
   const apollo_lines = `L${apollo_lineStart}${
     apollo_lineEnd ? `-L${apollo_lineEnd}` : ""
   }`;
-  const urql_lines = `L${urql_lineStart}${urql_lineEnd ? `-L${urql_lineEnd}` : ""}`;
+  const urql_lines = `L${urql_lineStart}${
+    urql_lineEnd ? `-L${urql_lineEnd}` : ""
+  }`;
 
   const ts_link = `${REPO_LINK}/${filePath}#${ts_lines}`;
   const apollo_link = `${REPO_LINK}/${filePath}#${apollo_lines}`;
   const urql_link = `${REPO_LINK}/${filePath}#${urql_lines}`;
+
+  useEffect(() => {
+    setLink(ts_link);
+  }, [ts_link]);
 
   const apolloImport = `import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
@@ -65,15 +71,15 @@ const apolloClient= new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-`
+`;
 
-const urqlImport = `import { createClient } from 'urql';
+  const urqlImport = `import { createClient } from 'urql';
 
 const urqlClient= createClient({
   url: 'https://node-beta-2.fuel.network/graphql',
 });
 
-`
+`;
 
   const title = (
     <>
@@ -83,63 +89,47 @@ const urqlClient= createClient({
     </>
   );
 
-  function selectTS() {
-    if (link == ts_link) {
-      setLink(undefined);
-      setContent(undefined);
-    } else {
-      setLink(ts_link);
-      setContent(ts_content);
-    }
+  interface TabContentProps {
+    value: string;
+    content: string;
   }
 
-  function selectApollo() {
-    if (link == apollo_link) {
-      setLink(undefined);
-      setContent(undefined);
-    } else {
-      setLink(apollo_link);
-      setContent(apolloImport + apollo_content);
-    }
-  }
-
-  function selectUrql() {
-    if (link == urql_link) {
-      setLink(undefined);
-      setContent(undefined);
-    } else {
-      setLink(urql_link);
-      setContent(urqlImport + urql_content);
-    }
-  }
+  const TabContent = ({ value, content }: TabContentProps) => {
+    return (
+      <Tabs.Content css={styles.codeContainer} value={value}>
+        <Pre title={title}>
+          <code className={`language-${ts_language}`}>{content}</code>
+        </Pre>
+      </Tabs.Content>
+    );
+  };
 
   return (
-    <>
-      <Flex css={styles.buttonsContainer} gap="$2">
-        <Button color="gray" onPress={selectTS}>TypeScript</Button>
-        <Button color="gray" onPress={selectApollo}>Apollo Client</Button>
-        <Button color="gray" onPress={selectUrql}>urql</Button>
-      </Flex>
-
-      {content !== undefined && (
-        <Box css={styles.codeContainer}>
-          <Pre title={title}>
-            <code className={`language-${ts_language}`}>{content}</code>
-          </Pre>
-        </Box>
-      )}
-    </>
+    <Box css={styles.tabsContainer}>
+      <Tabs>
+        <Tabs.List css={styles.tabsTrigger} aria-label="Using the query in an app">
+          <Tabs.Trigger value="ts">TypeScript</Tabs.Trigger>
+          <Tabs.Trigger value="apollo">Apollo Client</Tabs.Trigger>
+          <Tabs.Trigger value="urql">urql</Tabs.Trigger>
+        </Tabs.List>
+        <TabContent value="ts" content={ts_content} />
+        <TabContent value="apollo" content={apolloImport + apollo_content} />
+        <TabContent value="urql" content={urqlImport + urql_content} />
+      </Tabs>
+    </Box>
   );
 }
 
 const styles = {
-  buttonsContainer: cssObj({
-    marginTop: "$12",
+  tabsTrigger: cssObj({
+    cursor: "pointer",
+  }),
+  tabsContainer: cssObj({
+    marginTop: "$8",
   }),
   codeContainer: cssObj({
-    marginTop: "$12",
     maxHeight: "500px",
-    overflow: "scroll"
+    overflow: "scroll",
   }),
   filename: cssObj({
     "&, &:visited": {
