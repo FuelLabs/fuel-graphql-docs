@@ -7,12 +7,15 @@ import { SidebarLink } from './SidebarLink';
 
 import type { SidebarLinkItem } from '~/src/types';
 
-type SidebarSubmenuProps = SidebarLinkItem;
+interface SidebarSubmenuProps extends SidebarLinkItem {
+  handleClick: () => void
+}
 
 export function SidebarSubmenu({
   label,
   submenu,
   subpath,
+  handleClick
 }: SidebarSubmenuProps) {
   const pathname = usePathname();
   const isActive = pathname?.startsWith(`/docs/${subpath}`);
@@ -25,7 +28,7 @@ export function SidebarSubmenu({
   return (
     <Flex css={styles.root}>
       <div style={{display: "flex", justifyContent: "space-between"}}>
-        <SidebarLink item={{label, slug: label.replace(/\s+/g, '-').toLowerCase()}}/>
+        <SidebarLink handleClick={handleClick} item={{label, slug: label.replace(/\s+/g, '-').toLowerCase()}}/>
       <Button
         variant="link"
         rightIcon={isOpened ? Icon.is('CaretUp') : Icon.is('CaretDown')}
@@ -44,7 +47,7 @@ export function SidebarSubmenu({
               iconColor="gray6"
             >
               
-              <SidebarLink item={item} />
+              <SidebarLink handleClick={handleClick} item={item} />
             </List.Item>)}
           })}
         </List>
@@ -55,8 +58,6 @@ export function SidebarSubmenu({
 
 const styles = {
   root: cssObj({
-    // px: '$2',
-    mt: '$2',
     flexDirection: 'column',
 
     '.fuel_button': {

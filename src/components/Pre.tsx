@@ -97,7 +97,7 @@ const styles = {
   copyIcon: cssObj({
     position: 'absolute',
     right: 0,
-    bottom: 0,
+    top: 0,
     color: '$gray7 !important',
     transition: 'all .3s',
     background: '$gray1 !important',

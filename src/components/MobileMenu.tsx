@@ -62,7 +62,7 @@ export function MobileMenu() {
         </Flex>
         {button}
       </Flex>
-      <Sidebar />
+      <Sidebar handleClick={toggle} />
     </MotionBox>
   );
 

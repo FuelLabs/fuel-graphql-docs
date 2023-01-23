@@ -45,64 +45,12 @@ Variables:
 
 <Examples.Balance />
 
-  <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input type="checkbox" id="toggle1" className="accordion-toggle"></input>
-  <label className="accordion-title" htmlFor="toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/balance.test.ts"
-      testCase="get balance with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-      ```typescript
-      import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-      const apolloClient= new ApolloClient({
-        uri: 'https://node-beta-2.fuel.network/graphql',
-        cache: new InMemoryCache(),
-      });
-      ```
-        <CodeImport
-          file="../examples/tests/balance.test.ts"
-          testCase="get balance with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-        ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/balance.test.ts"
-          testCase="get balance with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+ <CodeExamples
+  file="../examples/tests/balance.test.ts"
+  ts_testCase="get balance with ts"
+  apollo_testCase="get balance with apollo"
+  urql_testCase="get balance with urql"
+/>
 
 ## List all asset balances of an address
 
@@ -129,68 +77,12 @@ Variables:
 
 <Examples.Balances />
 
- <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input
-    type="checkbox"
-    id="balances-toggle1"
-    className="accordion-toggle"
-  ></input>
-  <label className="accordion-title" htmlFor="balances-toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/balances.test.ts"
-      testCase="get balances with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="balances-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="balances-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-        ```typescript
-      import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-      const apolloClient= new ApolloClient({
-        uri: 'https://node-beta-2.fuel.network/graphql',
-        cache: new InMemoryCache(),
-      });
-      ```
-        <CodeImport
-          file="../examples/tests/balances.test.ts"
-          testCase="get balances with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="balances-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="balances-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-        ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/balances.test.ts"
-          testCase="get balances with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/balances.test.ts"
+  ts_testCase="get balances with ts"
+  apollo_testCase="get balances with apollo"
+  urql_testCase="get balances with urql"
+/>
 
 ## List all transactions from an address
 
@@ -278,68 +170,12 @@ Variables:
 
 <Examples.Transactions />
 
-  <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input
-    type="checkbox"
-    id="transactions-toggle1"
-    className="accordion-toggle"
-  ></input>
-  <label className="accordion-title" htmlFor="transactions-toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/transactions-by-owner.test.ts"
-      testCase="get transactions with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="transactions-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="transactions-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-        ```typescript
-        import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-        const apolloClient= new ApolloClient({
-          uri: 'https://node-beta-2.fuel.network/graphql',
-          cache: new InMemoryCache(),
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/transactions-by-owner.test.ts"
-          testCase="get transactions with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="transactions-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="transactions-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-        ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/transactions-by-owner.test.ts"
-          testCase="get transactions with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/transactions-by-owner.test.ts"
+  ts_testCase="get transactions with ts"
+  apollo_testCase="get transactions with apollo"
+  urql_testCase="get transactions with urql"
+/>
 
 ## List the latest transactions
 
@@ -419,68 +255,12 @@ query LatestTransactions {
 
 <Examples.LatestTransactions />
 
-  <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input
-    type="checkbox"
-    id="latest-txns-toggle1"
-    className="accordion-toggle"
-  ></input>
-  <label className="accordion-title" htmlFor="latest-txns-toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/latest-transactions.test.ts"
-      testCase="get latest transactions with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="latest-txns-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="latest-txns-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-        ```typescript
-        import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-        const apolloClient= new ApolloClient({
-          uri: 'https://node-beta-2.fuel.network/graphql',
-          cache: new InMemoryCache(),
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/latest-transactions.test.ts"
-          testCase="get latest transactions with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="latest-txns-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="latest-txns-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-        ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/latest-transactions.test.ts"
-          testCase="get latest transactions with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/latest-transactions.test.ts"
+  ts_testCase="get latest transactions with ts"
+  apollo_testCase="get latest transactions with apollo"
+  urql_testCase="get latest transactions with urql"
+/>
 
 ## Get an asset balance of a contract
 
@@ -505,68 +285,12 @@ Variables:
 
 <Examples.ContractBalance />
 
-  <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input
-    type="checkbox"
-    id="contract-balance-toggle1"
-    className="accordion-toggle"
-  ></input>
-  <label className="accordion-title" htmlFor="contract-balance-toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/contract-balance.test.ts"
-      testCase="get contract balance with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="contract-balance-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="contract-balance-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-        const apolloClient= new ApolloClient({
-          uri: 'https://node-beta-2.fuel.network/graphql',
-          cache: new InMemoryCache(),
-        });
-        ```
-       <CodeImport
-          file="../examples/tests/contract-balance.test.ts"
-          testCase="get contract balance with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="contract-balance-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="contract-balance-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/contract-balance.test.ts"
-          testCase="get contract balance with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/contract-balance.test.ts"
+  ts_testCase="get contract balance with ts"
+  apollo_testCase="get contract balance with apollo"
+  urql_testCase="get contract balance with urql"
+/>
 
 ## List all asset balances of a contract
 
@@ -593,68 +317,12 @@ Variables:
 
 <Examples.ContractBalances />
 
-  <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input
-    type="checkbox"
-    id="contract-balances-toggle1"
-    className="accordion-toggle"
-  ></input>
-  <label className="accordion-title" htmlFor="contract-balances-toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/contract-balances.test.ts"
-      testCase="get contract balances with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="contract-balances-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="contract-balances-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-        const apolloClient= new ApolloClient({
-          uri: 'https://node-beta-2.fuel.network/graphql',
-          cache: new InMemoryCache(),
-        });
-        ```
-       <CodeImport
-          file="../examples/tests/contract-balances.test.ts"
-          testCase="get contract balances with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="contract-balances-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="contract-balances-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/contract-balances.test.ts"
-          testCase="get contract balances with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/contract-balances.test.ts"
+  ts_testCase="get contract balances with ts"
+  apollo_testCase="get contract balances with apollo"
+  urql_testCase="get contract balances with urql"
+/>
 
 ## List the latest blocks
 
@@ -730,68 +398,12 @@ query LatestBlocks {
 
 <Examples.LatestBlocks />
 
-  <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input
-    type="checkbox"
-    id="latest-blocks-toggle1"
-    className="accordion-toggle"
-  ></input>
-  <label className="accordion-title" htmlFor="latest-blocks-toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/latest-blocks.test.ts"
-      testCase="get latest blocks with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="latest-blocks-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="latest-blocks-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-        const apolloClient= new ApolloClient({
-          uri: 'https://node-beta-2.fuel.network/graphql',
-          cache: new InMemoryCache(),
-        });
-        ```
-         <CodeImport
-          file="../examples/tests/latest-blocks.test.ts"
-          testCase="get latest blocks with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="latest-blocks-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="latest-blocks-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-         <CodeImport
-          file="../examples/tests/latest-blocks.test.ts"
-          testCase="get latest blocks with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/latest-blocks.test.ts"
+  ts_testCase="get latest blocks with ts"
+  apollo_testCase="get latest blocks with apollo"
+  urql_testCase="get latest blocks with urql"
+/>
 
 ## Get block information by height
 
@@ -813,68 +425,12 @@ Variables:
 
 <Examples.BlockByHeight />
 
-  <div className="accordion">
-
-{" "}
-<div className="accordion-option">
-  <input
-    type="checkbox"
-    id="block-toggle1"
-    className="accordion-toggle"
-  ></input>
-  <label className="accordion-title" htmlFor="block-toggle1">
-    TypeScript
-  </label>
-  <div className="accordion-content">
-    <CodeImport
-      file="../examples/tests/block.test.ts"
-      testCase="get block info with ts"
-    />
-  </div>
-</div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="block-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="block-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-        const apolloClient= new ApolloClient({
-          uri: 'https://node-beta-2.fuel.network/graphql',
-          cache: new InMemoryCache(),
-        });
-        ```
-         <CodeImport
-          file="../examples/tests/block.test.ts"
-          testCase="get block info with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="block-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="block-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-         <CodeImport
-          file="../examples/tests/block.test.ts"
-          testCase="get block info with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/block.test.ts"
+  ts_testCase="get block info with ts"
+  apollo_testCase="get block info with apollo"
+  urql_testCase="get block info with urql"
+/>
 
 ## List all messages owned by address
 
@@ -904,68 +460,12 @@ Variables:
 
 <Examples.MessageInfo />
 
-  <div className="accordion">
-
-    {" "}
-    <div className="accordion-option">
-      <input
-        type="checkbox"
-        id="message-toggle1"
-        className="accordion-toggle"
-      ></input>
-      <label className="accordion-title" htmlFor="message-toggle1">
-        TypeScript
-      </label>
-      <div className="accordion-content">
-        <CodeImport
-          file="../examples/tests/messages.test.ts"
-          testCase="get messages with ts"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="message-toggle2" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="message-toggle2">
-        Apollo Client
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-
-        const apolloClient= new ApolloClient({
-          uri: 'https://node-beta-2.fuel.network/graphql',
-          cache: new InMemoryCache(),
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/messages.test.ts"
-          testCase="get messages with apollo"
-        />
-      </div>
-    </div>
-
-    <div className="accordion-option">
-      <input type="checkbox" id="message-toggle3" className="accordion-toggle"></input>
-      <label className="accordion-title" htmlFor="message-toggle3">
-        urql
-      </label>
-      <div className="accordion-content">
-      ```typescript
-        import { createClient } from 'urql';
-
-        const urqlClient= createClient({
-          url: 'https://node-beta-2.fuel.network/graphql',
-        });
-        ```
-        <CodeImport
-          file="../examples/tests/messages.test.ts"
-          testCase="get messages with urql"
-        />
-      </div>
-    </div>
-
-  </div>
+<CodeExamples
+  file="../examples/tests/messages.test.ts"
+  ts_testCase="get messages with ts"
+  apollo_testCase="get messages with apollo"
+  urql_testCase="get messages with urql"
+/>
 
 ## Dry run a transaction
 

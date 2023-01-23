@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import remarkSlug from 'remark-slug';
 
 import { codeImport } from './code-import';
+import { codeExamples } from './code-examples';
 import { rehypeExtractHeadings } from './toc';
 
 import { DOCS_REPO_LINK, FIELDS } from '~/src/constants';
@@ -80,6 +81,7 @@ export async function getDocBySlug(
         remarkSlug,
         remarkGfm,
         [codeImport, { filepath: fullpath }],
+        [codeExamples, { filepath: fullpath }],
       ],
       rehypePlugins: [[rehypeExtractHeadings, { headings }]],
     },

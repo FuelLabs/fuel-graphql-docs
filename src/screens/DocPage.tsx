@@ -26,7 +26,7 @@ export function DocScreen(props: DocPageProps) {
       <Layout title={doc.title}>
         <Box css={styles.sidebar}>
           <Box css={{ position: 'sticky', top: 20 }}>
-            <Sidebar />
+            <Sidebar handleClick={() => {}} />
           </Box>
         </Box>
         <Box as="section" css={styles.section}>
