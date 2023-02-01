@@ -5,9 +5,9 @@ category: Reference
 
 # Queries
 
-## `balance(...)`: <a href="/docs/reference/objects/#balance">`Balance!`</a>
+## `balance`
 
-Returns the balance of a specific address for a given asset id.
+Returns the <a href="/docs/reference/objects/#balance">`Balance!`</a> of a specific address for a given asset id.
 
 **args:**
 
@@ -19,9 +19,9 @@ The owner address.
 
 The asset id.
 
-## `balances(...)`: <a href="/docs/reference/objects/#balance">`BalanceConnection!`</a>
+## `balances`
 
-Returns a connection for an array of balances for each asset owned by a given address.
+Returns a <a href="/docs/reference/objects/#balance">`BalanceConnection!`</a> for an array of balances for each asset owned by a given address.
 
 **args:**
 
@@ -29,10 +29,9 @@ Returns a connection for an array of balances for each asset owned by a given ad
 
 A filter to specify the wallet owner address.
 
-## `block(...)`: <a href="/docs/reference/objects/#block">`Block`</a>
+## `block`
 
-
-Returns information about a certain block. Accepts either the block id or block height as an argument.
+Returns information about a certain <a href="/docs/reference/objects/#block">`Block`</a>. Accepts either the block id or block height as an argument.
 
 **args:**
 
@@ -44,17 +43,17 @@ The block id.
 
 The block height.
 
-## `blocks(...)`: <a href="/docs/reference/objects/#block">`BlockConnection!`</a>
+## `blocks`
 
-Returns a connection for an array of all blocks produced.
+Returns a <a href="/docs/reference/objects/#block">`BlockConnection!`</a> for an array of all blocks produced.
 
-## `chain`: <a href="/docs/reference/objects/#chaininfo">`ChainInfo!`</a>
+## `chain`
 
-Returns information about the target Fuel network used for the API.
+Returns <a href="/docs/reference/objects/#chaininfo">`ChainInfo!`</a> about the target Fuel network used for the API.
 
-## `coin(...)`: <a href="/docs/reference/objects/#coin">`Coin`</a>
+## `coin`
 
-Returns details about a specific coin.
+Returns details about a specific <a href="/docs/reference/objects/#coin">`Coin`</a>.
 
 **args:**
 
@@ -62,9 +61,9 @@ Returns details about a specific coin.
 
 A unique 32 byte identifier for the UTXO.
 
-## `coins(...)`: <a href="/docs/reference/objects/#coin">`CoinConnection!`</a>
+## `coins`
 
-Returns a connection for an array of coins based on a given owner and/or asset id
+Returns a <a href="/docs/reference/objects/#coin">`CoinConnection!`</a> for an array of coins based on a given owner and/or asset id
 
 **args:**
 
@@ -72,9 +71,9 @@ Returns a connection for an array of coins based on a given owner and/or asset i
 
 A filter with the owner address and optionally the asset id.
 
-## `contract(...)`: <a href="/docs/reference/objects/#contract">`Contract`</a>
+## `contract`
 
-Returns the contract information for a given contract id.
+Returns the <a href="/docs/reference/objects/#contract">`Contract`</a> information for a given contract id.
 
 **args:**
 
@@ -82,9 +81,9 @@ Returns the contract information for a given contract id.
 
 The contract id of the requested contract.
 
-## `contractBalance(...)`: <a href="/docs/reference/objects/#contractbalance">`ContractBalance!`</a>
+## `contractBalance`
 
-Returns the balance for a given contract and asset id.
+Returns the <a href="/docs/reference/objects/#contractbalance">`ContractBalance!`</a> for a given contract and asset id.
 
 **args:**
 
@@ -96,9 +95,9 @@ The contract that owns the balance.
 
 The asset id for the balance.
 
-## `contractBalances(...)`: <a href="/docs/reference/objects/#contractbalance">`ContractBalanceConnection!`</a>
+## `contractBalances`
 
-Returns a connection for an arrray of balances for all assets owned by a given contract
+Returns a  <a href="/docs/reference/objects/#contractbalance">`ContractBalanceConnection!`</a> for an arrray of balances for all assets owned by a given contract
 
 **args:**
 
@@ -106,13 +105,13 @@ Returns a connection for an arrray of balances for all assets owned by a given c
 
 A filter for the contract balances.
 
-## `health: Boolean!`
+## `health`
 
 Returns `true` if the API is running or `false` if the API is down.
 
-## `messageProof(...)`: <a href="/docs/reference/objects/#messageproof">`MessageProof`</a>
+## `messageProof`
 
-Returns the message proof for a given message id or transaction. Only available for the beta-2 testnet.
+Returns the <a href="/docs/reference/objects/#messageproof">`MessageProof`</a> for a given message id or transaction. Only available for the beta-2 testnet.
 
 **args:**
 
@@ -124,9 +123,9 @@ The transaction id for the message.
 
 The id of the message.
 
-## `messages(...)`: <a href="/docs/reference/objects/#message">`MessageConnection!`</a>
+## `messages`
 
-Returns a connection for an array of messages for a given owner.
+Returns a <a href="/docs/reference/objects/#message">`MessageConnection!`</a> for an array of messages for a given owner.
 
 **args:**
 
@@ -134,13 +133,13 @@ Returns a connection for an array of messages for a given owner.
 
 The owner address of the messages.
 
-## `nodeInfo`: <a href="/docs/reference/objects/#nodeinfo">`NodeInfo!`</a>
+## `nodeInfo`
 
-Returns information about the current node.
+Returns <a href="/docs/reference/objects/#nodeinfo">`NodeInfo!`</a> about the current node.
 
-## `resourcesToSpend(...)`: <a href="/docs/reference/unions/#resource">`[[Resource!]!]!`</a>
+## `resourcesToSpend`
 
-Returns the list of spendable resources per asset from the query. Only available for the beta-2 testnet. The length of the result is the same as the length of `query_per_asset`. The ordering of assets and `query_per_asset` is the same.
+Returns the list of spendable <a href="/docs/reference/unions/#resource">`[[Resource!]!]!`</a> per asset from the query. Only available for the beta-2 testnet. The length of the result is the same as the length of `query_per_asset`. The ordering of assets and `query_per_asset` is the same.
 
 **args:**
 
@@ -156,9 +155,9 @@ The list of requested asset resources. Several entries with the same asset id ar
 
 The resources to exclude.
 
-## `transaction(...)`: <a href="/docs/reference/objects/#transaction">`Transaction`</a>
+## `transaction`
 
-Returns transaction details for a given transaction id.
+Returns <a href="/docs/reference/objects/#transaction">`Transaction`</a> details for a given transaction id.
 
 **args:**
 
@@ -166,13 +165,13 @@ Returns transaction details for a given transaction id.
 
 The id for the transaction.
 
-## `transactions(...)`: <a href="/docs/reference/objects/#transaction">`TransactionConnection!`</a>
+## `transactions`
 
-Returns a connection for an array of all transactions.
+Returns a <a href="/docs/reference/objects/#transaction">`TransactionConnection!`</a> for an array of all transactions.
 
-## `transactionsByOwner(...)`: <a href="/docs/reference/objects/#transaction">`TransactionConnection!`</a>
+## `transactionsByOwner`
 
-Returns a connection for an array of all transactions from a given address.
+Returns a <a href="/docs/reference/objects/#transaction">`TransactionConnection!`</a> for an array of all transactions from a given address.
 
 **args:**
 

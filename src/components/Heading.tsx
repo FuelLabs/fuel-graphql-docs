@@ -1,12 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+import Link from 'next/link';
+import { useRouter } from 'next/router'
+import { useState, useEffect } from "react";
 import { cssObj } from '@fuel-ui/css';
 import { Heading as FuelHeading } from '@fuel-ui/react';
 
 export function Heading({ children, ...props }: any) {
+  const [link, setLink] = useState<string>();
+  const router = useRouter()
+
+  useEffect(() => {
+    if (typeof children == "string") {
+      setLink(children.replace(/[\s_]+/g, '-').toLowerCase());
+    } else if (typeof children == "object" && children.props) {
+      setLink(children.props.children.replace(/[\s_]+/g, '-').toLowerCase());
+    }
+  }, [children])
+
   return (
     <FuelHeading as={props['data-rank']} {...props} css={styles.root}>
-      {children}
+      <Link href={link && router ? `${router.asPath.split("#")[0]}#${link}` : ""}>
+        {children}
+      </Link>
     </FuelHeading>
   );
 }
