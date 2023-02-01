@@ -5,9 +5,9 @@ category: Reference
 
 # Mutations
 
-## `dryRun(...)`: <a href="/docs/reference/objects/#receipt">`[Receipt!]!`</a>
+## `dryRun`
 
-A mutation that spins up a new temporary node from the current state and emulates a given transaction. It returns an array of receipts for the emulated transaction. You can optionally use UTXO validation.
+A mutation that spins up a new temporary node from the current state and emulates a given transaction. It returns a <a href="/docs/reference/objects/#receipt">`[Receipt!]!`</a> for the emulated transaction. You can optionally use UTXO validation.
 
 **args:**
 
@@ -18,9 +18,9 @@ The transaction hex string.
 `utxoValidation: Boolean`:
 Whether or not to use UTXO validation.
 
-## `produceBlocks(...)`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+## `produceBlocks`
 
-A mutation that produces blocks, that can be used for testing that requires block advancement.
+A mutation that produces blocks, that can be used for testing that requires block advancement. Returns a <a href="/docs/reference/scalars/#u64">`U64!`</a>.
 
 **args**
 
@@ -28,9 +28,9 @@ A mutation that produces blocks, that can be used for testing that requires bloc
 
 The number of blocks to produce.
 
-## `submit(...)`: <a href="/docs/reference/objects/#transaction">`Transaction!`</a>
+## `submit`
 
-A mutation that submits transaction to the transaction pool and returns a transaction.
+A mutation that submits transaction to the transaction pool and returns a <a href="/docs/reference/objects/#transaction">`Transaction!`</a>.
 
 **args**
 
