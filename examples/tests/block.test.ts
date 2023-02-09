@@ -20,7 +20,7 @@ describe("Block Info", () => {
         }
       }`;
 
-    const args = { height: "378485" };
+    const args = { height: "5968" };
 
     const getBlock = async () => {
       let response = await fetch("https://node-beta-2.fuel.network/graphql", {
@@ -50,7 +50,7 @@ describe("Block Info", () => {
         }
       }`;
 
-    const args = { height: "378485" };
+    const args = { height: "5968" };
 
     const getBlock = async () => {
       const response = await apolloClient.query({
@@ -72,7 +72,7 @@ describe("Block Info", () => {
         }
       }`;
 
-    const args = { height: "378485" };
+    const args = { height: "5968" };
 
     const getBlock = async () => {
       const response = await urqlClient

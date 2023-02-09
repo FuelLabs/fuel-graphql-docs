@@ -8,7 +8,7 @@ export function BlockByHeight() {
   }`;
 
   const args = {
-    height: "378485"
+    height: "5968"
   };
 
   return <Query query={query} args={args} />;
