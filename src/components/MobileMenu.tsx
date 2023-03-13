@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cssObj } from '@fuel-ui/css';
-import { Box, IconButton, Icon, Flex, Link, FuelLogo } from '@fuel-ui/react';
+import { Box, IconButton, Icon, Flex } from '@fuel-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { AnimationProps } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 import { Search } from './Search';
 import { Sidebar } from './Sidebar';
@@ -51,7 +52,7 @@ export function MobileMenu() {
     >
       <Flex css={styles.menu}>
         <Flex>
-          <FuelLogo size={40} />
+        <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
           <a
             href="https://github.com/FuelLabs/fuel-graphql-docs"
             target="_blank"
@@ -107,7 +108,7 @@ const styles = {
     },
 
     'a.active, a:hover': {
-      color: '$accent11',
+      color: '#00F58C',
     },
 
     '& > .fuel_box': {

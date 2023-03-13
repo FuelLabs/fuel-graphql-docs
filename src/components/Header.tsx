@@ -1,6 +1,7 @@
 import { cssObj } from '@fuel-ui/css';
-import { Box, Button, Flex, FuelLogo, Icon } from '@fuel-ui/react';
+import { Box, Flex, Icon } from '@fuel-ui/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import { MobileMenu } from './MobileMenu';
@@ -14,7 +15,8 @@ export function Header() {
     <Flex as="header" css={styles.root}>
       <Box css={{ flex: 1 }}>
         <Link href="/" className="logo">
-          <FuelLogo size={40} />
+          {/* <FuelLogo size={40} /> */}
+          <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
           <Flex css={styles.logoText}>
             <span>Fuel GraphQL Docs</span>
             {/* <Box as="span" css={styles.version}>
@@ -73,6 +75,7 @@ const styles = {
     flex: 1,
     fontSize: '$lg',
     fontWeight: '$semibold',
+    marginLeft: '$2',
   }),
   version: cssObj({
     ml: '$2',
@@ -109,7 +112,7 @@ const styles = {
     },
 
     'a.active, a:hover': {
-      color: '$accent11',
+      color: '#00F58C',
     },
   }),
 };
