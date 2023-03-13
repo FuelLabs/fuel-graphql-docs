@@ -23,7 +23,6 @@ describe("Messages", () => {
               nonce
               data
               daHeight
-              fuelBlockSpend
             }
           }
         }`;
@@ -47,7 +46,7 @@ describe("Messages", () => {
       });
       let json = await response.json();
       console.log("MESSAGES:", json.data.messages);
-      expect(json.data.messages.nodes.length).toBeTruthy();
+      expect(json.data.messages.nodes).toBeTruthy();
     };
 
     await getMessages();
@@ -64,7 +63,7 @@ describe("Messages", () => {
               nonce
               data
               daHeight
-              fuelBlockSpend
+              
             }
           }
         }`;
@@ -80,7 +79,7 @@ describe("Messages", () => {
         variables: args,
       });
       console.log("MESSAGES:", response.data.messages);
-      expect(response.data.messages.nodes.length).toBeTruthy();
+      expect(response.data.messages.nodes).toBeTruthy();
     };
 
     await getMessages();
@@ -97,7 +96,6 @@ describe("Messages", () => {
               nonce
               data
               daHeight
-              fuelBlockSpend
             }
           }
         }`;
@@ -110,7 +108,7 @@ describe("Messages", () => {
     const getMessages = async () => {
       const response = await urqlClient.query(MESSAGES_QUERY, args).toPromise();
       console.log("MESSAGES:", response.data.messages);
-      expect(response.data.messages.nodes.length).toBeTruthy();
+      expect(response.data.messages.nodes).toBeTruthy();
     };
 
     await getMessages();

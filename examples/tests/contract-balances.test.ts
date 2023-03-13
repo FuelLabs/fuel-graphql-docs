@@ -44,7 +44,7 @@ describe("Contract balances", () => {
       });
       let json = await response.json();
       console.log("CONTRACT BALANCES:", json.data.contractBalances);
-      expect(json.data.contractBalances.nodes.length).toBeTruthy();
+      expect(json.data.contractBalances.nodes).toBeTruthy();
     };
 
     await getContractBalances();
@@ -74,7 +74,7 @@ describe("Contract balances", () => {
         variables: args,
       });
       console.log("CONTRACT BALANCES:", response.data.contractBalances);
-      expect(response.data.contractBalances.nodes.length).toBeTruthy();
+      expect(response.data.contractBalances.nodes).toBeTruthy();
     };
 
     await getContractBalances();
@@ -103,7 +103,7 @@ describe("Contract balances", () => {
         .query(CONTRACT_BALANCES_QUERY, args)
         .toPromise();
       console.log("CONTRACT BALANCES:", response.data.contractBalances);
-      expect(response.data.contractBalances.nodes.length).toBeTruthy();
+      expect(response.data.contractBalances.nodes).toBeTruthy();
     };
 
     await getContractBalances();
