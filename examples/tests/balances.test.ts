@@ -3,12 +3,12 @@ import { createClient } from 'urql'
 import 'isomorphic-fetch';
 
 const apolloClient= new ApolloClient({
-  uri: 'https://node-beta-2.fuel.network/graphql',
+  uri: 'https://beta-3.fuel.network/graphql',
   cache: new InMemoryCache(),
 })
 
 const urqlClient= createClient({
-  url: 'https://node-beta-2.fuel.network/graphql',
+  url: 'https://beta-3.fuel.network/graphql',
 })
 
 describe("Balances", () => {
@@ -30,7 +30,7 @@ describe("Balances", () => {
     };
 
     const getBalances = async () => {
-      let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+      let response = await fetch("https://beta-3.fuel.network/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

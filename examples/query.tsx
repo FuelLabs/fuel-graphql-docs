@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Flex, Button, Spinner } from "@fuel-ui/react";
 import { useState } from "react";
-
+import { cssObj } from "@fuel-ui/css";
 import { ExampleBox } from "~/src/components/ExampleBox";
 
 interface QueryProps {
@@ -16,7 +16,7 @@ export function Query(props: QueryProps) {
 
   function runQuery() {
     setLoading(true);
-    fetch("https://node-beta-2.fuel.network/graphql", {
+    fetch("https://beta-3.fuel.network/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export function Query(props: QueryProps) {
     <ExampleBox>
       <Flex direction="column" gap="$4">
         <>
-          <Button onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
+          <Button css={styles.button} onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
           
           {resp && 
           <>
@@ -58,4 +58,10 @@ export function Query(props: QueryProps) {
       </Flex>
     </ExampleBox>
   );
+}
+
+const styles = {
+  button: cssObj({
+    backgroundColor: "#00F58C"
+  })
 }

@@ -43,7 +43,7 @@ const styles = {
       color: '$gray9',
     },
     'a:hover': {
-      color: '$accent11',
+      color: '#00F58C',
     },
 
     '@xl': {

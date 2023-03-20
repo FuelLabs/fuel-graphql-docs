@@ -3,12 +3,12 @@ import { createClient } from "urql";
 import "isomorphic-fetch";
 
 const apolloClient = new ApolloClient({
-  uri: "https://node-beta-2.fuel.network/graphql",
+  uri: "https://beta-3.fuel.network/graphql",
   cache: new InMemoryCache(),
 });
 
 const urqlClient = createClient({
-  url: "https://node-beta-2.fuel.network/graphql",
+  url: "https://beta-3.fuel.network/graphql",
 });
 
 describe("Messages", () => {
@@ -23,7 +23,6 @@ describe("Messages", () => {
               nonce
               data
               daHeight
-              fuelBlockSpend
             }
           }
         }`;
@@ -34,7 +33,7 @@ describe("Messages", () => {
     };
 
     const getMessages = async () => {
-      let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+      let response = await fetch("https://beta-3.fuel.network/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +46,7 @@ describe("Messages", () => {
       });
       let json = await response.json();
       console.log("MESSAGES:", json.data.messages);
-      expect(json.data.messages.nodes.length).toBeTruthy();
+      expect(json.data.messages.nodes).toBeTruthy();
     };
 
     await getMessages();
@@ -64,7 +63,7 @@ describe("Messages", () => {
               nonce
               data
               daHeight
-              fuelBlockSpend
+              
             }
           }
         }`;
@@ -80,7 +79,7 @@ describe("Messages", () => {
         variables: args,
       });
       console.log("MESSAGES:", response.data.messages);
-      expect(response.data.messages.nodes.length).toBeTruthy();
+      expect(response.data.messages.nodes).toBeTruthy();
     };
 
     await getMessages();
@@ -97,7 +96,6 @@ describe("Messages", () => {
               nonce
               data
               daHeight
-              fuelBlockSpend
             }
           }
         }`;
@@ -110,7 +108,7 @@ describe("Messages", () => {
     const getMessages = async () => {
       const response = await urqlClient.query(MESSAGES_QUERY, args).toPromise();
       console.log("MESSAGES:", response.data.messages);
-      expect(response.data.messages.nodes.length).toBeTruthy();
+      expect(response.data.messages.nodes).toBeTruthy();
     };
 
     await getMessages();

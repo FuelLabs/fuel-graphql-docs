@@ -7,7 +7,7 @@ category: Reference
 
 ## `statusChange`
 
-Returns a stream of <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus!`</a> updates for the given transaction id if the current status is `[TransactionStatus::Submitted]`. Only available for the beta-2 testnet.
+Returns a stream of <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus!`</a> updates for the given transaction id if the current status is `[TransactionStatus::Submitted]`.
 
 This stream will wait forever so it's advised to use within a timeout. It is possible for the stream to miss an update if it is polled slower then the updates arrive. In such a case the stream will close without a status. If this occurs the stream can simply be restarted to return the latest status.
 

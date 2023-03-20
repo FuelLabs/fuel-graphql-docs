@@ -43,9 +43,13 @@ Information about a block in the network.
 
 A unique identifier for the block.
 
-`header`: <a href="#header">`Header!`</a> <sup>_(beta-2 only)_</sup>
+`header`: <a href="#header">`Header!`</a>
 
 Metadata about a block.
+
+`consensus`: <a href="/docs/reference/unions/#consensus">`Consensus!`</a>
+
+The type of consensus used.
 
 `transactions`: <a href="#transaction">`[Transaction!]!`</a>
 
@@ -71,7 +75,7 @@ Information about the base chain. At a very high level `chainInfo` helps you und
 
 `name: String!`
 
-The human-readable string name of the chain. i.e. beta-2
+The human-readable string name of the chain. i.e. beta-3
 
 `latestBlock`: <a href="#block">`Block!`</a>
 
@@ -338,15 +342,38 @@ The block number for the failed transaction.
 The time the transaction failed. Returns a `DateTime!` for the beta-1 network.
 
 `reason: String!`
+
 The reason why the transaction failed.
 
 `programState`: <a href="#programstate">`ProgramState`</a>
 
 The state of the program execution.
 
+## `Genesis`
+
+The genesis consensus type.
+
+**fields:**
+
+`chainConfigHash`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
+The chain configuration hash. The chain configuration defines what consensus type to use, what settlement layer to use, and the rules of block validity.
+
+`coinsRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
+The binary Merkle tree root of all genesis coins.
+
+`contractsRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
+The binary Merkle tree root of state, balances, and the contracts code hash of each contract.
+
+`messagesRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+
+The binary merkle tree root of all genesis messages.
+
 ## `Header`
 
-The header contains metadata about a certain block. Only available for the beta-2 testnet.
+The header contains metadata about a certain block.
 
 **fields:**
 
@@ -416,7 +443,8 @@ The asset ID of the coins.
 
 A pointer to the transaction whose output is being spent.
 
-`witnessIndex: Int!`:
+`witnessIndex: Int!`
+
 The index of the witness that authorizes spending the coin.
 
 `maturity`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
@@ -515,7 +543,7 @@ Contains information about a message.
 
 **fields:**
 
-`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a><sup>_(beta-2 only)_</sup>
+`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a>
 
 A unique id for the message.
 
@@ -543,7 +571,11 @@ The vector with the message data.
 
 The block height of the data availability layer up to which (inclusive) input messages are processed.
 
-`fuelBlockSpend`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`status`: <a href="/docs/reference/enums/#messagestatus">`MessageStatus`</a>
+
+The status of the message UTXO.
+
+> `fuelBlockSpend`: <a href="/docs/reference/scalars/#u64">`U64`</a><sup>_(beta-2 only)_</sup>
 
 The block in which the message is spent.
 
@@ -640,6 +672,16 @@ The node version.
 > `predicates: Boolean!`<sup>_(beta-1 only)_</sup>
 
 Whether or not predicates are enabled.
+
+## `PoAConsensus`
+
+The proof-of-authority (PoA) consensus type.
+
+**fields:**
+
+`signature`: <a href="/docs/reference/scalars/#signature">`Signature!`</a>
+
+The signature of the block produced by PoA consensus.
 
 ## `ProgramState`
 
@@ -773,7 +815,7 @@ The address of the message recipient.
 
 The nonce value for a message.
 
-`contractId`: <a href="/docs/reference/scalars/#contractid">`ContractId`</a><sup>_(beta-2 only)_</sup>
+`contractId`: <a href="/docs/reference/scalars/#contractid">`ContractId`</a>
 
 The contract id.
 
@@ -791,13 +833,13 @@ The asset id for the asset.
 
 The amount of coins to send.
 
-`max`: <a href="/docs/reference/scalars/#u64">`U64`</a><sup>_(beta-2 only)_</sup>
+`max`: <a href="/docs/reference/scalars/#u64">`U64`</a>
 
 The max number of resources in the selection.
 
 ## `SqueezedOutStatus`
 
-The status for a transaction that was squeezed out of the transaction pool. Only available for the beta-2 testnet.
+The status for a transaction that was squeezed out of the transaction pool.
 
 **fields:**
 
@@ -863,7 +905,7 @@ The gas limit for the transaction.
 
 The minimum block height that the transaction can be included at.
 
-`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer`</a><sup>_(beta-2 only)_</sup>
+`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer`</a>
 
 The location of the transaction in the block.
 
@@ -871,11 +913,11 @@ The location of the transaction in the block.
 
 Whether or not the transaction is a script.
 
-`isCreate: Boolean!`<sup>_(beta-2 only)_</sup>
+`isCreate: Boolean!`
 
 Whether or not the transaction is creating a new contract.
 
-`isMint: Boolean!`<sup>_(beta-2 only)_</sup>
+`isMint: Boolean!`
 
 Whether or not the transaction is minting new coins.
 

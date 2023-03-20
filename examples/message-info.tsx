@@ -10,7 +10,6 @@ export function MessageInfo() {
         nonce
         data
         daHeight
-        fuelBlockSpend
       }
     }
   }`;

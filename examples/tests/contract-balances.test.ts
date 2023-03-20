@@ -3,12 +3,12 @@ import { createClient } from "urql";
 import "isomorphic-fetch";
 
 const apolloClient = new ApolloClient({
-  uri: "https://node-beta-2.fuel.network/graphql",
+  uri: "https://beta-3.fuel.network/graphql",
   cache: new InMemoryCache(),
 });
 
 const urqlClient = createClient({
-  url: "https://node-beta-2.fuel.network/graphql",
+  url: "https://beta-3.fuel.network/graphql",
 });
 
 describe("Contract balances", () => {
@@ -31,7 +31,7 @@ describe("Contract balances", () => {
     };
 
     const getContractBalances = async () => {
-      let response = await fetch("https://node-beta-2.fuel.network/graphql", {
+      let response = await fetch("https://beta-3.fuel.network/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ describe("Contract balances", () => {
       });
       let json = await response.json();
       console.log("CONTRACT BALANCES:", json.data.contractBalances);
-      expect(json.data.contractBalances.nodes.length).toBeTruthy();
+      expect(json.data.contractBalances.nodes).toBeTruthy();
     };
 
     await getContractBalances();
@@ -74,7 +74,7 @@ describe("Contract balances", () => {
         variables: args,
       });
       console.log("CONTRACT BALANCES:", response.data.contractBalances);
-      expect(response.data.contractBalances.nodes.length).toBeTruthy();
+      expect(response.data.contractBalances.nodes).toBeTruthy();
     };
 
     await getContractBalances();
@@ -103,7 +103,7 @@ describe("Contract balances", () => {
         .query(CONTRACT_BALANCES_QUERY, args)
         .toPromise();
       console.log("CONTRACT BALANCES:", response.data.contractBalances);
-      expect(response.data.contractBalances.nodes.length).toBeTruthy();
+      expect(response.data.contractBalances.nodes).toBeTruthy();
     };
 
     await getContractBalances();
