@@ -47,7 +47,11 @@ export function CodeExamples({
 }: CodeExamplesProps) {
 
   const ts_lines = `L${ts_lineStart}${ts_lineEnd ? `-L${ts_lineEnd}` : ""}`;
-  const link = `${REPO_LINK}/${filePath}#${ts_lines}`;
+  const apollo_lines = `L${apollo_lineStart}${apollo_lineEnd ? `-L${apollo_lineEnd}` : ""}`;
+  const urql_lines = `L${urql_lineStart}${urql_lineEnd ? `-L${urql_lineEnd}` : ""}`;
+  const ts_link = `${REPO_LINK}tree/main/${filePath}#${ts_lines}`;
+  const apollo_link = `${REPO_LINK}tree/main/${filePath}#${apollo_lines}`;
+  const urql_link = `${REPO_LINK}tree/main/${filePath}#${urql_lines}`;
 
   const apolloImport = `import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
@@ -66,9 +70,9 @@ const urqlClient= createClient({
 
 `;
 
-  const title = (
+  const codeTitle = (linkType: string) => (
     <>
-      <Link css={styles.filename} isExternal href={link}>
+      <Link css={styles.filename} isExternal href={linkType}>
         {filename}
       </Link>
     </>
@@ -77,9 +81,11 @@ const urqlClient= createClient({
   interface TabContentProps {
     value: string;
     content: string;
+    codeLink: string;
   }
 
-  const TabContent = ({ value, content }: TabContentProps) => {
+  const TabContent = ({ value, content, codeLink }: TabContentProps) => {
+    let title = codeTitle(codeLink) 
     return (
       <Tabs.Content css={styles.codeContainer} value={value}>
         <Pre title={title}>
@@ -97,9 +103,9 @@ const urqlClient= createClient({
           <Tabs.Trigger css={styles.tabsTrigger} value="apollo">Apollo Client</Tabs.Trigger>
           <Tabs.Trigger css={styles.tabsTrigger} value="urql">urql</Tabs.Trigger>
         </Tabs.List>
-        <TabContent value="ts" content={ts_content} />
-        <TabContent value="apollo" content={apolloImport + apollo_content} />
-        <TabContent value="urql" content={urqlImport + urql_content} />
+        <TabContent value="ts" content={ts_content} codeLink={ts_link}/>
+        <TabContent value="apollo" content={apolloImport + apollo_content} codeLink={apollo_link}/>
+        <TabContent value="urql" content={urqlImport + urql_content} codeLink={urql_link}/>
       </Tabs>
     </Box>
   );

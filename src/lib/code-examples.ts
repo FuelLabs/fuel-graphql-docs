@@ -10,7 +10,7 @@ import type { Root } from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 import type { Parent } from 'unist-util-visit';
 
-const ROOT_DIR = path.resolve(__dirname, '../../../../../../../');
+const ROOT_DIR = path.resolve(__dirname, '../../../../');
 
 function toAST(content: string) {
   return acorn.parse(content, {
