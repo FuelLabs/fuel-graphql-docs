@@ -4,7 +4,6 @@ import { Link, Tabs, Box } from "@fuel-ui/react";
 import { Pre } from "./Pre";
 
 import { REPO_LINK } from "~/src/constants";
-import { stringRegEx } from "fuels";
 
 export type CodeExamplesProps = {
   file: string;
