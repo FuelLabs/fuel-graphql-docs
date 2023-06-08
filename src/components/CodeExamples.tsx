@@ -3,7 +3,7 @@ import { Link, Tabs, Box } from "@fuel-ui/react";
 
 import { Pre } from "./Pre";
 
-import { REPO_LINK } from "~/src/constants";
+import { REPO_LINK } from "../constants";
 
 export type CodeExamplesProps = {
   file: string;
