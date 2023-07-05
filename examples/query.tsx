@@ -1,18 +1,16 @@
 /* eslint-disable no-console */
-import { Flex, Button, Spinner } from "@fuel-ui/react";
+import { Box, Button, Spinner } from "@fuel-ui/react";
 import { useState } from "react";
-import { cssObj } from "@fuel-ui/css";
 import { ExampleBox } from "~/src/components/ExampleBox";
 
 interface QueryProps {
-    query: any;
-    args: {};
+  query: any;
+  args: {};
 }
 
 export function Query(props: QueryProps) {
   const [resp, setResp] = useState();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
 
   function runQuery() {
     setLoading(true);
@@ -38,15 +36,14 @@ export function Query(props: QueryProps) {
   }
 
   const PrettyPrintJson = ({data}: IPrettyPrintJson) => {
-    // (destructured) data could be a prop for example
     return (<div><pre style={{overflow: "scroll", maxHeight: "500px"}}>{ JSON.stringify(data, null, 2) }</pre></div>);
 }
 
   return (
     <ExampleBox>
-      <Flex direction="column" gap="$4">
+      <Box.Flex direction="column" gap="$4">
         <>
-          <Button css={styles.button} onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
+          <Button variant="outlined" onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
           
           {resp && 
           <>
@@ -55,13 +52,7 @@ export function Query(props: QueryProps) {
           </>
           }
         </>
-      </Flex>
+      </Box.Flex>
     </ExampleBox>
   );
-}
-
-const styles = {
-  button: cssObj({
-    backgroundColor: "#00F58C"
-  })
 }

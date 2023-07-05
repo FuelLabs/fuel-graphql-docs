@@ -44,10 +44,13 @@ export function CodeExamples({
   __apollo_lineEnd: apollo_lineEnd,
   __urql_lineEnd: urql_lineEnd,
 }: CodeExamplesProps) {
-
   const ts_lines = `L${ts_lineStart}${ts_lineEnd ? `-L${ts_lineEnd}` : ""}`;
-  const apollo_lines = `L${apollo_lineStart}${apollo_lineEnd ? `-L${apollo_lineEnd}` : ""}`;
-  const urql_lines = `L${urql_lineStart}${urql_lineEnd ? `-L${urql_lineEnd}` : ""}`;
+  const apollo_lines = `L${apollo_lineStart}${
+    apollo_lineEnd ? `-L${apollo_lineEnd}` : ""
+  }`;
+  const urql_lines = `L${urql_lineStart}${
+    urql_lineEnd ? `-L${urql_lineEnd}` : ""
+  }`;
   const ts_link = `${REPO_LINK}tree/main/${filePath}#${ts_lines}`;
   const apollo_link = `${REPO_LINK}tree/main/${filePath}#${apollo_lines}`;
   const urql_link = `${REPO_LINK}tree/main/${filePath}#${urql_lines}`;
@@ -84,7 +87,7 @@ const urqlClient= createClient({
   }
 
   const TabContent = ({ value, content, codeLink }: TabContentProps) => {
-    let title = codeTitle(codeLink) 
+    let title = codeTitle(codeLink);
     return (
       <Tabs.Content css={styles.codeContainer} value={value}>
         <Pre title={title}>
@@ -97,14 +100,28 @@ const urqlClient= createClient({
   return (
     <Box css={styles.tabsContainer}>
       <Tabs>
-        <Tabs.List aria-label="Using the query in an app">
-          <Tabs.Trigger css={styles.tabsTrigger} value="ts">TypeScript</Tabs.Trigger>
-          <Tabs.Trigger css={styles.tabsTrigger} value="apollo">Apollo Client</Tabs.Trigger>
-          <Tabs.Trigger css={styles.tabsTrigger} value="urql">urql</Tabs.Trigger>
+        <Tabs.List css={styles.tabs} aria-label="Using the query in an app">
+          <Tabs.Trigger css={styles.tabsTrigger} value="ts">
+            TypeScript
+          </Tabs.Trigger>
+          <Tabs.Trigger css={styles.tabsTrigger} value="apollo">
+            Apollo Client
+          </Tabs.Trigger>
+          <Tabs.Trigger css={styles.tabsTrigger} value="urql">
+            urql
+          </Tabs.Trigger>
         </Tabs.List>
-        <TabContent value="ts" content={ts_content} codeLink={ts_link}/>
-        <TabContent value="apollo" content={apolloImport + apollo_content} codeLink={apollo_link}/>
-        <TabContent value="urql" content={urqlImport + urql_content} codeLink={urql_link}/>
+        <TabContent value="ts" content={ts_content} codeLink={ts_link} />
+        <TabContent
+          value="apollo"
+          content={apolloImport + apollo_content}
+          codeLink={apollo_link}
+        />
+        <TabContent
+          value="urql"
+          content={urqlImport + urql_content}
+          codeLink={urql_link}
+        />
       </Tabs>
     </Box>
   );
@@ -112,20 +129,17 @@ const urqlClient= createClient({
 
 const styles = {
   tabsTrigger: cssObj({
-    cursor: "pointer",
-    // color: "#00F58C"
-    '&:focus, &:hover': {
-      color: '#00F58C',
-    },
-    '&[data-state="active"]': {
-      color: '#00F58C',
-    },
-    '&[data-state="active"]:after': {
-      backgroundColor: '#00F58C',
-    },
+    fontSize: "var(--fontSizes-default)",
+  }),
+  tabs: cssObj({
+    justifyContent: "space-around",
+    padding: "$2 0",
+    margin: '0'
   }),
   tabsContainer: cssObj({
     marginTop: "$8",
+    backgroundColor: "$gray1",
+    borderRadius: "8px",
   }),
   codeContainer: cssObj({
     maxHeight: "500px",

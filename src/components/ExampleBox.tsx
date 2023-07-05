@@ -1,20 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cssObj } from "@fuel-ui/css";
 import {
-  Alert,
   Box,
-  Link,
-  Spinner,
-  Stack,
-  Tag,
   Text,
-  Tooltip,
 } from "@fuel-ui/react";
 import type { ReactNode } from "react";
 
-import { capitalize } from "../lib/str";
-
-import { Heading } from "./Heading";
 
 export function ExampleBox({
   children,
@@ -24,36 +15,12 @@ export function ExampleBox({
   error?: any;
 }) {
   return (
-    <Stack gap="$4" css={{ mt: "$8" }}>
-      {/* {errorMsg && (
-        <Alert css={styles.alert} status="error">
-          <Alert.Description>{capitalize(errorMsg)}</Alert.Description>
-        </Alert>
-      )} */}
+    <Box.Stack gap="$4" css={{ mt: "$8" }}>
       <Box css={styles.root}>
-        <Heading as="h6">
-          {/* {notDetected && !error && (
-            <Tooltip content={downloadContent} side="left">
-              <Tag size="xs" color="amber" variant="ghost" leftIcon="Warning">
-                Not working
-              </Tag>
-            </Tooltip>
-          )}
-          {error && !notDetected && (
-            <Tag size="xs" color="red" variant="ghost" leftIcon="X">
-              Failed
-            </Tag>
-          )}
-          {!notDetected && !error && (
-            <Tag size="xs" color="accent" variant="ghost">
-              Wallet Detected
-            </Tag>
-          )} */}
-        </Heading>
-        {error && <Text color="red10">{error.message}</Text>}
+        {error && <Text css={{ color: "red" }}>{error.message}</Text>}
         {children}
       </Box>
-    </Stack>
+    </Box.Stack>
   );
 }
 
