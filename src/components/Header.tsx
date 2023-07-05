@@ -1,5 +1,5 @@
 import { cssObj } from '@fuel-ui/css';
-import { Box, Flex, Icon } from '@fuel-ui/react';
+import { Box, Icon } from '@fuel-ui/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -12,33 +12,33 @@ export function Header() {
   const isDocsActive = pathname?.startsWith('/docs');
 
   return (
-    <Flex as="header" css={styles.root}>
+    <Box.Flex as="header" css={styles.root}>
       <Box css={{ flex: 1 }}>
         <Link href="/" className="logo">
           {/* <FuelLogo size={40} /> */}
           <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
-          <Flex css={styles.logoText}>
+          <Box.Flex css={styles.logoText}>
             <span>Fuel GraphQL Docs</span>
             {/* <Box as="span" css={styles.version}>
               alpha
             </Box> */}
-          </Flex>
+          </Box.Flex>
         </Link>
       </Box>
       <Box css={styles.desktop}>
-        <Flex css={styles.menu}>
+        <Box.Flex css={styles.menu}>
           <a
             href="https://github.com/FuelLabs/fuel-graphql-docs"
             target="_blank"
             rel="noreferrer"
           >
-            <Icon icon={Icon.is('GithubLogo')} size={24} />
+            <Icon icon={Icon.is('BrandGithub')} size={24} />
           </a>
-        </Flex>
+        </Box.Flex>
         <Search />
       </Box>
       <MobileMenu />
-    </Flex>
+    </Box.Flex>
   );
 }
 

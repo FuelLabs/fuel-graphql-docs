@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cssObj } from '@fuel-ui/css';
-import { Box, IconButton, Icon, Flex } from '@fuel-ui/react';
+import { Box, IconButton, Icon } from '@fuel-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { AnimationProps } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -50,19 +50,19 @@ export function MobileMenu() {
       exit={{ x: '100%' }}
       transition={SPRING}
     >
-      <Flex css={styles.menu}>
-        <Flex>
+      <Box.Flex css={styles.menu}>
+        <Box.Flex>
         <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
           <a
             href="https://github.com/FuelLabs/fuel-graphql-docs"
             target="_blank"
             rel="noreferrer"
           >
-            <Icon icon={Icon.is('GithubLogo')} size={24} />
+            <Icon icon={Icon.is('BrandGithub')} size={24} />
           </a>
-        </Flex>
+        </Box.Flex>
         {button}
-      </Flex>
+      </Box.Flex>
       <Sidebar handleClick={toggle} />
     </MotionBox>
   );

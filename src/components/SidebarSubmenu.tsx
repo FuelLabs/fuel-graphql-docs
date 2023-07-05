@@ -1,5 +1,5 @@
 import { cssObj, cx } from '@fuel-ui/css';
-import { Button, Flex, Icon, List } from '@fuel-ui/react';
+import { Button, Box, Icon, List } from '@fuel-ui/react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -26,7 +26,7 @@ export function SidebarSubmenu({
   }
 
   return (
-    <Flex css={styles.root}>
+    <Box.Flex css={styles.root}>
       <div style={{display: "flex", justifyContent: "space-between"}}>
         <SidebarLink handleClick={handleClick} item={{label, slug: label.replace(/\s+/g, '-').toLowerCase()}}/>
       <Button
@@ -52,7 +52,7 @@ export function SidebarSubmenu({
           })}
         </List>
       )}
-    </Flex>
+    </Box.Flex>
   );
 }
 
