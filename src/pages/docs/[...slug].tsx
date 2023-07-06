@@ -1,4 +1,6 @@
-import { DEFAULT_SLUG, FIELDS, MENU_ORDER } from '~/src/constants';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { DEFAULT_SLUG, FIELDS } from '~/src/constants';
 import { getAllDocs, getDocBySlug, getSidebarLinks } from '~/src/lib/api';
 import { DocScreen } from '~/src/screens/DocPage';
 import type { DocType, SidebarLinkItem } from '~/src/types';
@@ -22,7 +24,9 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const slug = (params.slug || DEFAULT_SLUG)?.join('/');
   const doc = await getDocBySlug(slug, FIELDS);
-  const links = await getSidebarLinks(MENU_ORDER);
+  const navPath = join(process.cwd(), './src/nav.json');
+  const navFile = JSON.parse(readFileSync(navPath, 'utf8'));
+  const links = await getSidebarLinks(navFile.menu);
   const docLink = links
     .flatMap((i) => (i.submenu || i) as SidebarLinkItem | SidebarLinkItem[])
     .find((i) => i.slug === doc.slug);
