@@ -15,20 +15,11 @@ import type { DocType, NodeHeading, SidebarLinkItem } from '~/src/types';
 
 const DOCS_DIRECTORY = join(process.cwd(), './docs');
 
-const REFERENCE_MENU_ORDER = [
-  'Scalars',
-  'Enums',
-  'Unions',
-  'Objects',
-  'Queries',
-  'Mutations',
-  'Subscriptions'
-]
+const navPath = join(process.cwd(), './src/nav.json');
+const navFile = JSON.parse(fs.readFileSync(navPath, 'utf8'));
 
-const HOW_TO_USE_GRAPHQL_ORDER = [
-  'What is GraphQL?',
-  'Schema & Type System'
-]
+const REFERENCE_MENU_ORDER = navFile.reference;
+const HOW_TO_USE_GRAPHQL_ORDER = navFile.how_to_use_graphql;
 
 export async function getDocsSlugs() {
   const paths = await globby(['**.mdx']);

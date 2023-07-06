@@ -1,13 +1,5 @@
 import ogImage from '../public/og-image.png';
 
-export const MENU_ORDER = [
-  'Overview',
-  'Querying From A Dapp',
-  'Recipes',
-  'How To Use GraphQL',
-  'Reference',
-];
-
 const URL = "https://graphql-docs.fuel.network/"
 
 export const FIELDS = ['title', 'slug', 'content', 'category'];
