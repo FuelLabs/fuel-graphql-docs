@@ -19,7 +19,7 @@ jobs:
           node-version: 18
       - run: |
           npm install
-          npm test:examples
+          npm run test:examples
   check-doc-folders:
     name: Check Nav & Folders
     runs-on: ubuntu-latest
@@ -30,11 +30,11 @@ jobs:
           node-version: 18
       - run: |
           npm install
-          npm test:docs
+          npm run test:docs
   markdown-link-check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - uses: gaurav-nelson/github-action-markdown-link-check@v1
       with:
-        file-extention: 'mdx'
+        file-extension: 'mdx'
