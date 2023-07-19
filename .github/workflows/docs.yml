@@ -31,7 +31,7 @@ jobs:
       - run: |
           npm install
           npm test:docs
-markdown-link-check:
+  markdown-link-check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
