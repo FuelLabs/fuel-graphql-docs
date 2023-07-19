@@ -18,15 +18,15 @@ export interface ComponentsList {
 const GQLExamples: ComponentObject= {};
 
 GQLExamples.Balance = dynamic(
-    () => import("../examples/Baalance").then((mod) => mod.Balance)
+    () => import("../examples/Balance").then((mod) => mod.Balance)
   );
 
 GQLExamples.Balances = dynamic(
-    () => import("../examples/Baalances").then((mod) => mod.Balances)
+    () => import("../examples/Balances").then((mod) => mod.Balances)
   );
 
 GQLExamples.Transactions = dynamic(
-    () => import("../examples/Transactions").then((mod) => mod.Transactions)
+    () => import("../examples/Traansactions").then((mod) => mod.Transactions)
   );
 
 GQLExamples.LatestTransactions = dynamic(
