@@ -26,7 +26,7 @@ GQLExamples.Balances = dynamic(
   );
 
 GQLExamples.Transactions = dynamic(
-    () => import("../examples/Traansactions").then((mod) => mod.Transactions)
+    () => import("../examples/Transactions").then((mod) => mod.Transactions)
   );
 
 GQLExamples.LatestTransactions = dynamic(
