@@ -18,7 +18,6 @@
 # misc
 .DS_Store
 *.pem
-src/component-exports.ts
 
 # debug
 npm-debug.log*
