@@ -1,8 +1,10 @@
-module.exports = {
+import type {Config} from 'jest';
+
+const config: Config = {
   clearMocks: true,
   moduleFileExtensions: ['js', 'ts'],
   testEnvironment: 'node',
-  testMatch: ['**/*.test.ts'],
+  testMatch: ['**/examples/tests/*.test.ts'],
   testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.ts$': 'ts-jest',
@@ -10,3 +12,5 @@ module.exports = {
   testTimeout: 100000,
   verbose: true,
 };
+
+export default config;

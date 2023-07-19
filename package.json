@@ -8,7 +8,9 @@
     "export": "DOCS_DIST=${DOCS_DIST:=dist} next export -o $DOCS_DIST",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest -c jest.config.js"
+    "test:docs": "jest -c jest.docs.ts",
+    "test:examples": "jest -c jest.examples.ts",
+    "export:components": "ts-node --experimental-specifier-resolution=node scripts/components.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.7.3",
@@ -19,6 +21,7 @@
     "@mdx-js/react": "^2.1.5",
     "@next/mdx": "^13.0.5",
     "acorn": "^8.8.1",
+    "acorn-loose": "^8.3.0",
     "acorn-walk": "^8.2.0",
     "dotenv": "^16.0.3",
     "framer-motion": "^7.6.15",
@@ -44,6 +47,7 @@
     "vfile": "^5.3.6"
   },
   "devDependencies": {
+    "@mdx-js/mdx": "^2.3.0",
     "@types/chrome": "^0.0.203",
     "@types/node": "^18.11.10",
     "@types/prismjs": "^1.26.0",
@@ -53,6 +57,7 @@
     "eslint": "^8.28.0",
     "eslint-config-next": "13.0.5",
     "isomorphic-fetch": "^3.0.0",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1"
   }
 }
