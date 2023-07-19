@@ -1,5 +1,5 @@
-export { Balance } from './Balance'
-export { Balances } from './Balances'
+export { Balance } from './Baalance'
+export { Balances } from './Baalances'
 export { BlockByHeight } from './BlockByHeight'
 export { ContractBalance } from './ContractBalance'
 export { ContractBalances } from './ContractBalances'
