@@ -54,7 +54,6 @@
     "eslint": "^8.28.0",
     "eslint-config-next": "13.0.5",
     "isomorphic-fetch": "^3.0.0",
-    "ts-jest": "^29.0.3",
-    "ts-node": "^10.9.1"
+    "ts-jest": "^29.0.3"
   }
 }
