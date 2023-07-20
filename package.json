@@ -9,8 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "test:docs": "jest -c jest.docs.ts",
-    "test:examples": "jest -c jest.examples.ts",
-    "export:components": "ts-node --experimental-specifier-resolution=node scripts/components.ts"
+    "test:examples": "jest -c jest.examples.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.7.3",
