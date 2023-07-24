@@ -1,4 +1,4 @@
-import { Query } from "./query";
+import { Query } from "./Query";
 
 export function Transactions() {
   const query = `query Transactions($address: Address) {
