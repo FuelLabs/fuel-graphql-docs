@@ -78,7 +78,8 @@ describe("Is compatible with the docs hub", () => {
       }
       const cleaned = Array.from(new Set(allComponents));
       cleaned.forEach((compName) => {
-        expect(compName.split(".").length < 4);
+        const length = compName.split(".").length;
+        expect(length).toBeLessThan(4);
       });
     });
   });
