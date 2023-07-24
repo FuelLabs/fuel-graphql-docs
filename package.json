@@ -8,7 +8,7 @@
     "export": "DOCS_DIST=${DOCS_DIST:=dist} next export -o $DOCS_DIST",
     "start": "next start",
     "lint": "next lint",
-    "test:docs": "jest -c jest.docs.ts",
+    "test:docs": "NODE_OPTIONS=--experimental-vm-modules jest -c jest.docs.ts",
     "test:examples": "jest -c jest.examples.ts"
   },
   "dependencies": {
@@ -38,8 +38,11 @@
     "react-syntax-highlighter": "^15.5.0",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
+    "remark-mdx": "^2.3.0",
+    "remark-parse": "^10.0.2",
     "remark-slug": "^7.0.1",
     "strip-indent": "^4.0.0",
+    "unified": "^10.1.2",
     "unist-util-visit": "^4.1.1",
     "urql": "^3.0.3",
     "vfile": "^5.3.6"

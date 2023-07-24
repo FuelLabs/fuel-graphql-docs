@@ -1,7 +1,11 @@
 import path from "path";
 import fs from "fs";
+import remarkMdx from "remark-mdx";
+import remarkParse from "remark-parse";
+import { unified } from "unified";
+import { visit } from "unist-util-visit";
 
-const DOCS_DIRECTORY = path.join(__dirname, "../docs");
+const DOCS_DIRECTORY = path.join(process.cwd(), "./docs");
 const COMP_CONFIG_PATH = path.join(process.cwd(), "./src/components.json");
 
 describe("Is compatible with the docs hub", () => {
@@ -45,11 +49,37 @@ describe("Is compatible with the docs hub", () => {
         const subFiles = fs.readdirSync(filepath);
         subFiles.forEach((subFilename) => {
           const subFilepath = path.join(filepath, subFilename);
-          checkFile(subFilepath)
+          checkFile(subFilepath);
         });
       } else {
         checkFile(filepath);
       }
+    });
+  });
+
+  // Examples.Events.Connect && Examples.Connect is ok
+  // Examples.Events.Connect.First is not ok
+  it("shouldn't have components nested more than twice", () => {
+    let allComponents: string[] = [];
+    files.forEach((filename) => {
+      const filepath = path.join(DOCS_DIRECTORY, filename);
+      if (fs.statSync(filepath).isDirectory()) {
+        const subFiles = fs.readdirSync(filepath);
+        subFiles.forEach((subFilename) => {
+          const subFilepath = path.join(filepath, subFilename);
+          const file = fs.readFileSync(subFilepath, "utf8");
+          const components = getComponents(file);
+          allComponents = [...allComponents, ...components];
+        });
+      } else {
+        const file = fs.readFileSync(filepath, "utf8");
+        const components = getComponents(file);
+        allComponents = [...allComponents, ...components];
+      }
+      const cleaned = Array.from(new Set(allComponents));
+      cleaned.forEach((compName) => {
+        expect(compName.split(".").length < 4);
+      });
     });
   });
 });
@@ -63,7 +93,9 @@ function checkFile(filepath: string) {
     if (!compJSON.ignore.includes(comp)) {
       let actualCompPath = "";
       for (let i = 0; i < compJSON.folders.length; i++) {
-        const path = `${compJSON.folders[i]}/${comp.includes(".") ? comp.split(".").pop()! : comp}`;
+        const path = `${compJSON.folders[i]}/${
+          comp.includes(".") ? comp.split(".").pop()! : comp
+        }`;
         const actualPath = `${process.cwd()}${path}.tsx`;
         if (fs.existsSync(actualPath)) {
           actualCompPath = `..${path}`;
@@ -76,14 +108,11 @@ function checkFile(filepath: string) {
 }
 
 function getComponents(mdxContent: string) {
-  const regex = /<([A-Za-z0-9_.]+)[^>]*\/>/g;
-  const matches = mdxContent.match(regex);
-  if (!matches) {
-    return [];
-  }
-  const components = matches.map((match) => {
-    const componentName = match.replace(/<([A-Za-z0-9_.]+)[^>]*\/>/, "$1");
-    return componentName.trim();
+  const components: string[] = [];
+  const tree = unified().use(remarkParse).use(remarkMdx).parse(mdxContent);
+
+  visit(tree, "mdxJsxFlowElement", (node) => {
+    if (node.name) components.push(node.name);
   });
   return Array.from(new Set(components));
 }
