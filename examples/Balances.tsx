@@ -1,4 +1,4 @@
-import { Query } from "./Query";
+import { Query } from "./query";
 
 export function Balances() {
   const query = `query Balances($filter: BalanceFilterInput) {

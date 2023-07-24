@@ -1,4 +1,4 @@
-import { Query } from "./Query";
+import { Query } from "./query";
 
 export function MessageInfo() {
   const query = `query MessageInfo($address: Address) {

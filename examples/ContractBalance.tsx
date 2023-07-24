@@ -1,4 +1,4 @@
-import { Query } from "./Query";
+import { Query } from "./query";
 
 export function ContractBalance() {
   const query = `query ContractBalance($contract: ContractId, $asset: AssetId) {
