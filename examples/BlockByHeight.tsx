@@ -1,4 +1,4 @@
-import { Query } from "./Query";
+import { Query } from "./query";
 
 export function BlockByHeight() {
   const query = `query Block($height: U64) {
