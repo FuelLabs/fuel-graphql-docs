@@ -8,7 +8,6 @@
     "export": "DOCS_DIST=${DOCS_DIST:=dist} next export -o $DOCS_DIST",
     "start": "next start",
     "lint": "next lint",
-    "test:docs": "NODE_OPTIONS=--experimental-vm-modules jest -c jest.docs.ts",
     "test:examples": "jest -c jest.examples.ts"
   },
   "dependencies": {
