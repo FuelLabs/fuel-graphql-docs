@@ -20,6 +20,7 @@ jobs:
       - run: |
           npm install
           npm run test:examples
+          
   call-workflow:
     uses: FuelLabs/github-actions/.github/workflows/next-docs.yml@sarah/docs
     with:
