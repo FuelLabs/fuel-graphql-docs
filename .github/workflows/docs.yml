@@ -20,22 +20,8 @@ jobs:
       - run: |
           npm install
           npm run test:examples
-  check-doc-folders:
-    name: Check Nav & Folders
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: |
-          npm install
-          npm run test:docs
-  markdown-link-check:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: gaurav-nelson/github-action-markdown-link-check@v1
-      with:
-        file-extension: 'mdx'
-        config-file: 'mlc.config.json'
+  call-workflow:
+    uses: FuelLabs/github-actions/.github/workflows/next-docs.yml@sarah/docs
+    with:
+      doc-folder-path: 'docs'
+      src-folder-path: 'src'
