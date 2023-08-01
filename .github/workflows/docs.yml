@@ -22,7 +22,7 @@ jobs:
           npm run test:examples
 
   test-docs:
-    uses: FuelLabs/github-actions/.github/workflows/next-docs.yml@sarah/docs
+    uses: FuelLabs/github-actions/.github/workflows/next-docs.yml@master
     with:
       doc-folder-path: 'docs'
       src-folder-path: 'src'
