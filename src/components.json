@@ -1,10 +1,10 @@
 {
     "folders": [
-        "/src/components",
-        "/examples"
+        "/src/components"
     ],
     "ignore": [
         "CodeImport",
-        "CodeExamples"
+        "CodeExamples",
+        "GQLExamples"
     ]
 }
