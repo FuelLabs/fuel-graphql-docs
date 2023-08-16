@@ -33,7 +33,6 @@ describe("Transactions by owner", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -51,10 +50,6 @@ describe("Transactions by owner", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to
@@ -132,7 +127,6 @@ describe("Transactions by owner", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -150,10 +144,6 @@ describe("Transactions by owner", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to
@@ -223,7 +213,6 @@ describe("Transactions by owner", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -241,10 +230,6 @@ describe("Transactions by owner", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to

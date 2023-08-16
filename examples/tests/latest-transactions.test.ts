@@ -33,7 +33,6 @@ describe("Latest transactions", () => {
                   }
                 }
                 ... on InputMessage {
-                  messageId
                   sender
                   recipient
                   amount
@@ -51,10 +50,6 @@ describe("Latest transactions", () => {
                   inputIndex
                   balanceRoot
                   stateRoot
-                }
-                ... on MessageOutput {
-                  recipient
-                  amount
                 }
                 ... on ChangeOutput {
                   to
@@ -126,7 +121,6 @@ describe("Latest transactions", () => {
                   }
                 }
                 ... on InputMessage {
-                  messageId
                   sender
                   recipient
                   amount
@@ -144,10 +138,6 @@ describe("Latest transactions", () => {
                   inputIndex
                   balanceRoot
                   stateRoot
-                }
-                ... on MessageOutput {
-                  recipient
-                  amount
                 }
                 ... on ChangeOutput {
                   to
@@ -211,7 +201,6 @@ describe("Latest transactions", () => {
                   }
                 }
                 ... on InputMessage {
-                  messageId
                   sender
                   recipient
                   amount
@@ -229,10 +218,6 @@ describe("Latest transactions", () => {
                   inputIndex
                   balanceRoot
                   stateRoot
-                }
-                ... on MessageOutput {
-                  recipient
-                  amount
                 }
                 ... on ChangeOutput {
                   to

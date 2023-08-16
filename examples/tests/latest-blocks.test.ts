@@ -35,7 +35,6 @@ describe("Latest blocks", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -53,10 +52,6 @@ describe("Latest blocks", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to
@@ -123,7 +118,6 @@ describe("Latest blocks", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -141,10 +135,6 @@ describe("Latest blocks", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to
@@ -203,7 +193,6 @@ describe("Latest blocks", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -221,10 +210,6 @@ describe("Latest blocks", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to
