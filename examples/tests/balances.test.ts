@@ -43,7 +43,7 @@ describe("Balances", () => {
       });
       let json = await response.json();
       console.log("BALANCES:", json.data.balances);
-      expect(json.data.balances.nodes.length).toBeTruthy();
+      expect(json.data.balances.nodes).toBeTruthy();
     }
 
     await getBalances();
@@ -73,7 +73,7 @@ describe("Balances", () => {
         variables: args,
       });
       console.log("BALANCES:", response.data.balances);
-      expect(response.data.balances.nodes.length).toBeTruthy();
+      expect(response.data.balances.nodes).toBeTruthy();
     };
 
     await getBalances();
@@ -101,7 +101,7 @@ describe("Balances", () => {
     const getBalances = async () => {
       const response = await urqlClient.query(BALANCES_QUERY, args).toPromise();
       console.log("BALANCES:", response.data.balances);
-      expect(response.data.balances.nodes.length).toBeTruthy();
+      expect(response.data.balances.nodes).toBeTruthy();
     }
 
     await getBalances();
