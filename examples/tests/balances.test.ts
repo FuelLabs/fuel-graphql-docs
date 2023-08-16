@@ -25,7 +25,7 @@ describe("Balances", () => {
     const args = {
       filter: {
         owner:
-          "0x707eb563fbfdecf5aae2fdc3cb8418aaaf2fe9bfc7ec219e1dfacc67b29d8fcf",
+          "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
       },
     };
 
@@ -63,7 +63,7 @@ describe("Balances", () => {
     const args = {
       filter: {
         owner:
-          "0x707eb563fbfdecf5aae2fdc3cb8418aaaf2fe9bfc7ec219e1dfacc67b29d8fcf",
+          "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
       },
     };
 
@@ -94,7 +94,7 @@ describe("Balances", () => {
     const args = {
       filter: {
         owner:
-          "0x707eb563fbfdecf5aae2fdc3cb8418aaaf2fe9bfc7ec219e1dfacc67b29d8fcf",
+          "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
       },
     };
 
