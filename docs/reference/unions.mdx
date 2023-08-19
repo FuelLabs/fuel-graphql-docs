@@ -5,6 +5,19 @@ category: Reference
 
 # Union Types
 
+## `CoinType`
+
+The type of coin being used.
+
+**Types:**
+
+<a href="/docs/reference/objects/#coin">`Coin`</a>:
+Coin
+
+<a href="/docs/reference/objects/#messagecoin">`MessageCoin`</a>:
+MessageCoin
+
+
 ## `Consensus`
 
 The type of consensus mechanism used to validate a block.
@@ -44,9 +57,6 @@ Indicates coins were forwarded from one address to another.
 <a href="/docs/reference/objects/#contractoutput">`ContractOutput`</a>:
 Indicates the transaction updated the state of a contract.
 
-<a href="/docs/reference/objects/#messageoutput">`MessageOutput`</a>:
-Indicates a message output.
-
 <a href="/docs/reference/objects/#changeoutput">`ChangeOutput`</a>:
 Indicates that the output's amount may vary based on transaction execution, but is otherwise identical to a Coin output. Output changes are always guaranteed to have an amount of zero since they're only set after execution terminates.
 
@@ -55,6 +65,9 @@ Similar to `ChangeOutput`, this output type indicates that the output's amount m
 
 <a href="/docs/reference/objects/#contractcreated">`ContractCreated`</a>:
 Indicates a contract was deployed.
+
+> <a href="/docs/reference/objects/#messageoutput">`MessageOutput`</a> <sup>_(beta-3 only)_</sup>:
+Indicates a message output.
 
 ## `Resource`
 
