@@ -69,7 +69,7 @@ The human-readable string name of the chain. i.e. beta-4
 
 The most recently created block.
 
-`baseChainHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`baseChainHeight`: <a href="/docs/reference/scalars/#u32">`U32!`</a>
 
 Returns 0 (in development mode, this will change). This should return the height of the chain at start.
 
@@ -125,7 +125,7 @@ The amount of coins.
 
 The asset id of the coin.
 
-`maturity`: <a href="/docs/reference/scalars/#u64">`U32!`</a>
+`maturity`: <a href="/docs/reference/scalars/#u32">`U32!`</a>
 
 The UTXO being spent must have been created at least this many blocks ago.
 
@@ -341,7 +341,7 @@ The input type for the `resourcesToSpend` query that defines what utxos and mess
 
 An array of utxo IDs to exclude.
 
-`messages`: <a href="/docs/reference/scalars/#messageid">`[MessageId!]!`</a>
+`messages`: <a href="/docs/reference/scalars/#nonce">`[Nonce!]!`</a>
 
 An array of message IDs to exclude.
 
@@ -1025,9 +1025,9 @@ The vector with the message data.
 
 The block height of the data availability layer up to which (inclusive) input messages are processed.
 
-`status`: <a href="/docs/reference/enums/#messagestatus">`MessageStatus`</a>
+> `status`: <a href="/docs/reference/enums/#messagestatus">`MessageStatus`</a><sup>_(beta-3 only)_</sup>
 
-The status of the message UTXO.
+> The status of the message UTXO.
 
 > `fuelBlockSpend`: <a href="/docs/reference/scalars/#u64">`U64`</a><sup>_(beta-2 only)_</sup>
 
@@ -1063,19 +1063,19 @@ The asset id of the coins transferred.
 
 The block height of the data availability layer up to which (inclusive) input messages are processed.
 
-## `MessageOutput`
+> ## `MessageOutput`<sup>_(beta-3 only)_</sup>
 
-The output type for a message. When signing a transaction recipient and amount are set to zero. When verifying a predicate or executing a script, recipient and amount are initialized to zero.
+> The output type for a message. When signing a transaction recipient and amount are set to zero. When verifying a predicate or executing a script, recipient and amount are initialized to zero.
 
-**fields:**
+> **fields:**
 
-`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+> `recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
 
-The recipient of the message.
+> The recipient of the message.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+> `amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
 
-The amount of base asset coins sent with the message.
+> The amount of base asset coins sent with the message.
 
 ## `MessageProof`
 
@@ -1088,6 +1088,14 @@ Information about the message proof.
 The merkle proof of the message.
 
 `blockProof`: <a href="#merkleproof">`MerkleProof!`</a>
+
+The merkle proof of the block.
+
+`messageBlockHeader`: <a href="#header">`Header!`</a>
+
+The merkle proof of the message.
+
+`commitBlockHeader`: <a href="#header">`Header!`</a>
 
 The merkle proof of the block.
 
@@ -1267,10 +1275,6 @@ The length of the receipt.
 
 The type of receipt.
 
-`rawPayload`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
-
-The raw payload hex string.
-
 `result`: <a href="/docs/reference/scalars/#u64">`U64`</a>
 
 `0` if script exited successfully, `any` otherwise.
@@ -1282,10 +1286,6 @@ The amount of gas consumed by the script.
 `data`: <a href="/docs/reference/scalars/#hexstring">`HexString`</a>
 
 The receipt data.
-
-`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId`</a>
-
-The message id.
 
 `sender`: <a href="/docs/reference/scalars/#address">`Address`</a>
 
@@ -1302,6 +1302,18 @@ The nonce value for a message.
 `contractId`: <a href="/docs/reference/scalars/#contractid">`ContractId`</a>
 
 The contract id.
+
+`subId`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
+
+The sub id.
+
+> `rawPayload`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a><sup>_(beta-3 only)_</sup>
+
+> The raw payload hex string.
+
+> `messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId`</a><sup>_(beta-3 only)_</sup>
+
+> The message id.
 
 ## `SpendQueryElementInput`
 
@@ -1385,7 +1397,7 @@ The gas price for the transaction.
 
 The gas limit for the transaction.
 
-`maturity`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`maturity`: <a href="/docs/reference/scalars/#u32">`U32`</a>
 
 The minimum block height that the transaction can be included at.
 
