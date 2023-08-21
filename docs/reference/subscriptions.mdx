@@ -16,3 +16,13 @@ This stream will wait forever so it's advised to use within a timeout. It is pos
 `id`: <a href="/docs/reference/scalars/#transactionid">`TransactionId!`</a>
 
 The id of the transaction to stream status updates for.
+
+## `submitAndAwait`
+
+Submits transaction to the `TxPool` and await returns <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus!`</a>.
+
+**args:**
+
+`tx:` <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+
+The transaction hex string.

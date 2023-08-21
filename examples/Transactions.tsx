@@ -20,7 +20,6 @@ export function Transactions() {
             }
           }
           ... on InputMessage {
-            messageId
             sender
             recipient
             amount
@@ -38,10 +37,6 @@ export function Transactions() {
             inputIndex
             balanceRoot
             stateRoot
-          }
-          ... on MessageOutput {
-            recipient
-            amount
           }
           ... on ChangeOutput {
             to

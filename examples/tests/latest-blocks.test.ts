@@ -3,12 +3,12 @@ import { createClient } from "urql";
 import "isomorphic-fetch";
 
 const apolloClient = new ApolloClient({
-  uri: "https://beta-3.fuel.network/graphql",
+  uri: "https://beta-4.fuel.network/graphql",
   cache: new InMemoryCache(),
 });
 
 const urqlClient = createClient({
-  url: "https://beta-3.fuel.network/graphql",
+  url: "https://beta-4.fuel.network/graphql",
 });
 
 describe("Latest blocks", () => {
@@ -35,7 +35,6 @@ describe("Latest blocks", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -53,10 +52,6 @@ describe("Latest blocks", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to
@@ -82,7 +77,7 @@ describe("Latest blocks", () => {
     }`;
 
     const getLatestBlocks = async () => {
-      let response = await fetch("https://beta-3.fuel.network/graphql", {
+      let response = await fetch("https://beta-4.fuel.network/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -123,7 +118,6 @@ describe("Latest blocks", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -141,10 +135,6 @@ describe("Latest blocks", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to
@@ -203,7 +193,6 @@ describe("Latest blocks", () => {
                 }
               }
               ... on InputMessage {
-                messageId
                 sender
                 recipient
                 amount
@@ -221,10 +210,6 @@ describe("Latest blocks", () => {
                 inputIndex
                 balanceRoot
                 stateRoot
-              }
-              ... on MessageOutput {
-                recipient
-                amount
               }
               ... on ChangeOutput {
                 to

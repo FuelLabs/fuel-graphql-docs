@@ -33,6 +33,10 @@ A way to pass in bytes as hex data. This is used for variable byte length types.
 
 A 32 byte identifier for cross-network messages, like messages from Ethereum to Fuel.
 
+## `Nonce`
+
+A random or pseudo-random number generated for a single use to ensure data freshness and prevent replay attacks.
+
 ## `Salt`
 
 Sometimes referred to as a nonce. A unique, random value used to distinguish two things that are otherwise identical. This is used in contract deployments so you can deploy contracts that are otherwise exactly the same.
@@ -53,6 +57,10 @@ A unique 32 byte hash identifier for a transaction.
 
 The location of the transaction in the block. It can be used by UTXOs as a reference to the transaction or by the transaction itself to make it unique.
 
+## `U32`
+
+Unsigned 32 bit number.
+
 ## `U64`
 
 Unsigned 64 bit number. The default GraphQL `int` scalar does not cover the range of values needed because the FuelVM word size is 64bit.
@@ -60,6 +68,3 @@ Unsigned 64 bit number. The default GraphQL `int` scalar does not cover the rang
 ## `UtxoId`
 
 A unique 32 byte identifier for a UTXO.
-
-> ## `DateTime`
-> A TAI 64 timestamp. Only available for the beta-1 testnet.

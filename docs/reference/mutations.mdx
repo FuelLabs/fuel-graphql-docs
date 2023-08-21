@@ -20,9 +20,13 @@ Whether or not to use UTXO validation.
 
 ## `produceBlocks`
 
-A mutation that produces blocks, that can be used for testing that requires block advancement. Returns a <a href="/docs/reference/scalars/#u64">`U64!`</a>.
+A mutation that produces blocks, that can be used for testing that requires block advancement. Returns a <a href="/docs/reference/scalars/#u32">`U32!`</a>.
 
 **args**
+
+`startTimestamp`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+
+The start time of the produced block.
 
 `blocksToProduce`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
 

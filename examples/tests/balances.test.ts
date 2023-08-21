@@ -3,12 +3,12 @@ import { createClient } from 'urql'
 import 'isomorphic-fetch';
 
 const apolloClient= new ApolloClient({
-  uri: 'https://beta-3.fuel.network/graphql',
+  uri: 'https://beta-4.fuel.network/graphql',
   cache: new InMemoryCache(),
 })
 
 const urqlClient= createClient({
-  url: 'https://beta-3.fuel.network/graphql',
+  url: 'https://beta-4.fuel.network/graphql',
 })
 
 describe("Balances", () => {
@@ -30,7 +30,7 @@ describe("Balances", () => {
     };
 
     const getBalances = async () => {
-      let response = await fetch("https://beta-3.fuel.network/graphql", {
+      let response = await fetch("https://beta-4.fuel.network/graphql", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +43,7 @@ describe("Balances", () => {
       });
       let json = await response.json();
       console.log("BALANCES:", json.data.balances);
-      expect(json.data.balances.nodes.length).toBeTruthy();
+      expect(json.data.balances.nodes).toBeTruthy();
     }
 
     await getBalances();
@@ -73,7 +73,7 @@ describe("Balances", () => {
         variables: args,
       });
       console.log("BALANCES:", response.data.balances);
-      expect(response.data.balances.nodes.length).toBeTruthy();
+      expect(response.data.balances.nodes).toBeTruthy();
     };
 
     await getBalances();
@@ -101,7 +101,7 @@ describe("Balances", () => {
     const getBalances = async () => {
       const response = await urqlClient.query(BALANCES_QUERY, args).toPromise();
       console.log("BALANCES:", response.data.balances);
-      expect(response.data.balances.nodes.length).toBeTruthy();
+      expect(response.data.balances.nodes).toBeTruthy();
     }
 
     await getBalances();

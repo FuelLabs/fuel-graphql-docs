@@ -23,7 +23,6 @@ export function LatestBlocks() {
               }
             }
             ... on InputMessage {
-              messageId
               sender
               recipient
               amount
@@ -41,10 +40,6 @@ export function LatestBlocks() {
               inputIndex
               balanceRoot
               stateRoot
-            }
-            ... on MessageOutput {
-              recipient
-              amount
             }
             ... on ChangeOutput {
               to

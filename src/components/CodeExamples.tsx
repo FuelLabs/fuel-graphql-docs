@@ -58,7 +58,7 @@ export function CodeExamples({
   const apolloImport = `import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const apolloClient= new ApolloClient({
-  uri: 'https://beta-3.fuel.network/graphql',
+  uri: 'https://beta-4.fuel.network/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -67,7 +67,7 @@ const apolloClient= new ApolloClient({
   const urqlImport = `import { createClient } from 'urql';
 
 const urqlClient= createClient({
-  url: 'https://beta-3.fuel.network/graphql',
+  url: 'https://beta-4.fuel.network/graphql',
 });
 
 `;
