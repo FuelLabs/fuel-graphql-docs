@@ -43,7 +43,7 @@ export function Query(props: QueryProps) {
     <ExampleBox>
       <Box.Flex direction="column" gap="$4">
         <>
-          <Button variant="outlined" onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
+          <Button intent="base" variant="outlined" onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
           
           {resp && 
           <>
