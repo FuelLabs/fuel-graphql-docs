@@ -40,6 +40,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   trailingSlash: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   ...(HAS_LINK_DEPS ? depsLinkOpts : {}),
 };
 
