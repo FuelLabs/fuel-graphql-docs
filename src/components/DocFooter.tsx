@@ -13,7 +13,7 @@ export function DocFooter() {
       <Box css={{ flex: 1 }}>
         {docLink.prev && (
           <Link href={docLink.prev.slug!}>
-            <Icon icon={Icon.is('ArrowLeft')} size={24} /> {docLink.prev.label}
+            <Icon icon={'ArrowLeft'} size={24} /> {docLink.prev.label}
           </Link>
         )}
       </Box>
@@ -26,7 +26,7 @@ export function DocFooter() {
                 : docLink.next.slug!
             }
           >
-            {docLink.next.label} <Icon icon={Icon.is('ArrowRight')} size={24} />
+            {docLink.next.label} <Icon icon={'ArrowRight'} size={24} />
           </Link>
         )}
       </Box>

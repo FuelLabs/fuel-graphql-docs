@@ -137,10 +137,6 @@ The block when the coins were created.
 
 The index of the transaction that created this coin.
 
-> `status`: <a href="/docs/reference/enums/#coinstatus">`CoinStatus!`</a><sup>_(beta-3 only)_</sup>
-
-> The status of the coin, either `SPENT` or `UNSPENT`.
-
 ## `CoinFilterInput`
 
 The filter input type for the `coins` query.
@@ -845,14 +841,6 @@ The timestamp for the block.
 
 The hash of the serialized application header for this block.
 
-> `outputMessagesCount`: <a href="/docs/reference/scalars/#u64">`U64!`</a><sup>_(beta-3 only)_</sup>
-
-> The number of output messages in the block.
-
-> `outputMessagesRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a><sup>_(beta-3 only)_</sup>
-
-> The merkle root of the output messages in the block.
-
 ## `InputCoin`
 
 Information about a coin input.
@@ -967,16 +955,6 @@ The predicate bytecode.
 
 The predicate input parameters.
 
-> `messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a><sup>_(beta-3 only)_</sup>
-
-> A unique id for the message. The ID of a message is computed as the hash of:
-
-- the sender address as byte[32],
-- the recipient address as byte[32],
-- the Message nonce as byte[32],
-- the amount being sent with the message as uint64,
-- the message data as byte[]
-
 ## `MerkleProof`
 
 Information about a merkelproof.
@@ -1025,12 +1003,6 @@ The vector with the message data.
 
 The block height of the data availability layer up to which (inclusive) input messages are processed.
 
-> `status`: <a href="/docs/reference/enums/#messagestatus">`MessageStatus`</a><sup>_(beta-3 only)_</sup>
-
-> The status of the message UTXO.
-
-> The block in which the message is spent.
-
 ## `MessageCoin`
 
 Information about message coin
@@ -1060,20 +1032,6 @@ The asset id of the coins transferred.
 `daHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
 
 The block height of the data availability layer up to which (inclusive) input messages are processed.
-
-> ## `MessageOutput`<sup>_(beta-3 only)_</sup>
-
-> The output type for a message. When signing a transaction recipient and amount are set to zero. When verifying a predicate or executing a script, recipient and amount are initialized to zero.
-
-> **fields:**
-
-> `recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
-
-> The recipient of the message.
-
-> `amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
-
-> The amount of base asset coins sent with the message.
 
 ## `MessageProof`
 
@@ -1116,22 +1074,6 @@ The amount sent in the message.
 `data`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
 
 The data from the message.
-
-> `proofSet`: <a href="/docs/reference/scalars/#bytes32">`[Bytes32!]!`</a><sup>_(beta-3 only)_</sup>
-
-> The proof set of the message proof.
-
-> `proofIndex`: <a href="/docs/reference/scalars/#u64">`U64!`</a><sup>_(beta-3 only)_</sup>
-
-> The index used to generate this proof.
-
-> `signature`: <a href="/docs/reference/scalars/#signature">`Signature!`</a><sup>_(beta-3 only)_</sup>
-
-> The signature of the Fuel block.
-
-> `header`: <a href="#header">`Header!`</a><sup>_(beta-3 only)_</sup>
-
-> The Fuel block header that contains the message.
 
 ## `NodeInfo`
 
@@ -1304,14 +1246,6 @@ The contract id.
 `subId`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
 
 The sub id.
-
-> `rawPayload`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a><sup>_(beta-3 only)_</sup>
-
-> The raw payload hex string.
-
-> `messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId`</a><sup>_(beta-3 only)_</sup>
-
-> The message id.
 
 ## `SpendQueryElementInput`
 

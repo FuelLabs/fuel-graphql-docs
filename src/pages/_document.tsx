@@ -1,5 +1,10 @@
 import { getCssText } from '@fuel-ui/css';
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
+import {
+  loadIcons,
+} from '@fuel-ui/react';
+
+loadIcons('/sprite.svg');
 
 export default class Document extends NextDocument {
   render() {
