@@ -44,7 +44,7 @@ export async function getDocBySlug(
     fullpath.replace(process.cwd(), '')
   ).replace('https:/', 'https://');
 
-  let pageLink = tempPageLink.replace("/docs/","/blob/main/docs/")
+  let pageLink = tempPageLink.replace('/docs/', '/blob/main/docs/');
 
   const doc = {
     pageLink,
@@ -96,9 +96,9 @@ export async function getSidebarLinks(order: string[]) {
     if (!doc.category) {
       return list.concat({ slug: doc.slug, label: doc.title });
     }
-    
+
     const categoryIdx = list.findIndex((l) => {
-      return l?.label === doc.category
+      return l?.label === doc.category;
     });
     /** Insert category item based on order prop */
     if (categoryIdx >= 0) {
@@ -137,13 +137,13 @@ export async function getSidebarLinks(order: string[]) {
     /** Sort categoried links */
     .map((link) => {
       if (!link.submenu) return link;
-      const catOrder = link.label == "Reference" ? REFERENCE_MENU_ORDER : HOW_TO_USE_GRAPHQL_ORDER
-      const submenu = link.submenu
-      .sort(
-        (a, b) => {
-        return catOrder.indexOf(`${a.label}`) - catOrder.indexOf(`${b.label}`)
-        }
-      );
+      const catOrder =
+        link.label == 'Reference'
+          ? REFERENCE_MENU_ORDER
+          : HOW_TO_USE_GRAPHQL_ORDER;
+      const submenu = link.submenu.sort((a, b) => {
+        return catOrder.indexOf(`${a.label}`) - catOrder.indexOf(`${b.label}`);
+      });
       return { ...link, submenu };
     });
 

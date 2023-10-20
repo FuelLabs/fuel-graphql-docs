@@ -28,7 +28,7 @@ const Link = styled(Box, {
 
 export type SidebarLinkProps = {
   item: SidebarLinkItem;
-  handleClick: () => void
+  handleClick: () => void;
 };
 
 export const SidebarLink = forwardRef<unknown, SidebarLinkProps>(
@@ -41,7 +41,14 @@ export const SidebarLink = forwardRef<unknown, SidebarLinkProps>(
         pathname.includes(fullSlug),
     });
     return (
-      <Link onClick={handleClick} style={{flexGrow: 1}} ref={ref} as={NextLink as any} href={fullSlug} className={isActive}>
+      <Link
+        onClick={handleClick}
+        style={{ flexGrow: 1 }}
+        ref={ref}
+        as={NextLink as any}
+        href={fullSlug}
+        className={isActive}
+      >
         {item.label}
       </Link>
     );

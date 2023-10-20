@@ -11,12 +11,9 @@ The type of coin being used.
 
 **Types:**
 
-<a href="/docs/reference/objects/#coin">`Coin`</a>:
-Coin
+<a href="/docs/reference/objects/#coin">`Coin`</a>: Coin
 
-<a href="/docs/reference/objects/#messagecoin">`MessageCoin`</a>:
-MessageCoin
-
+<a href="/docs/reference/objects/#messagecoin">`MessageCoin`</a>: MessageCoin
 
 ## `Consensus`
 
@@ -24,11 +21,10 @@ The type of consensus mechanism used to validate a block.
 
 **Types:**
 
-<a href="/docs/reference/objects/#genesis">`Genesis`</a>:
-Genesis consensus
+<a href="/docs/reference/objects/#genesis">`Genesis`</a>: Genesis consensus
 
-<a href="/docs/reference/objects/#poaconsensus">`PoAConsensus`</a>:
-PoA consensus
+<a href="/docs/reference/objects/#poaconsensus">`PoAConsensus`</a>: PoA
+consensus
 
 ## `Input`
 
@@ -36,14 +32,14 @@ An input type for a transaction.
 
 **Types:**
 
-<a href="/docs/reference/objects/#inputcoin">`InputCoin`</a>:
-An input type for a coin.
+<a href="/docs/reference/objects/#inputcoin">`InputCoin`</a>: An input type for
+a coin.
 
-<a href="/docs/reference/objects/#inputcontract">`InputContract`</a>:
-An input type for a contract.
+<a href="/docs/reference/objects/#inputcontract">`InputContract`</a>: An input
+type for a contract.
 
-<a href="/docs/reference/objects/#inputmessage">`InputMessage`</a>:
-An input type for a message.
+<a href="/docs/reference/objects/#inputmessage">`InputMessage`</a>: An input
+type for a message.
 
 ## `Output`
 
@@ -51,23 +47,30 @@ An output type for a transaction.
 
 **Types:**
 
-<a href="/docs/reference/objects/#coinoutput">`CoinOutput`</a>:
-Indicates coins were forwarded from one address to another.
+<a href="/docs/reference/objects/#coinoutput">`CoinOutput`</a>: Indicates coins
+were forwarded from one address to another.
 
 <a href="/docs/reference/objects/#contractoutput">`ContractOutput`</a>:
 Indicates the transaction updated the state of a contract.
 
-<a href="/docs/reference/objects/#changeoutput">`ChangeOutput`</a>:
-Indicates that the output's amount may vary based on transaction execution, but is otherwise identical to a Coin output. Output changes are always guaranteed to have an amount of zero since they're only set after execution terminates.
+<a href="/docs/reference/objects/#changeoutput">`ChangeOutput`</a>: Indicates
+that the output's amount may vary based on transaction execution, but is
+otherwise identical to a Coin output. Output changes are always guaranteed to
+have an amount of zero since they're only set after execution terminates.
 
-<a href="/docs/reference/objects/#variableoutput">`VariableOutput`</a>:
-Similar to `ChangeOutput`, this output type indicates that the output's amount may vary based on transaction execution, but is otherwise identical to a Coin output. On initialization, the amount on variable outputs is zero, but during execution they could be set to a non-zero value.
+<a href="/docs/reference/objects/#variableoutput">`VariableOutput`</a>: Similar
+to `ChangeOutput`, this output type indicates that the output's amount may vary
+based on transaction execution, but is otherwise identical to a Coin output. On
+initialization, the amount on variable outputs is zero, but during execution
+they could be set to a non-zero value.
 
 <a href="/docs/reference/objects/#contractcreated">`ContractCreated`</a>:
 Indicates a contract was deployed.
 
-> <a href="/docs/reference/objects/#messageoutput">`MessageOutput`</a> <sup>_(beta-3 only)_</sup>:
-> Indicates a message output.
+> <a href="/docs/reference/objects/#messageoutput">`MessageOutput`</a> <sup>
+>   _(beta-3 only)_
+> </sup>
+> : Indicates a message output.
 
 ## `Resource`<sup>_(beta-3 only)_</sup>
 
@@ -77,14 +80,14 @@ Either a <a href="/docs/reference/objects/#coin">`Coin`</a> or a <a href="/docs/
 
 The status type of a transaction.
 
-<a href="/docs/reference/objects/#submittedstatus">`SubmitedStatus`</a>:
-The transaction has been submitted.
+<a href="/docs/reference/objects/#submittedstatus">`SubmitedStatus`</a>: The
+transaction has been submitted.
 
-<a href="/docs/reference/objects/#successstatus">`SuccessStatus`</a>:
-The transaction has succeeded.
+<a href="/docs/reference/objects/#successstatus">`SuccessStatus`</a>: The
+transaction has succeeded.
 
 <a href="/docs/reference/objects/#squeezedoutstatus">`SqueezedOutStatus`</a>:
 The transaction was kicked out of the mempool.
 
-<a href="/docs/reference/objects/#failurestatus">`FailureStatus`</a>:
-The transaction has failed.
+<a href="/docs/reference/objects/#failurestatus">`FailureStatus`</a>: The
+transaction has failed.

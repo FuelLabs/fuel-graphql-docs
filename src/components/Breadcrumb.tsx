@@ -16,7 +16,11 @@ export function Breadcrumb({ doc }: BreadcrumbProps) {
       </Text>
       {doc.category && (
         <Text as="span" rightIcon={Icon.is('CaretRight')}>
-          <Link href={`/docs/${doc.category.toLowerCase().replace(/\s+/g, '-')}`}>{doc.category}</Link>
+          <Link
+            href={`/docs/${doc.category.toLowerCase().replace(/\s+/g, '-')}`}
+          >
+            {doc.category}
+          </Link>
         </Text>
       )}
       <Text as="span">{doc.title}</Text>

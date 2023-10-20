@@ -38,7 +38,7 @@ export function MobileMenu() {
       icon={showing ? Icon.is('X') : Icon.is('List')}
       iconSize={30}
       aria-label="Menu"
-      onPress={toggle}
+      onClick={toggle}
     />
   );
 
@@ -52,7 +52,7 @@ export function MobileMenu() {
     >
       <Box.Flex css={styles.menu}>
         <Box.Flex>
-        <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
+          <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
           <a
             href="https://github.com/FuelLabs/fuel-graphql-docs"
             target="_blank"

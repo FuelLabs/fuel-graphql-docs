@@ -1,9 +1,9 @@
-import { cssObj } from "@fuel-ui/css";
-import { Link, Tabs, Box } from "@fuel-ui/react";
+import { cssObj } from '@fuel-ui/css';
+import { Link, Tabs, Box } from '@fuel-ui/react';
 
-import { Pre } from "./Pre";
+import { Pre } from './Pre';
 
-import { REPO_LINK } from "../constants";
+import { REPO_LINK } from '../constants';
 
 export type CodeExamplesProps = {
   file: string;
@@ -44,12 +44,12 @@ export function CodeExamples({
   __apollo_lineEnd: apollo_lineEnd,
   __urql_lineEnd: urql_lineEnd,
 }: CodeExamplesProps) {
-  const ts_lines = `L${ts_lineStart}${ts_lineEnd ? `-L${ts_lineEnd}` : ""}`;
+  const ts_lines = `L${ts_lineStart}${ts_lineEnd ? `-L${ts_lineEnd}` : ''}`;
   const apollo_lines = `L${apollo_lineStart}${
-    apollo_lineEnd ? `-L${apollo_lineEnd}` : ""
+    apollo_lineEnd ? `-L${apollo_lineEnd}` : ''
   }`;
   const urql_lines = `L${urql_lineStart}${
-    urql_lineEnd ? `-L${urql_lineEnd}` : ""
+    urql_lineEnd ? `-L${urql_lineEnd}` : ''
   }`;
   const ts_link = `${REPO_LINK}tree/main/${filePath}#${ts_lines}`;
   const apollo_link = `${REPO_LINK}tree/main/${filePath}#${apollo_lines}`;
@@ -129,30 +129,30 @@ const urqlClient= createClient({
 
 const styles = {
   tabsTrigger: cssObj({
-    fontSize: "var(--fontSizes-default)",
+    fontSize: 'var(--fontSizes-default)',
   }),
   tabs: cssObj({
-    justifyContent: "space-around",
-    padding: "$2 0",
-    margin: '0'
+    justifyContent: 'space-around',
+    padding: '$2 0',
+    margin: '0',
   }),
   tabsContainer: cssObj({
-    marginTop: "$8",
-    backgroundColor: "$gray1",
-    borderRadius: "8px",
+    marginTop: '$8',
+    backgroundColor: '$gray1',
+    borderRadius: '8px',
   }),
   codeContainer: cssObj({
-    maxHeight: "500px",
-    overflow: "scroll",
+    maxHeight: '500px',
+    overflow: 'scroll',
   }),
   filename: cssObj({
-    "&, &:visited": {
-      fontSize: "$sm",
-      color: "$gray9",
+    '&, &:visited': {
+      fontSize: '$sm',
+      color: '$gray9',
     },
-    "&:hover": {
-      color: "$gray11",
-      textDecoration: "none",
+    '&:hover': {
+      color: '$gray11',
+      textDecoration: 'none',
     },
   }),
 };

@@ -37,7 +37,7 @@ const components = {
   CodeImport,
   Player,
   GQLExamples,
-  CodeExamples
+  CodeExamples,
 };
 
 type ProviderProps = {

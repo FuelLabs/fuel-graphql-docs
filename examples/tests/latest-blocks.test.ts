@@ -1,18 +1,18 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import { createClient } from "urql";
-import "isomorphic-fetch";
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { createClient } from 'urql';
+import 'isomorphic-fetch';
 
 const apolloClient = new ApolloClient({
-  uri: "https://beta-4.fuel.network/graphql",
+  uri: 'https://beta-4.fuel.network/graphql',
   cache: new InMemoryCache(),
 });
 
 const urqlClient = createClient({
-  url: "https://beta-4.fuel.network/graphql",
+  url: 'https://beta-4.fuel.network/graphql',
 });
 
-describe("Latest blocks", () => {
-  test("get latest blocks with ts", async () => {
+describe('Latest blocks', () => {
+  test('get latest blocks with ts', async () => {
     const LATEST_BLOCKS_QUERY = `query LatestBlocks {
       blocks(last: 5) {
         nodes {
@@ -77,25 +77,25 @@ describe("Latest blocks", () => {
     }`;
 
     const getLatestBlocks = async () => {
-      let response = await fetch("https://beta-4.fuel.network/graphql", {
-        method: "POST",
+      let response = await fetch('https://beta-4.fuel.network/graphql', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           query: LATEST_BLOCKS_QUERY,
         }),
       });
       let json = await response.json();
-      console.log("BLOCKS:", json.data.blocks);
+      console.log('BLOCKS:', json.data.blocks);
       expect(json.data.blocks.nodes.length).toBeTruthy();
     };
 
     await getLatestBlocks();
   });
 
-  test("get latest blocks with apollo", async () => {
+  test('get latest blocks with apollo', async () => {
     const LATEST_BLOCKS_QUERY = `query LatestBlocks {
       blocks(last: 5) {
         nodes {
@@ -163,14 +163,14 @@ describe("Latest blocks", () => {
       const response = await apolloClient.query({
         query: gql(LATEST_BLOCKS_QUERY),
       });
-      console.log("BLOCKS:", response.data.blocks);
+      console.log('BLOCKS:', response.data.blocks);
       expect(response.data.blocks.nodes.length).toBeTruthy();
     };
 
     await getLatestBlocks();
   });
 
-  test("get latest blocks with urql", async () => {
+  test('get latest blocks with urql', async () => {
     const LATEST_BLOCKS_QUERY = `query LatestBlocks {
       blocks(last: 5) {
         nodes {
@@ -238,7 +238,7 @@ describe("Latest blocks", () => {
       const response = await urqlClient
         .query(LATEST_BLOCKS_QUERY, undefined)
         .toPromise();
-      console.log("BLOCKS:", response.data.blocks);
+      console.log('BLOCKS:', response.data.blocks);
       expect(response.data.blocks.nodes.length).toBeTruthy();
     };
 

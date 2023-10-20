@@ -119,13 +119,22 @@ export function codeExamples(options: Options = { filepath: '' }) {
 
       const file = attr.find((i: any) => i.name === 'file')?.value;
 
-      const ts_lines = attr.find((i: any) => i.name === 'ts_lines')?.value || [];
-      const apollo_lines = attr.find((i: any) => i.name === 'apollo_lines')?.value || [];
-      const urql_lines = attr.find((i: any) => i.name === 'urql_lines')?.value || [];
+      const ts_lines =
+        attr.find((i: any) => i.name === 'ts_lines')?.value || [];
+      const apollo_lines =
+        attr.find((i: any) => i.name === 'apollo_lines')?.value || [];
+      const urql_lines =
+        attr.find((i: any) => i.name === 'urql_lines')?.value || [];
 
-      const ts_testCase = attr.find((i: any) => i.name === 'ts_testCase')?.value;
-      const apollo_testCase = attr.find((i: any) => i.name === 'apollo_testCase')?.value;
-      const urql_testCase = attr.find((i: any) => i.name === 'urql_testCase')?.value;
+      const ts_testCase = attr.find(
+        (i: any) => i.name === 'ts_testCase'
+      )?.value;
+      const apollo_testCase = attr.find(
+        (i: any) => i.name === 'apollo_testCase'
+      )?.value;
+      const urql_testCase = attr.find(
+        (i: any) => i.name === 'urql_testCase'
+      )?.value;
 
       const fileAbsPath = path.resolve(path.join(rootDir, dirname), file);
 
@@ -141,7 +150,6 @@ export function codeExamples(options: Options = { filepath: '' }) {
         ts_lineEnd || ''
       }`;
 
-
       const oldList = attrsList.get(attrId);
 
       /** Return result from cache if file content is the same */
@@ -155,7 +163,11 @@ export function codeExamples(options: Options = { filepath: '' }) {
       }
 
       if (apollo_lineStart || apollo_lineEnd) {
-        apollo_content = extractLines(fileContent, apollo_lineStart, apollo_lineEnd);
+        apollo_content = extractLines(
+          fileContent,
+          apollo_lineStart,
+          apollo_lineEnd
+        );
       }
 
       if (urql_lineStart || urql_lineEnd) {

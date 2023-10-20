@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import { Box, Button, Spinner } from "@fuel-ui/react";
-import { useState } from "react";
-import { ExampleBox } from "~/src/components/ExampleBox";
+import { Box, Button, Spinner } from '@fuel-ui/react';
+import { useState } from 'react';
+import { ExampleBox } from '~/src/components/ExampleBox';
 
 interface QueryProps {
   query: any;
@@ -14,10 +14,10 @@ export function Query(props: QueryProps) {
 
   function runQuery() {
     setLoading(true);
-    fetch("https://beta-4.fuel.network/graphql", {
-      method: "POST",
+    fetch('https://beta-4.fuel.network/graphql', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         query: props.query,
@@ -32,25 +32,33 @@ export function Query(props: QueryProps) {
   }
 
   interface IPrettyPrintJson {
-    data: string
+    data: string;
   }
 
-  const PrettyPrintJson = ({data}: IPrettyPrintJson) => {
-    return (<div><pre style={{overflow: "scroll", maxHeight: "500px"}}>{ JSON.stringify(data, null, 2) }</pre></div>);
-}
+  const PrettyPrintJson = ({ data }: IPrettyPrintJson) => {
+    return (
+      <div>
+        <pre style={{ overflow: 'scroll', maxHeight: '500px' }}>
+          {JSON.stringify(data, null, 2)}
+        </pre>
+      </div>
+    );
+  };
 
   return (
     <ExampleBox>
       <Box.Flex direction="column" gap="$4">
         <>
-          <Button intent="base" variant="outlined" onPress={runQuery}>{loading ? <Spinner/> : "Run"}</Button>
-          
-          {resp && 
-          <>
-          <div>Response:</div>
-          <PrettyPrintJson data={resp}/>
-          </>
-          }
+          <Button intent="base" variant="outlined" onClick={runQuery}>
+            {loading ? <Spinner /> : 'Run'}
+          </Button>
+
+          {resp && (
+            <>
+              <div>Response:</div>
+              <PrettyPrintJson data={resp} />
+            </>
+          )}
         </>
       </Box.Flex>
     </ExampleBox>
