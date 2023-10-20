@@ -13,6 +13,7 @@
     "prettier:format": "prettier --write ."
   },
   "dependencies": {
+    "@apollo/client": "^3.8.6",
     "@docsearch/css": "^3.5.2",
     "@docsearch/react": "3.5.2",
     "@fuel-ui/css": "0.21.0-pr-305-04b8434",
@@ -71,6 +72,7 @@
     "@playwright/test": "^1.36.2",
     "@types/chrome": "^0.0.245",
     "@types/cookie": "^0.5.2",
+    "@types/jest": "^29.5.6",
     "@types/node": "^20.5.9",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",

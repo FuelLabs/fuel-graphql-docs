@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import { createClient } from 'urql';
+import { Client, cacheExchange, fetchExchange } from 'urql';
 import 'isomorphic-fetch';
 
 const apolloClient = new ApolloClient({
@@ -7,8 +7,9 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const urqlClient = createClient({
+const urqlClient = new Client({
   url: 'https://beta-4.fuel.network/graphql',
+  exchanges: [cacheExchange, fetchExchange],
 });
 
 describe('Contract balances', () => {

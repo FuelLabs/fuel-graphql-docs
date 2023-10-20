@@ -64,10 +64,11 @@ const apolloClient= new ApolloClient({
 
 `;
 
-  const urqlImport = `import { createClient } from 'urql';
+  const urqlImport = `import { Client, cacheExchange, fetchExchange } from 'urql';
 
-const urqlClient= createClient({
+const urqlClient = new Client({
   url: 'https://beta-4.fuel.network/graphql',
+  exchanges: [cacheExchange, fetchExchange],
 });
 
 `;
