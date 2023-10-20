@@ -32,12 +32,14 @@
     "framer-motion": "^10.16.4",
     "fuels": "0.60.0",
     "globby": "^13.2.2",
+    "graphql": "^16.8.1",
     "gray-matter": "^4.0.3",
     "hast-util-from-text": "^2.0.1",
     "hast-util-heading-rank": "^2.1.1",
     "hast-util-to-string": "^2.0.0",
     "hast-util-to-text": "^3.1.2",
     "hastscript": "^7.2.0",
+    "isomorphic-fetch": "^3.0.0",
     "next": "13.4.19",
     "next-mdx-remote": "^4.4.1",
     "node-html-markdown": "^1.3.0",
@@ -61,6 +63,7 @@
     "unified": "^10.1.2",
     "unist-util-visit": "^5.0.0",
     "updates": "^15.0.2",
+    "urql": "^4.0.5",
     "vfile": "^6.0.1"
   },
   "devDependencies": {
@@ -79,7 +82,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.32.5",
-    "typescript": "^5.2.2",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.0.3",
+    "typescript": "^5.2.2"
   }
 }
