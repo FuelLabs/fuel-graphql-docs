@@ -7,127 +7,127 @@ category: Reference
 
 ## `balance`
 
-Returns the <a href="/docs/reference/objects/#balance">`Balance!`</a> of a specific address for a given asset id.
+Returns the [`Balance!`](/docs/reference/objects/#balance) of a specific address for a given asset id.
 
 **args:**
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`owner`: [`Address!`](/docs/reference/scalars/#address)
 
 The owner address.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id.
 
 ## `balances`
 
-Returns a <a href="/docs/reference/objects/#balance">`BalanceConnection!`</a> for an array of balances for each asset owned by a given address.
+Returns a [`BalanceConnection!`](/docs/reference/objects/#balance) for an array of balances for each asset owned by a given address.
 
 **args:**
 
-`filter`: <a href="/docs/reference/objects/#balancefilterinput">`BalanceFilterInput!`</a>
+`filter`: [`BalanceFilterInput!`](/docs/reference/objects/#balancefilterinput)
 
 A filter to specify the wallet owner address.
 
 ## `block`
 
-Returns information about a certain <a href="/docs/reference/objects/#block">`Block`</a>. Accepts either the block id or block height as an argument.
+Returns information about a certain [`Block`](/docs/reference/objects/#block). Accepts either the block id or block height as an argument.
 
 **args:**
 
-`id`: <a href="/docs/reference/scalars/#blockid">`BlockId`</a>
+`id`: [`BlockId`](/docs/reference/scalars/#blockid)
 
 The block id.
 
-`height`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`height`: [`U64`](/docs/reference/scalars/#u64)
 
 The block height.
 
 ## `blocks`
 
-Returns a <a href="/docs/reference/objects/#block">`BlockConnection!`</a> for an array of all blocks produced.
+Returns a [`BlockConnection!`](/docs/reference/objects/#block) for an array of all blocks produced.
 
 ## `chain`
 
-Returns <a href="/docs/reference/objects/#chaininfo">`ChainInfo!`</a> about the target Fuel network used for the API.
+Returns [`ChainInfo!`](/docs/reference/objects/#chaininfo) about the target Fuel network used for the API.
 
 ## `coin`
 
-Returns details about a specific <a href="/docs/reference/objects/#coin">`Coin`</a>.
+Returns details about a specific [`Coin`](/docs/reference/objects/#coin).
 
 **args:**
 
-`utxoId`: <a href="/docs/reference/scalars/#utxoid">`UtxoId!`</a>
+`utxoId`: [`UtxoId!`](/docs/reference/scalars/#utxoid)
 
 A unique 32 byte identifier for the UTXO.
 
 ## `coins`
 
-Returns a <a href="/docs/reference/objects/#coin">`CoinConnection!`</a> for an array of coins based on a given owner and/or asset id
+Returns a [`CoinConnection!`](/docs/reference/objects/#coin) for an array of coins based on a given owner and/or asset id
 
 **args:**
 
-`filter`: <a href="/docs/reference/objects/#coinfilterinput">`CoinFilterInput!`</a>
+`filter`: [`CoinFilterInput!`](/docs/reference/objects/#coinfilterinput)
 
 A filter with the owner address and optionally the asset id.
 
 ## `coinsToSpend`
 
-Returns an array of spendable <a href="/docs/reference/unions/#cointype">`[[CoinType!]!]!`</a> per asset.
+Returns an array of spendable [`[[CoinType!]!]!`](/docs/reference/unions/#cointype) per asset.
 
 **args:**
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address`</a>
+`owner`: [`Address`](/docs/reference/scalars/#address)
 
 The owner address of the coins.
 
-`queryPerAsset`: <a href="/docs/reference/objects/#spendqueryelementinput">`[SpendQueryElementInput!]!`</a>
+`queryPerAsset`: [`[SpendQueryElementInput!]!`](/docs/reference/objects/#spendqueryelementinput)
 
 The list of requested asset resources. Several entries with the same asset id are not allowed.
 
-`excludedIds`: <a href="/docs/reference/objects/#excludeinput">`ExcludeInput`</a>
+`excludedIds`: [`ExcludeInput`](/docs/reference/objects/#excludeinput)
 
 The resources to exclude.
 
 ## `contract`
 
-Returns the <a href="/docs/reference/objects/#contract">`Contract`</a> information for a given contract id.
+Returns the [`Contract`](/docs/reference/objects/#contract) information for a given contract id.
 
 **args:**
 
-`id`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+`id`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
 The contract id of the requested contract.
 
 ## `contractBalance`
 
-Returns the <a href="/docs/reference/objects/#contractbalance">`ContractBalance!`</a> for a given contract and asset id.
+Returns the [`ContractBalance!`](/docs/reference/objects/#contractbalance) for a given contract and asset id.
 
 **args:**
 
-`contract`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+`contract`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
 The contract that owns the balance.
 
-`asset`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`asset`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id for the balance.
 
 ## `contractBalances`
 
-Returns a <a href="/docs/reference/objects/#contractbalance">`ContractBalanceConnection!`</a> for an arrray of balances for all assets owned by a given contract
+Returns a [`ContractBalanceConnection!`](/docs/reference/objects/#contractbalance) for an arrray of balances for all assets owned by a given contract
 
 **args:**
 
-`filter`: <a href="/docs/reference/objects/#contractbalancefilterinput">`ContractBalanceFilterInput!`</a>
+`filter`: [`ContractBalanceFilterInput!`](/docs/reference/objects/#contractbalancefilterinput)
 
 A filter for the contract balances.
 
 ## `estimatePredicates`
 
-Estimate the predicate gas and returns a <a href="/docs/reference/objects/#transaction">`Transaction!`</a>.
+Estimate the predicate gas and returns a [`Transaction!`](/docs/reference/objects/#transaction).
 
-`tx:` <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`tx:` [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.
 
@@ -137,60 +137,60 @@ Returns `true` if the API is running or `false` if the API is down.
 
 ## `messageProof`
 
-Returns the <a href="/docs/reference/objects/#messageproof">`MessageProof`</a> for a given message id or transaction.
+Returns the [`MessageProof`](/docs/reference/objects/#messageproof) for a given message id or transaction.
 
 **args:**
 
-`transactionId`: <a href="/docs/reference/scalars/#transactionid">`TransactionId!`</a>
+`transactionId`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
 
 The transaction id for the message.
 
-`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a>
+`messageId`: [`MessageId!`](/docs/reference/scalars/#messageid)
 
 The id of the message.
 
-`id`: <a href="/docs/reference/scalars/#blockid">`BlockId`</a>
+`id`: [`BlockId`](/docs/reference/scalars/#blockid)
 
 The block id.
 
-`height`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`height`: [`U64`](/docs/reference/scalars/#u64)
 
 The block height.
 
 ## `messages`
 
-Returns a <a href="/docs/reference/objects/#message">`MessageConnection!`</a> for an array of messages for a given owner.
+Returns a [`MessageConnection!`](/docs/reference/objects/#message) for an array of messages for a given owner.
 
 **args:**
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address`</a>
+`owner`: [`Address`](/docs/reference/scalars/#address)
 
 The owner address of the messages.
 
 ## `nodeInfo`
 
-Returns <a href="/docs/reference/objects/#nodeinfo">`NodeInfo!`</a> about the current node.
+Returns [`NodeInfo!`](/docs/reference/objects/#nodeinfo) about the current node.
 
 ## `transaction`
 
-Returns <a href="/docs/reference/objects/#transaction">`Transaction`</a> details for a given transaction id.
+Returns [`Transaction`](/docs/reference/objects/#transaction) details for a given transaction id.
 
 **args:**
 
-`id`: <a href="/docs/reference/scalars/#transactionid">`TransactionId!`</a>
+`id`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
 
 The id for the transaction.
 
 ## `transactions`
 
-Returns a <a href="/docs/reference/objects/#transaction">`TransactionConnection!`</a> for an array of all transactions.
+Returns a [`TransactionConnection!`](/docs/reference/objects/#transaction) for an array of all transactions.
 
 ## `transactionsByOwner`
 
-Returns a <a href="/docs/reference/objects/#transaction">`TransactionConnection!`</a> for an array of all transactions from a given address.
+Returns a [`TransactionConnection!`](/docs/reference/objects/#transaction) for an array of all transactions from a given address.
 
 **args:**
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`owner`: [`Address!`](/docs/reference/scalars/#address)
 
 The owner address of the transactions.
