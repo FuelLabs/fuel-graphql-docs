@@ -40,14 +40,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   trailingSlash: true,
-  // typescript: {
-  //   // !! WARN !!
-  //   // Dangerously allow production builds to successfully complete even if
-  //   // your project has type errors.
-  //   // temp to ignore submodule import errors
-  //   // !! WARN !!
-  //   ignoreBuildErrors: true,
-  // },
   ...(HAS_LINK_DEPS ? depsLinkOpts : {}),
 };
 
