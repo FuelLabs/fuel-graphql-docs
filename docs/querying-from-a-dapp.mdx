@@ -63,10 +63,11 @@ $ npm install urql graphql
 ```
 
 ```javascript
-import { createClient } from 'urql';
+import { Client, cacheExchange, fetchExchange } from 'urql';
 
-const urqlClient = createClient({
+const urqlClient = new Client({
   url: 'https://beta-4.fuel.network/graphql',
+  exchanges: [cacheExchange, fetchExchange],
 });
 
 const HEALTH_QUERY = `
