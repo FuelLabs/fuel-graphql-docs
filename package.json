@@ -58,6 +58,7 @@
     "remark-slug": "^7.0.1",
     "strip-indent": "^4.0.0",
     "swr": "^2.2.2",
+    "ts-jest": "^29.1.1",
     "unified": "^10.1.2",
     "unist-util-visit": "^5.0.0",
     "updates": "^15.0.2",
