@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "check:prod": "run-s lint:prod prettier:check",
+    "check:prod": "npm run lint:prod && npm run prettier:check",
     "export": "DOCS_DIST=${DOCS_DIST:=dist} next export -o $DOCS_DIST",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
