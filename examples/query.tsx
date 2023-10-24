@@ -1,11 +1,12 @@
-/* eslint-disable no-console */
 import { Box, Button, Spinner } from '@fuel-ui/react';
 import { useState } from 'react';
 import { ExampleBox } from '~/src/components/ExampleBox';
 
 interface QueryProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   query: any;
-  args: {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  args: any;
 }
 
 export function Query(props: QueryProps) {

@@ -154,7 +154,7 @@ edges: [SomethingEdge!]!
 nodes: [Something!]!
 ```
 
-##### PageInfo
+### PageInfo
 
 `pageInfo` returns an object that includes information about the returned page of results:
 
@@ -170,15 +170,15 @@ The starting cursor that identifies the first page.
 `endCursor: String`
 The end cursor that identifies the last page.
 
-##### Edges
+### Edges
 
 `edges` returns an array of edge objects, which includes the cursor and first node for that page. You can use this data to help with pagination.
 
-##### Nodes
+### Nodes
 
 `nodes` returns an array of whichever type you are expecting paginated results for.
 
-##### Arguments
+### Arguments
 
 Each of these queries also accepts the following arguments:
 `first: Int`

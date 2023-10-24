@@ -1,15 +1,15 @@
 import { cssObj } from '@fuel-ui/css';
 import { Box, Icon } from '@fuel-ui/react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+// import { usePathname } from 'next/navigation';
 
 import { MobileMenu } from './MobileMenu';
 import { Search } from './Search';
 
 export function Header() {
-  const pathname = usePathname();
-  const isDocsActive = pathname?.startsWith('/docs');
+  // const pathname = usePathname();
+  // const isDocsActive = pathname?.startsWith('/docs');
 
   return (
     <Box.Flex as="header" css={styles.root}>

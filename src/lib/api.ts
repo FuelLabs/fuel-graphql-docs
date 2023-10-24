@@ -5,13 +5,12 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { join } from 'path';
 import remarkGfm from 'remark-gfm';
 import remarkSlug from 'remark-slug';
-
-import { codeImport } from './code-import';
-import { codeExamples } from './code-examples';
-import { rehypeExtractHeadings } from './toc';
-
 import { DOCS_REPO_LINK, FIELDS } from '~/src/constants';
 import type { DocType, NodeHeading, SidebarLinkItem } from '~/src/types';
+
+import { codeExamples } from './code-examples';
+import { codeImport } from './code-import';
+import { rehypeExtractHeadings } from './toc';
 
 const DOCS_DIRECTORY = join(process.cwd(), './docs');
 
@@ -44,7 +43,7 @@ export async function getDocBySlug(
     fullpath.replace(process.cwd(), '')
   ).replace('https:/', 'https://');
 
-  let pageLink = tempPageLink.replace('/docs/', '/blob/main/docs/');
+  const pageLink = tempPageLink.replace('/docs/', '/blob/main/docs/');
 
   const doc = {
     pageLink,

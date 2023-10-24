@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-default */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {

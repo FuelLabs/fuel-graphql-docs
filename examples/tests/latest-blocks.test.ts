@@ -78,7 +78,7 @@ describe('Latest blocks', () => {
     }`;
 
     const getLatestBlocks = async () => {
-      let response = await fetch('https://beta-4.fuel.network/graphql', {
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ describe('Latest blocks', () => {
           query: LATEST_BLOCKS_QUERY,
         }),
       });
-      let json = await response.json();
+      const json = await response.json();
       console.log('BLOCKS:', json.data.blocks);
       expect(json.data.blocks.nodes.length).toBeTruthy();
     };

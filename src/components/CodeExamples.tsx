@@ -1,9 +1,9 @@
 import { cssObj } from '@fuel-ui/css';
 import { Link, Tabs, Box } from '@fuel-ui/react';
 
-import { Pre } from './Pre';
-
 import { REPO_LINK } from '../constants';
+
+import { Pre } from './Pre';
 
 export type CodeExamplesProps = {
   file: string;
@@ -88,7 +88,7 @@ const urqlClient = new Client({
   }
 
   const TabContent = ({ value, content, codeLink }: TabContentProps) => {
-    let title = codeTitle(codeLink);
+    const title = codeTitle(codeLink);
     return (
       <Tabs.Content css={styles.codeContainer} value={value}>
         <Pre title={title}>

@@ -34,7 +34,7 @@ describe('Messages', () => {
     };
 
     const getMessages = async () => {
-      let response = await fetch('https://beta-4.fuel.network/graphql', {
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ describe('Messages', () => {
           variables: args,
         }),
       });
-      let json = await response.json();
+      const json = await response.json();
       console.log('MESSAGES:', json.data.messages);
       expect(json.data.messages.nodes).toBeTruthy();
     };

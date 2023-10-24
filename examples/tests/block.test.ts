@@ -24,7 +24,7 @@ describe('Block Info', () => {
     const args = { height: '3412' };
 
     const getBlock = async () => {
-      let response = await fetch('https://beta-4.fuel.network/graphql', {
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ describe('Block Info', () => {
           variables: args,
         }),
       });
-      let json = await response.json();
+      const json = await response.json();
       console.log('BLOCK:', json.data.block);
       expect(json.data.block.id).toBeTruthy();
     };

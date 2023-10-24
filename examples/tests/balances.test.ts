@@ -31,7 +31,7 @@ describe('Balances', () => {
     };
 
     const getBalances = async () => {
-      let response = await fetch('https://beta-4.fuel.network/graphql', {
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ describe('Balances', () => {
           variables: args,
         }),
       });
-      let json = await response.json();
+      const json = await response.json();
       console.log('BALANCES:', json.data.balances);
       expect(json.data.balances.nodes).toBeTruthy();
     };

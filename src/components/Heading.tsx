@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { cssObj } from '@fuel-ui/css';
+import { Heading as FuelHeading } from '@fuel-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { cssObj } from '@fuel-ui/css';
-import { Heading as FuelHeading } from '@fuel-ui/react';
 
 export function Heading({ children, ...props }: any) {
   const [link, setLink] = useState<string>();

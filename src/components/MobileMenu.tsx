@@ -3,8 +3,8 @@ import { cssObj } from '@fuel-ui/css';
 import { Box, IconButton, Icon } from '@fuel-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { AnimationProps } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 import { Search } from './Search';
 import { Sidebar } from './Sidebar';

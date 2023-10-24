@@ -83,7 +83,7 @@ describe('Latest transactions', () => {
         }`;
 
     const getLatestTransactions = async () => {
-      let response = await fetch('https://beta-4.fuel.network/graphql', {
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ describe('Latest transactions', () => {
           query: LATEST_TRANSACTIONS_QUERY,
         }),
       });
-      let json = await response.json();
+      const json = await response.json();
       console.log('TRANSACTIONS:', json.data.transactions);
       expect(json.data.transactions.nodes.length).toBeTruthy();
     };

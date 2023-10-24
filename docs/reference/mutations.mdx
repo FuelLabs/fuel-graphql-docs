@@ -7,11 +7,11 @@ category: Reference
 
 ## `dryRun`
 
-A mutation that spins up a new temporary node from the current state and emulates a given transaction. 
-It returns a [`[Receipt!]!`](/docs/reference/objects/#receipt) for the emulated transaction. 
+A mutation that spins up a new temporary node from the current state and emulates a given transaction.
+It returns a [`[Receipt!]!`](/docs/reference/objects/#receipt) for the emulated transaction.
 You can optionally use UTXO validation.
 
-**args:**
+### `dryRun` `args`
 
 `tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
@@ -24,7 +24,7 @@ Whether or not to use UTXO validation.
 
 A mutation that produces blocks, that can be used for testing that requires block advancement. Returns a [`U32!`](/docs/reference/scalars/#u32).
 
-**args**
+### `produceBlocks` `args`
 
 `startTimestamp`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
@@ -38,7 +38,7 @@ The number of blocks to produce.
 
 A mutation that submits transaction to the transaction pool and returns a [`Transaction!`](/docs/reference/objects/#transaction).
 
-**args**
+### `submit` `args`
 
 `tx:` [`HexString!`](/docs/reference/scalars/#hexstring)
 

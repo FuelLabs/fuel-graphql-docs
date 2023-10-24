@@ -88,7 +88,7 @@ describe('Transactions by owner', () => {
     };
 
     const getTransactions = async () => {
-      let response = await fetch('https://beta-4.fuel.network/graphql', {
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ describe('Transactions by owner', () => {
           variables: args,
         }),
       });
-      let json = await response.json();
+      const json = await response.json();
       console.log('TRANSACTIONS:', json.data.transactionsByOwner);
       expect(json.data.transactionsByOwner.nodes.length).toBeTruthy();
     };

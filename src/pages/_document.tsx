@@ -1,8 +1,6 @@
 import { getCssText } from '@fuel-ui/css';
+import { loadIcons } from '@fuel-ui/react';
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
-import {
-  loadIcons,
-} from '@fuel-ui/react';
 
 loadIcons('/sprite.svg');
 
