@@ -2,11 +2,6 @@ node_modules
 *.js
 *.html
 dist
-CHANGELOG.md
 .eslintrc.js
 .next
 docs
-public/shiki
-guide-examples
-.contentlayer
-src/generated
