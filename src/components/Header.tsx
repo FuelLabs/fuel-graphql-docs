@@ -2,26 +2,19 @@ import { cssObj } from '@fuel-ui/css';
 import { Box, Icon } from '@fuel-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-// import { usePathname } from 'next/navigation';
 
 import { MobileMenu } from './MobileMenu';
 import { Search } from './Search';
 
 export function Header() {
-  // const pathname = usePathname();
-  // const isDocsActive = pathname?.startsWith('/docs');
 
   return (
     <Box.Flex as="header" css={styles.root}>
       <Box css={{ flex: 1 }}>
         <Link href="/" className="logo">
-          {/* <FuelLogo size={40} /> */}
           <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
           <Box.Flex css={styles.logoText}>
             <span>Fuel GraphQL Docs</span>
-            {/* <Box as="span" css={styles.version}>
-              alpha
-            </Box> */}
           </Box.Flex>
         </Link>
       </Box>
