@@ -10,8 +10,8 @@ import * as GQLExamples from '../../examples';
 
 import { Blockquote } from './Blockquote';
 import { Code } from './Code';
-import { CodeImport } from './CodeImport';
 import { CodeExamples } from './CodeExamples';
+import { CodeImport } from './CodeImport';
 import { Heading } from './Heading';
 import { Link } from './Link';
 import { UL } from './List';
@@ -37,7 +37,7 @@ const components = {
   CodeImport,
   Player,
   GQLExamples,
-  CodeExamples
+  CodeExamples,
 };
 
 type ProviderProps = {

@@ -26,3 +26,36 @@ jobs:
     with:
       doc-folder-path: 'docs'
       src-folder-path: 'src'
+
+  lint-code:
+    name: Lint Code
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Run lint
+        run: |
+          npm install
+          npm run check:prod
+
+  lint-docs:
+    name: Lint Docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      # RUN LINT CHECK
+      - name: Lint Check
+        run: |
+          npm install
+          npm run lint:docs:check
+
+

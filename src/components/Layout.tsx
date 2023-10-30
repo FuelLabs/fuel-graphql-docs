@@ -13,7 +13,9 @@ type LayoutProps = {
 };
 
 export function Layout({ title, children }: LayoutProps) {
-  const titleText = title ? `${title} | Fuel GraphQL Docs` : 'Fuel GraphQL Docs';
+  const titleText = title
+    ? `${title} | Fuel GraphQL Docs`
+    : 'Fuel GraphQL Docs';
   return (
     <>
       <Head>

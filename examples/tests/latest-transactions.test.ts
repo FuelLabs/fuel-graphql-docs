@@ -1,18 +1,19 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import { createClient } from "urql";
-import "isomorphic-fetch";
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { Client, cacheExchange, fetchExchange } from 'urql';
+import 'isomorphic-fetch';
 
 const apolloClient = new ApolloClient({
-  uri: "https://beta-4.fuel.network/graphql",
+  uri: 'https://beta-4.fuel.network/graphql',
   cache: new InMemoryCache(),
 });
 
-const urqlClient = createClient({
-  url: "https://beta-4.fuel.network/graphql",
+const urqlClient = new Client({
+  url: 'https://beta-4.fuel.network/graphql',
+  exchanges: [cacheExchange, fetchExchange],
 });
 
-describe("Latest transactions", () => {
-  test("get latest transactions with ts", async () => {
+describe('Latest transactions', () => {
+  test('get latest transactions with ts', async () => {
     const LATEST_TRANSACTIONS_QUERY = `
       query LatestTransactions {
           transactions(last: 5) {
@@ -82,25 +83,25 @@ describe("Latest transactions", () => {
         }`;
 
     const getLatestTransactions = async () => {
-      let response = await fetch("https://beta-4.fuel.network/graphql", {
-        method: "POST",
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           query: LATEST_TRANSACTIONS_QUERY,
         }),
       });
-      let json = await response.json();
-      console.log("TRANSACTIONS:", json.data.transactions);
+      const json = await response.json();
+      console.log('TRANSACTIONS:', json.data.transactions);
       expect(json.data.transactions.nodes.length).toBeTruthy();
     };
 
     await getLatestTransactions();
   });
 
-  test("get latest transactions with apollo", async () => {
+  test('get latest transactions with apollo', async () => {
     const LATEST_TRANSACTIONS_QUERY = `
       query LatestTransactions {
           transactions(last: 5) {
@@ -171,16 +172,16 @@ describe("Latest transactions", () => {
 
     const getLatestTransactions = async () => {
       const response = await apolloClient.query({
-        query: gql(LATEST_TRANSACTIONS_QUERY)
+        query: gql(LATEST_TRANSACTIONS_QUERY),
       });
-      console.log("TRANSACTIONS:", response.data.transactions);
+      console.log('TRANSACTIONS:', response.data.transactions);
       expect(response.data.transactions.nodes.length).toBeTruthy();
     };
 
     await getLatestTransactions();
   });
 
-  test("get latest transactions with urql", async () => {
+  test('get latest transactions with urql', async () => {
     const LATEST_TRANSACTIONS_QUERY = `
       query LatestTransactions {
           transactions(last: 5) {
@@ -250,8 +251,10 @@ describe("Latest transactions", () => {
         }`;
 
     const getLatestTransactions = async () => {
-      const response = await urqlClient.query(LATEST_TRANSACTIONS_QUERY, undefined).toPromise();
-      console.log("TRANSACTIONS:", response.data.transactions);
+      const response = await urqlClient
+        .query(LATEST_TRANSACTIONS_QUERY, undefined)
+        .toPromise();
+      console.log('TRANSACTIONS:', response.data.transactions);
       expect(response.data.transactions.nodes.length).toBeTruthy();
     };
 

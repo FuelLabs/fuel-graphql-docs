@@ -1,16 +1,15 @@
 import { cssObj } from '@fuel-ui/css';
 import { Box } from '@fuel-ui/react';
+import { useDocContext } from '~/src/hooks/useDocContext';
 
 import { SidebarLink } from './SidebarLink';
 import { SidebarSubmenu } from './SidebarSubmenu';
 
-import { useDocContext } from '~/src/hooks/useDocContext';
-
 interface SidebarProps {
-  handleClick: () => void
+  handleClick: () => void;
 }
 
-export function Sidebar({handleClick}: SidebarProps) {
+export function Sidebar({ handleClick }: SidebarProps) {
   const { links } = useDocContext();
   return (
     <Box as="nav" css={styles.root}>
@@ -18,7 +17,11 @@ export function Sidebar({handleClick}: SidebarProps) {
         return link.slug ? (
           <SidebarLink handleClick={handleClick} key={link.slug} item={link} />
         ) : (
-          <SidebarSubmenu handleClick={handleClick} key={link.subpath} {...link} />
+          <SidebarSubmenu
+            handleClick={handleClick}
+            key={link.subpath}
+            {...link}
+          />
         );
       })}
     </Box>

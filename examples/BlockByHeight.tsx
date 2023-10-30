@@ -1,4 +1,4 @@
-import { Query } from "./query";
+import { Query } from './query';
 
 export function BlockByHeight() {
   const query = `query Block($height: U64) {
@@ -8,7 +8,7 @@ export function BlockByHeight() {
   }`;
 
   const args = {
-    height: "3412"
+    height: '3412',
   };
 
   return <Query query={query} args={args} />;

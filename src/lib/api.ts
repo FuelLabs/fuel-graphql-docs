@@ -5,13 +5,12 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { join } from 'path';
 import remarkGfm from 'remark-gfm';
 import remarkSlug from 'remark-slug';
-
-import { codeImport } from './code-import';
-import { codeExamples } from './code-examples';
-import { rehypeExtractHeadings } from './toc';
-
 import { DOCS_REPO_LINK, FIELDS } from '~/src/constants';
 import type { DocType, NodeHeading, SidebarLinkItem } from '~/src/types';
+
+import { codeExamples } from './code-examples';
+import { codeImport } from './code-import';
+import { rehypeExtractHeadings } from './toc';
 
 const DOCS_DIRECTORY = join(process.cwd(), './docs');
 
@@ -44,7 +43,7 @@ export async function getDocBySlug(
     fullpath.replace(process.cwd(), '')
   ).replace('https:/', 'https://');
 
-  let pageLink = tempPageLink.replace("/docs/","/blob/main/docs/")
+  const pageLink = tempPageLink.replace('/docs/', '/blob/main/docs/');
 
   const doc = {
     pageLink,
@@ -96,9 +95,9 @@ export async function getSidebarLinks(order: string[]) {
     if (!doc.category) {
       return list.concat({ slug: doc.slug, label: doc.title });
     }
-    
+
     const categoryIdx = list.findIndex((l) => {
-      return l?.label === doc.category
+      return l?.label === doc.category;
     });
     /** Insert category item based on order prop */
     if (categoryIdx >= 0) {
@@ -137,13 +136,13 @@ export async function getSidebarLinks(order: string[]) {
     /** Sort categoried links */
     .map((link) => {
       if (!link.submenu) return link;
-      const catOrder = link.label == "Reference" ? REFERENCE_MENU_ORDER : HOW_TO_USE_GRAPHQL_ORDER
-      const submenu = link.submenu
-      .sort(
-        (a, b) => {
-        return catOrder.indexOf(`${a.label}`) - catOrder.indexOf(`${b.label}`)
-        }
-      );
+      const catOrder =
+        link.label == 'Reference'
+          ? REFERENCE_MENU_ORDER
+          : HOW_TO_USE_GRAPHQL_ORDER;
+      const submenu = link.submenu.sort((a, b) => {
+        return catOrder.indexOf(`${a.label}`) - catOrder.indexOf(`${b.label}`);
+      });
       return { ...link, submenu };
     });
 

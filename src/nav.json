@@ -6,10 +6,7 @@
     "How To Use GraphQL",
     "Reference"
   ],
-  "how_to_use_graphql": [
-    "What is GraphQL?",
-    "Schema & Type System"
-  ],
+  "how_to_use_graphql": ["What is GraphQL?", "Schema & Type System"],
   "reference": [
     "Scalars",
     "Enums",

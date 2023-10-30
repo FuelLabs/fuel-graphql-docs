@@ -3,8 +3,8 @@ import { cssObj } from '@fuel-ui/css';
 import { Box, IconButton, Icon } from '@fuel-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { AnimationProps } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 import { Search } from './Search';
 import { Sidebar } from './Sidebar';
@@ -38,7 +38,7 @@ export function MobileMenu() {
       icon={showing ? Icon.is('X') : Icon.is('List')}
       iconSize={30}
       aria-label="Menu"
-      onPress={toggle}
+      onClick={toggle}
     />
   );
 
@@ -52,7 +52,7 @@ export function MobileMenu() {
     >
       <Box.Flex css={styles.menu}>
         <Box.Flex>
-        <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
+          <Image alt="Fuel Logo" src="/Fuel_Logo.png" height={30} width={30} />
           <a
             href="https://github.com/FuelLabs/fuel-graphql-docs"
             target="_blank"

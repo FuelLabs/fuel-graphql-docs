@@ -1,18 +1,19 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import { createClient } from "urql";
-import "isomorphic-fetch";
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { Client, cacheExchange, fetchExchange } from 'urql';
+import 'isomorphic-fetch';
 
 const apolloClient = new ApolloClient({
-  uri: "https://beta-4.fuel.network/graphql",
+  uri: 'https://beta-4.fuel.network/graphql',
   cache: new InMemoryCache(),
 });
 
-const urqlClient = createClient({
-  url: "https://beta-4.fuel.network/graphql",
+const urqlClient = new Client({
+  url: 'https://beta-4.fuel.network/graphql',
+  exchanges: [cacheExchange, fetchExchange],
 });
 
-describe("Transactions by owner", () => {
-  test("get transactions with ts", async () => {
+describe('Transactions by owner', () => {
+  test('get transactions with ts', async () => {
     const TRANSACTIONS_BY_OWNER_QUERY = `
       query Transactions($address: Address) {
         transactionsByOwner(owner: $address, first: 5) {
@@ -83,30 +84,30 @@ describe("Transactions by owner", () => {
 
     const args = {
       address:
-        "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
     };
 
     const getTransactions = async () => {
-      let response = await fetch("https://beta-4.fuel.network/graphql", {
-        method: "POST",
+      const response = await fetch('https://beta-4.fuel.network/graphql', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           query: TRANSACTIONS_BY_OWNER_QUERY,
           variables: args,
         }),
       });
-      let json = await response.json();
-      console.log("TRANSACTIONS:", json.data.transactionsByOwner);
+      const json = await response.json();
+      console.log('TRANSACTIONS:', json.data.transactionsByOwner);
       expect(json.data.transactionsByOwner.nodes.length).toBeTruthy();
     };
 
     await getTransactions();
   });
 
-  test("get transactions with apollo", async () => {
+  test('get transactions with apollo', async () => {
     const TRANSACTIONS_BY_OWNER_QUERY = `
       query Transactions($address: Address) {
         transactionsByOwner(owner: $address, first: 5) {
@@ -177,7 +178,7 @@ describe("Transactions by owner", () => {
 
     const args = {
       address:
-        "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
     };
 
     const getTransactions = async () => {
@@ -185,14 +186,14 @@ describe("Transactions by owner", () => {
         query: gql(TRANSACTIONS_BY_OWNER_QUERY),
         variables: args,
       });
-      console.log("TRANSACTIONS:", response.data.transactionsByOwner);
+      console.log('TRANSACTIONS:', response.data.transactionsByOwner);
       expect(response.data.transactionsByOwner.nodes.length).toBeTruthy();
     };
 
     await getTransactions();
   });
 
-  test("get transactions with urql", async () => {
+  test('get transactions with urql', async () => {
     const TRANSACTIONS_BY_OWNER_QUERY = `
       query Transactions($address: Address) {
         transactionsByOwner(owner: $address, first: 5) {
@@ -263,12 +264,14 @@ describe("Transactions by owner", () => {
 
     const args = {
       address:
-        "0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871",
+        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
     };
 
     const getTransactions = async () => {
-      const response = await urqlClient.query(TRANSACTIONS_BY_OWNER_QUERY, args).toPromise();
-      console.log("TRANSACTIONS:", response.data.transactionsByOwner);
+      const response = await urqlClient
+        .query(TRANSACTIONS_BY_OWNER_QUERY, args)
+        .toPromise();
+      console.log('TRANSACTIONS:', response.data.transactionsByOwner);
       expect(response.data.transactionsByOwner.nodes.length).toBeTruthy();
     };
 

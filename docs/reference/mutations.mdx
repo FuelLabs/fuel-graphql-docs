@@ -7,11 +7,13 @@ category: Reference
 
 ## `dryRun`
 
-A mutation that spins up a new temporary node from the current state and emulates a given transaction. It returns a <a href="/docs/reference/objects/#receipt">`[Receipt!]!`</a> for the emulated transaction. You can optionally use UTXO validation.
+A mutation that spins up a new temporary node from the current state and emulates a given transaction.
+It returns a [`[Receipt!]!`](/docs/reference/objects/#receipt) for the emulated transaction.
+You can optionally use UTXO validation.
 
-**args:**
+### `dryRun` `args`
 
-`tx`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.
 
@@ -20,24 +22,24 @@ Whether or not to use UTXO validation.
 
 ## `produceBlocks`
 
-A mutation that produces blocks, that can be used for testing that requires block advancement. Returns a <a href="/docs/reference/scalars/#u32">`U32!`</a>.
+A mutation that produces blocks, that can be used for testing that requires block advancement. Returns a [`U32!`](/docs/reference/scalars/#u32).
 
-**args**
+### `produceBlocks` `args`
 
-`startTimestamp`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+`startTimestamp`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
 The start time of the produced block.
 
-`blocksToProduce`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`blocksToProduce`: [`U64!`](/docs/reference/scalars/#u64)
 
 The number of blocks to produce.
 
 ## `submit`
 
-A mutation that submits transaction to the transaction pool and returns a <a href="/docs/reference/objects/#transaction">`Transaction!`</a>.
+A mutation that submits transaction to the transaction pool and returns a [`Transaction!`](/docs/reference/objects/#transaction).
 
-**args**
+### `submit` `args`
 
-`tx:` <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`tx:` [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.

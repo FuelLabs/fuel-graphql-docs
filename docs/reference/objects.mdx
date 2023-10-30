@@ -11,15 +11,15 @@ The balance of a particular asset for a wallet address.
 
 **fields:**
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`owner`: [`Address!`](/docs/reference/scalars/#address)
 
 An EOA account represented by 32 bytes.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of the selected asset id as an unsigned 64 bit number.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 A 32 byte representation of the asset.
 
@@ -29,7 +29,7 @@ The filter input type used to filter the `balances` query.
 
 **fields:**
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`owner`: [`Address!`(/docs/reference/scalars/#address)
 
 The owner address of the balances.
 
@@ -39,19 +39,19 @@ Information about a block in the network.
 
 **fields:**
 
-`id`: <a href="/docs/reference/scalars/#blockid">`BlockId!`</a>
+`id`: [`BlockId!`](/docs/reference/scalars/#blockid)
 
 A unique identifier for the block.
 
-`header`: <a href="#header">`Header!`</a>
+`header`: [`Header!`](#header)
 
 Metadata about a block.
 
-`consensus`: <a href="/docs/reference/unions/#consensus">`Consensus!`</a>
+`consensus`: [`Consensus!`](/docs/reference/unions/#consensus)
 
 The type of consensus used.
 
-`transactions`: <a href="#transaction">`[Transaction!]!`</a>
+`transactions`: [`[Transaction!]!`](#transaction)
 
 An array of transactions included in the block.
 
@@ -65,11 +65,11 @@ Information about the base chain. At a very high level `chainInfo` helps you und
 
 The human-readable string name of the chain. i.e. beta-4
 
-`latestBlock`: <a href="#block">`Block!`</a>
+`latestBlock`: [`Block!`](#block)
 
 The most recently created block.
 
-`baseChainHeight`: <a href="/docs/reference/scalars/#u32">`U32!`</a>
+`baseChainHeight`: [`U32!`](/docs/reference/scalars/#u32)
 
 Returns 0 (in development mode, this will change). This should return the height of the chain at start.
 
@@ -77,11 +77,11 @@ Returns 0 (in development mode, this will change). This should return the height
 
 The number of nodes that node is peered with.
 
-`consensusParameters`: <a href="#consensusparameters">`ConsensusParameters!`</a>
+`consensusParameters`: [`ConsensusParameters!`](#consensusparameters)
 
 The consensus parameters used to validate blocks.
 
-`gasCosts`: <a href="#gascosts">`GasCosts!`</a>
+`gasCosts`: [`GasCosts!`](#gascosts)
 
 The gas cost of each opcode.
 
@@ -91,15 +91,15 @@ A transaction output that changes the unspent coins in a UTXO.
 
 **fields:**
 
-`to`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`to`: [`Address!`](/docs/reference/scalars/#address)
 
 The recipient address of the coins.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of coins.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id for the coins.
 
@@ -109,37 +109,33 @@ Information about a coin.
 
 **fields:**
 
-`utxoId`: <a href="/docs/reference/scalars/#utxoid">`UtxoId!`</a>
+`utxoId`: [`UtxoId!`](/docs/reference/scalars/#utxoid)
 
 A unique 32 byte identifier for a UTXO.
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`owner`: [`Address!`](/docs/reference/scalars/#address)
 
 The owner address of the coins.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of coins.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id of the coin.
 
-`maturity`: <a href="/docs/reference/scalars/#u32">`U32!`</a>
+`maturity`: [`U32!`](/docs/reference/scalars/#u32)
 
 The UTXO being spent must have been created at least this many blocks ago.
 
-`blockCreated`: <a href="/docs/reference/scalars/#u32">`U32!`</a>
+`blockCreated`: [`U32!`](/docs/reference/scalars/#u32)
 
 The block when the coins were created.
 
-`txCreatedIdx`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`txCreatedIdx`: [`U64!`](/docs/reference/scalars/#u64)
 
 The index of the transaction that created this coin.
-
-> `status`: <a href="/docs/reference/enums/#coinstatus">`CoinStatus!`</a><sup>_(beta-3 only)_</sup>
-
-> The status of the coin, either `SPENT` or `UNSPENT`.
 
 ## `CoinFilterInput`
 
@@ -147,11 +143,11 @@ The filter input type for the `coins` query.
 
 **fields:**
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`owner`: [`Address!`](/docs/reference/scalars/#address)
 
 The owner of the coins.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId`</a>
+`assetId`: [`AssetId`](/docs/reference/scalars/#assetid)
 
 The asset id of the coins.
 
@@ -161,15 +157,15 @@ A type representing a coin output.
 
 **fields:**
 
-`to`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`to`: [`Address!`](/docs/reference/scalars/#address)
 
 The receiver address of the output coins.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of coins in the output.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id for the output coins.
 
@@ -179,63 +175,63 @@ The consensus parameters used for validating blocks.
 
 **fields:**
 
-`contractMaxSize`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`contractMaxSize`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum contract size, in bytes.
 
-`maxInputs`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxInputs`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum number of inputs.
 
-`maxOutputs`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxOutputs`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum number of outputs.
 
-`maxWitnesses`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxWitnesses`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum number of witnesses.
 
-`maxGasPerTx`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxGasPerTx`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum gas per transaction.
 
-`maxScriptLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxScriptLength`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum length of a script, in instructions.
 
-`maxGasPerPredicate`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxGasPerPredicate`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum gas per predicate transaction.
 
-`maxScriptDataLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxScriptDataLength`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum length of script data, in bytes.
 
-`maxStorageSlots`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxStorageSlots`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum number of initial storage slots.
 
-`maxPredicateLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxPredicateLength`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum length of a predicate, in instructions.
 
-`maxPredicateDataLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxPredicateDataLength`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum length of predicate data, in bytes.
 
-`gasPriceFactor`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`gasPriceFactor`: [`U64!`](/docs/reference/scalars/#u64)
 
 A factor to convert between gas and the transaction assets value.
 
-`gasPerByte`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`gasPerByte`: [`U64!`](/docs/reference/scalars/#u64)
 
 A fixed ratio linking metered bytes to a gas price.
 
-`maxMessageDataLength`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxMessageDataLength`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum length of message data, in bytes.
 
-`chainId`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`chainId`: [`U64!`](/docs/reference/scalars/#u64)
 
 A unique identifier for the chain.
 
@@ -245,15 +241,15 @@ An object representing a deployed contract.
 
 **fields:**
 
-`id`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+`id`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
 The contract address.
 
-`bytecode`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`bytecode`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The contract bytecode.
 
-`salt`: <a href="/docs/reference/scalars/#salt">`Salt!`</a>
+`salt`: [`Salt!`](/docs/reference/scalars/#salt)
 
 A unique identifier for the contract.
 
@@ -263,15 +259,15 @@ An object representing the balance of a deployed contract for a certain asset.
 
 **fields:**
 
-`contract`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+`contract`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
 The contract address.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The contract balance for the given asset.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id for the coins.
 
@@ -281,7 +277,7 @@ The filter input type for the `contractBalances` query.
 
 **fields:**
 
-`contract`: <a href="/docs/reference/scalars/#contractid">`ContractId!`</a>
+`contract`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
 The contract id that the query will return balances for.
 
@@ -291,11 +287,11 @@ The output type from deploying a contract.
 
 **fields:**
 
-`contract`: <a href="#contract">`Contract!`</a>
+`contract`: [`Contract!`](#contract)
 
 The contract that was created.
 
-`stateRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`stateRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The initial state root of contract.
 
@@ -309,11 +305,11 @@ The output type from a transaction that changed the state of a contract.
 
 The index of the input.
 
-`balanceRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`balanceRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The root of amount of coins owned by contract after transaction execution.
 
-`stateRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`stateRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The state root of contract after transaction execution.
 
@@ -323,11 +319,11 @@ Contains the dependent cost of opcodes.
 
 **fields:**
 
-`base`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`base`: [`U64!`](/docs/reference/scalars/#u64)
 
 The base gas cost.
 
-`depPerUnit`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`depPerUnit`: [`U64!`](/docs/reference/scalars/#u64)
 
 The dependent gas cost per unit.
 
@@ -337,11 +333,11 @@ The input type for the `resourcesToSpend` query that defines what utxos and mess
 
 **fields:**
 
-`utxos`: <a href="/docs/reference/scalars/#utxoid">`[UtxoId!]!`</a>
+`utxos`: [`[UtxoId!]!`](/docs/reference/scalars/#utxoid)
 
 An array of utxo IDs to exclude.
 
-`messages`: <a href="/docs/reference/scalars/#nonce">`[Nonce!]!`</a>
+`messages`: [`[Nonce!]!`](/docs/reference/scalars/#nonce)
 
 An array of message IDs to exclude.
 
@@ -351,11 +347,11 @@ The status type of a transaction that has failed.
 
 **fields:**
 
-`block`: <a href="#block">`Block!`</a>
+`block`: [`Block!`](#block)
 
 The block number for the failed transaction.
 
-`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+`time`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
 The time the transaction failed.
 
@@ -363,7 +359,7 @@ The time the transaction failed.
 
 The reason why the transaction failed.
 
-`programState`: <a href="#programstate">`ProgramState`</a>
+`programState`: [`ProgramState`](#programstate)
 
 The state of the program execution.
 
@@ -373,411 +369,411 @@ The breakdown of the gas costs of each opcode.
 
 **fields:**
 
-`add`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`add`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$add` ALU opcode.
 
-`addi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`addi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$addi` ALU opcode.
 
-`aloc`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`aloc`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$aloc` memory opcode.
 
-`and`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`and`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$and` ALU opcode.
 
-`andi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`andi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$andi` ALU opcode.
 
-`bal`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`bal`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$bal` contract opcode.
 
-`bhei`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`bhei`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$bhei` contract opcode.
 
-`bhsh`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`bhsh`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$bhsh` contract opcode.
 
-`burn`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`burn`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$burn` contract opcode.
 
-`cb`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`cb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$cb` contract opcode.
 
-`cfei`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`cfei`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$cfei` memory opcode.
 
-`cfsi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`cfsi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$cfsi` memory opcode.
 
-`croo`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`croo`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$croo` contract opcode.
 
-`div`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`div`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$div` ALU opcode.
 
-`divi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`divi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$divi` ALU opcode.
 
-`ecr1`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`ecr1`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$ecr1` cryptographic opcode.
 
-`eck1`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`eck1`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$eck1` cryptographic opcode.
 
-`ed19`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`ed19`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$ed19` cryptographic opcode.
 
-`eq`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`eq`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$eq` ALU opcode.
 
-`exp`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`exp`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$exp` ALU opcode.
 
-`expi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`expi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$expi` ALU opcode.
 
-`flag`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`flag`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$flag` opcode.
 
-`gm`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`gm`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$gm` opcode.
 
-`gt`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`gt`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$gt` opcode.
 
-`gtf`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`gtf`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$gtf` ALU opcode.
 
-`ji`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`ji`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$ji` control flow opcode.
 
-`jmp`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jmp`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jmp` control flow opcode.
 
-`jne`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jne`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jne` control flow opcode.
 
-`jnei`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jnei`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jnei` control flow opcode.
 
-`jnzi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jnzi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jnzi` control flow opcode.
 
-`jmpf`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jmpf`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jmpf` control flow opcode.
 
-`jmpb`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jmpb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jmpb` control flow opcode.
 
-`jnzf`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jnzf`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jnzf` control flow opcode.
 
-`jnzb`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jnzb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jnzb` control flow opcode.
 
-`jnef`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jnef`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jnef` control flow opcode.
 
-`jneb`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`jneb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$jneb` control flow opcode.
 
-`k256`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`k256`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$k256` cryptographic opcode.
 
-`lb`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`lb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$lb` memory opcode.
 
-`log`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`log`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$log` contract opcode.
 
-`lt`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`lt`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$lt` ALU opcode.
 
-`lw`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`lw`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$lw` memory opcode.
 
-`mcpi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`mcpi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$mcpi` memory opcode.
 
-`mint`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`mint`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$mint` contract opcode.
 
-`mlog`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`mlog`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$mlog` ALU opcode.
 
-`modOp`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`modOp`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$modOp` opcode.
 
-`modi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`modi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$modi` ALU opcode.
 
-`moveOp`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`moveOp`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$moveOp` ALU opcode.
 
-`movi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`movi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$movi` ALU opcode.
 
-`mroo`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`mroo`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$mroo` ALU opcode.
 
-`mul`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`mul`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$mul` ALU opcode.
 
-`muli`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`muli`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$muli` ALU opcode.
 
-`mldv`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`mldv`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$mldv` ALU opcode.
 
-`noop`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`noop`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$noop` ALU opcode.
 
-`not`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`not`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$not` ALU opcode.
 
-`or`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`or`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$or` ALU opcode.
 
-`ori`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`ori`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$ori` ALU opcode.
 
-`ret`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`ret`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$ret` opcode.
 
-`rvrt`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`rvrt`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$rvrt` contract opcode.
 
-`s256`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`s256`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$s256` cryptographic opcode.
 
-`sb`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`sb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$sb` memory opcode.
 
-`scwq`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`scwq`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$scwq` contract opcode.
 
-`sll`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`sll`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$sll` ALU opcode.
 
-`slli`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`slli`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$slli` ALU opcode.
 
-`srl`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`srl`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$srl` ALU opcode.
 
-`srli`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`srli`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$srli` ALU opcode.
 
-`srw`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`srw`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$srw` contract opcode.
 
-`sub`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`sub`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$sub` ALU opcode.
 
-`subi`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`subi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$subi` ALU opcode.
 
-`sw`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`sw`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$sw` memory opcode.
 
-`sww`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`sww`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$sww` contract opcode.
 
-`swwq`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`swwq`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$swwq` contract opcode.
 
-`time`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`time`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$time` contract opcode.
 
-`tr`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`tr`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$tr` contract opcode.
 
-`tro`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`tro`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$tro` contract opcode.
 
-`wdcm`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wdcm`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wdcm` ALU opcode.
 
-`wqcm`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wqcm`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wqcm` ALU opcode.
 
-`wdop`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wdop`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wdop` ALU opcode.
 
-`wqop`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wqop`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wqop` ALU opcode.
 
-`wdml`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wdml`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wdml` ALU opcode.
 
-`wqml`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wqml`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wqml` ALU opcode.
 
-`wddv`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wddv`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wddv` ALU opcode.
 
-`wqdv`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wqdv`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wqdv` ALU opcode.
 
-`wdmd`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wdmd`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wdmd` ALU opcode.
 
-`wqmd`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wqmd`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wqmd` ALU opcode.
 
-`wdam`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wdam`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wdam` ALU opcode.
 
-`wqam`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wqam`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wqam` ALU opcode.
 
-`wdmm`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wdmm`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wdmm` ALU opcode.
 
-`wqmm`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`wqmm`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$wqmm` ALU opcode.
 
-`xor`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`xor`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$xor` ALU opcode.
 
-`xori`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`xori`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$xori` ALU opcode.
 
-`call`: <a href="#dependentcost">`DependentCost!`</a>
+`call`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$call` contract opcode.
 
-`ccp`: <a href="#dependentcost">`DependentCost!`</a>
+`ccp`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$ccp` contract opcode.
 
-`csiz`: <a href="#dependentcost">`DependentCost!`</a>
+`csiz`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$csiz` contract opcode.
 
-`ldc`: <a href="#dependentcost">`DependentCost!`</a>
+`ldc`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$ldc` contract opcode.
 
-`logd`: <a href="#dependentcost">`DependentCost!`</a>
+`logd`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$logd` contract opcode.
 
-`mcl`: <a href="#dependentcost">`DependentCost!`</a>
+`mcl`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$mcl` memory opcode.
 
-`mcli`: <a href="#dependentcost">`DependentCost!`</a>
+`mcli`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$mcli` memory opcode.
 
-`mcp`: <a href="#dependentcost">`DependentCost!`</a>
+`mcp`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$mcp` memory opcode.
 
-`meq`: <a href="#dependentcost">`DependentCost!`</a>
+`meq`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$meq` memory opcode.
 
-`retd`: <a href="#dependentcost">`DependentCost!`</a>
+`retd`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$retd` contract opcode.
 
-`smo`: <a href="#dependentcost">`DependentCost!`</a>
+`smo`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$smo` contract opcode.
 
-`srwq`: <a href="#dependentcost">`DependentCost!`</a>
+`srwq`: [`DependentCost!`](#dependentcost)
 
 The `dependent` gas cost of using the `$srwq` contract opcode.
 
@@ -787,19 +783,19 @@ The genesis consensus type.
 
 **fields:**
 
-`chainConfigHash`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`chainConfigHash`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The chain configuration hash. The chain configuration defines what consensus type to use, what settlement layer to use, and the rules of block validity.
 
-`coinsRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`coinsRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The binary Merkle tree root of all genesis coins.
 
-`contractsRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`contractsRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The binary Merkle tree root of state, balances, and the contracts code hash of each contract.
 
-`messagesRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`messagesRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The binary merkle tree root of all genesis messages.
 
@@ -809,49 +805,41 @@ The header contains metadata about a certain block.
 
 **fields:**
 
-`id`: <a href="/docs/reference/scalars/#blockid">`BlockId!`</a>
+`id`: [`BlockId!`](/docs/reference/scalars/#blockid)
 
 The current block id.
 
-`daHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`daHeight`: [`U64!`](/docs/reference/scalars/#u64)
 
 The block height for the data availability layer up to which (inclusive) input messages are processed.
 
-`transactionsCount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`transactionsCount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The number of transactions in the block.
 
-`messageReceiptCount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`messageReceiptCount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The number of receipt messages in the block.
 
-`messageReceiptRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`messageReceiptRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The merkle root of the receipt messages in the block.
 
-`height`: <a href="/docs/reference/scalars/#u32">`U32!`</a>
+`height`: [`U32!`](/docs/reference/scalars/#u32)
 
 The block height.
 
-`prevRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`prevRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The merkle root of all previous consensus header hashes (not including this block).
 
-`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+`time`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
 The timestamp for the block.
 
-`applicationHash`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`applicationHash`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The hash of the serialized application header for this block.
-
-> `outputMessagesCount`: <a href="/docs/reference/scalars/#u64">`U64!`</a><sup>_(beta-3 only)_</sup>
-
-> The number of output messages in the block.
-
-> `outputMessagesRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a><sup>_(beta-3 only)_</sup>
-
-> The merkle root of the output messages in the block.
 
 ## `InputCoin`
 
@@ -859,23 +847,23 @@ Information about a coin input.
 
 **fields:**
 
-`utxoId`: <a href="/docs/reference/scalars/#utxoid">`UtxoId!`</a>
+`utxoId`: [`UtxoId!`](/docs/reference/scalars/#utxoid)
 
 A unique 32 byte identifier for the UTXO.
 
-`owner`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`owner`: [`Address!`](/docs/reference/scalars/#address)
 
 The owning address or predicate root.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of coins.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset ID of the coins.
 
-`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer!`</a>
+`txPointer`: [`TxPointer!`](/docs/reference/scalars/#txpointer)
 
 A pointer to the transaction whose output is being spent.
 
@@ -883,19 +871,19 @@ A pointer to the transaction whose output is being spent.
 
 The index of the witness that authorizes spending the coin.
 
-`maturity`: <a href="/docs/reference/scalars/#u32">`U32!`</a>
+`maturity`: [`U32!`](/docs/reference/scalars/#u32)
 
 The UTXO being spent must have been created at least this many blocks ago.
 
-`predicateGasUsed`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`predicateGasUsed`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of gas used in the predicate transaction.
 
-`predicate`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`predicate`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The predicate bytecode.
 
-`predicateData`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`predicateData`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The predicate input parameters.
 
@@ -905,23 +893,23 @@ Information about a contract input.
 
 **fields:**
 
-`utxoId`: <a href="/docs/reference/scalars/#utxoid">`UtxoId!`</a>
+`utxoId`: [`UtxoId!`](/docs/reference/scalars/#utxoid)
 
 A unique 32 byte identifier for the UTXO.
 
-`balanceRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`balanceRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The root of amount of coins owned by contract before transaction execution.
 
-`stateRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32!`</a>
+`stateRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The state root of contract before transaction execution.
 
-`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer!`</a>
+`txPointer`: [`TxPointer!`](/docs/reference/scalars/#txpointer)
 
 A pointer to the TX whose output is being spent.
 
-`contract`: <a href="#contract">`Contract!`</a>
+`contract`: [`Contract!`](#contract)
 
 The input contract.
 
@@ -931,19 +919,19 @@ Information about a message input.
 
 **fields:**
 
-`sender`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`sender`: [`Address!`](/docs/reference/scalars/#address)
 
 The sender address of the message.
 
-`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`recipient`: [`Address!`](/docs/reference/scalars/#address)
 
 The recipient address of the message.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount sent in the message.
 
-`nonce`: <a href="/docs/reference/scalars/#nonce">`Nonce!`</a>
+`nonce`: [`Nonce!`](/docs/reference/scalars/#nonce)
 
 A nonce value for the message input, which is determined by the sending system and is published at the time the message is sent.
 
@@ -951,43 +939,33 @@ A nonce value for the message input, which is determined by the sending system a
 
 The index of witness that authorizes spending the coin.
 
-`predicateGasUsed`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`predicateGasUsed`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of gas used in the predicate transaction.
 
-`data`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`data`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The message data.
 
-`predicate`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`predicate`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The predicate bytecode.
 
-`predicateData`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`predicateData`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The predicate input parameters.
 
-> `messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a><sup>_(beta-3 only)_</sup>
-
-> A unique id for the message. The ID of a message is computed as the hash of:
-
-- the sender address as byte[32],
-- the recipient address as byte[32],
-- the Message nonce as byte[32],
-- the amount being sent with the message as uint64,
-- the message data as byte[]
-
 ## `MerkleProof`
 
-Information about a merkelproof. 
+Information about a merkelproof.
 
 **fields:**
 
-`proofSet`: <a href="/docs/reference/scalars/#bytes32">`[Bytes32!]!`</a>=
+`proofSet`: [`[Bytes32!]!`](/docs/reference/scalars/#bytes32)
 
 The proof set of the message proof.
 
-`proofIndex`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`proofIndex`: [`U64!`](/docs/reference/scalars/#u64)
 
 The index used to generate this proof.
 
@@ -997,23 +975,23 @@ Contains information about a message.
 
 **fields:**
 
-`messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId!`</a>
+`messageId`: [`MessageId!`](/docs/reference/scalars/#messageid)
 
 A unique id for the message.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of base asset coins sent with the message.
 
-`sender`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`sender`: [`Address!`](/docs/reference/scalars/#address)
 
 The address of the message sender.
 
-`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`recipient`: [`Address!`](/docs/reference/scalars/#address)
 
 The recipient of the message.
 
-`nonce`: <a href="/docs/reference/scalars/#nonce">`Nonce!`</a>
+`nonce`: [`Nonce!`](/docs/reference/scalars/#nonce)
 
 The nonce value for the message.
 
@@ -1021,15 +999,9 @@ The nonce value for the message.
 
 The vector with the message data.
 
-`daHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`daHeight`: [`U64!`](/docs/reference/scalars/#u64)
 
 The block height of the data availability layer up to which (inclusive) input messages are processed.
-
-> `status`: <a href="/docs/reference/enums/#messagestatus">`MessageStatus`</a><sup>_(beta-3 only)_</sup>
-
-> The status of the message UTXO.
-
-> The block in which the message is spent.
 
 ## `MessageCoin`
 
@@ -1037,43 +1009,29 @@ Information about message coin
 
 **fields:**
 
-`sender`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`sender`: [`Address!`](/docs/reference/scalars/#address)
 
 The address of the message sender.
 
-`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`recipient`: [`Address!`](/docs/reference/scalars/#address)
 
 The recipient of the message.
 
-`nonce`: <a href="/docs/reference/scalars/#nonce">`Nonce!`</a>
+`nonce`: [`Nonce!`](/docs/reference/scalars/#nonce)
 
 The nonce value for the message.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of base asset coins sent with the message.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId`</a>
+`assetId`: [`AssetId`](/docs/reference/scalars/#assetid)
 
 The asset id of the coins transferred.
 
-`daHeight`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`daHeight`: [`U64!`](/docs/reference/scalars/#u64)
 
 The block height of the data availability layer up to which (inclusive) input messages are processed.
-
-> ## `MessageOutput`<sup>_(beta-3 only)_</sup>
-
-> The output type for a message. When signing a transaction recipient and amount are set to zero. When verifying a predicate or executing a script, recipient and amount are initialized to zero.
-
-> **fields:**
-
-> `recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
-
-> The recipient of the message.
-
-> `amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
-
-> The amount of base asset coins sent with the message.
 
 ## `MessageProof`
 
@@ -1081,57 +1039,41 @@ Information about the message proof.
 
 **fields:**
 
-`messageProof`: <a href="#merkleproof">`MerkleProof!`</a>
+`messageProof`: [`MerkleProof!`](#merkleproof)
 
 The merkle proof of the message.
 
-`blockProof`: <a href="#merkleproof">`MerkleProof!`</a>
+`blockProof`: [`MerkleProof!`](#merkleproof)
 
 The merkle proof of the block.
 
-`messageBlockHeader`: <a href="#header">`Header!`</a>
+`messageBlockHeader`: [`Header!`](#header)
 
 The merkle proof of the message.
 
-`commitBlockHeader`: <a href="#header">`Header!`</a>
+`commitBlockHeader`: [`Header!`](#header)
 
 The merkle proof of the block.
 
-`sender`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`sender`: [`Address!`](/docs/reference/scalars/#address)
 
 The message sender.
 
-`recipient`: <a href="/docs/reference/scalars/#address">`Address!`</a>
+`recipient`: [`Address!`](/docs/reference/scalars/#address)
 
 The message recipient.
 
-`nonce`: <a href="/docs/reference/scalars/#nonce">`Nonce!`</a>
+`nonce`: [`Nonce!`](/docs/reference/scalars/#nonce)
 
 The message nonce.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount sent in the message.
 
-`data`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`data`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The data from the message.
-
-> `proofSet`: <a href="/docs/reference/scalars/#bytes32">`[Bytes32!]!`</a><sup>_(beta-3 only)_</sup>
-
-> The proof set of the message proof.
-
-> `proofIndex`: <a href="/docs/reference/scalars/#u64">`U64!`</a><sup>_(beta-3 only)_</sup>
-
-> The index used to generate this proof.
-
-> `signature`: <a href="/docs/reference/scalars/#signature">`Signature!`</a><sup>_(beta-3 only)_</sup>
-
-> The signature of the Fuel block.
-
-> `header`: <a href="#header">`Header!`</a><sup>_(beta-3 only)_</sup>
-
-> The Fuel block header that contains the message.
 
 ## `NodeInfo`
 
@@ -1147,15 +1089,15 @@ Whether or not the node is using UTXO validation.
 
 Whether or not logging of backtraces from VM errors is enabled.
 
-`minGasPrice`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`minGasPrice`: [`U64!`](/docs/reference/scalars/#u64)
 
 The minimum gas price for the node.
 
-`maxTx`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxTx`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum number of transactions.
 
-`maxDepth`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`maxDepth`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum number of connected UTXOs allowed, excluding contracts.
 
@@ -1169,7 +1111,7 @@ The proof-of-authority (PoA) consensus type.
 
 **fields:**
 
-`signature`: <a href="/docs/reference/scalars/#signature">`Signature!`</a>
+`signature`: [`Signature!`](/docs/reference/scalars/#signature)
 
 The signature of the block produced by PoA consensus.
 
@@ -1179,11 +1121,11 @@ An object representing the state of execution of a transaction.
 
 **fields:**
 
-`returnType`: <a href="/docs/reference/enums/#returntype">`ReturnType!`</a>
+`returnType`: [`ReturnType!`](/docs/reference/enums/#returntype)
 
 The type of return response for the transaction.
 
-`data`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`data`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The data returned from the transaction.
 
@@ -1193,125 +1135,117 @@ An object representing all possible types of receipts.
 
 **fields:**
 
-`contract`: <a href="#contract">`Contract`</a>
+`contract`: [`Contract`](#contract)
 
 The contract that produced the receipt.
 
-`pc`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`pc`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of the program counter register `$pc`, which is the memory address of the current instruction.
 
-`is`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`is`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of register `$is`, which is the pointer to the start of the currently-executing code.
 
-`to`: <a href="#contract">`Contract`</a>
+`to`: [`Contract`](#contract)
 
 The recipient contract.
 
-`toAddress`: <a href="/docs/reference/scalars/#address">`Address`</a>
+`toAddress`: [`Address`](/docs/reference/scalars/#address)
 
 The recipient address.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`amount`: [`U64`](/docs/reference/scalars/#u64)
 
 The amount of coins transferred.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId`</a>
+`assetId`: [`AssetId`](/docs/reference/scalars/#assetid)
 
 The asset id of the coins transferred.
 
-`gas`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`gas`: [`U64`](/docs/reference/scalars/#u64)
 
 The gas used for the transaction.
 
-`param1`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`param1`: [`U64`](/docs/reference/scalars/#u64)
 
 The first parameter for a `CALL` receipt type, holds the function selector.
 
-`param2`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`param2`: [`U64`](/docs/reference/scalars/#u64)
 
 The second parameter for a `CALL` receipt type, typically used for the user-specified input to the ABI function being selected.
 
-`val`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`val`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of registers at the end of execution, used for debugging.
 
-`ptr`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`ptr`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of the pointer register, used for debugging.
 
-`digest`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
+`digest`: [`Bytes32`](/docs/reference/scalars/#bytes32)
 
 A 32-byte hash of `MEM[$rC, $rD]`. The syntax `MEM[x, y]` means the memory range starting at byte `x`, of length `y` bytes.
 
-`reason`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`reason`: [`U64`](/docs/reference/scalars/#u64)
 
 The decimal string representation of an 8-bit unsigned integer for the panic reason. Only returned if the receipt type is `PANIC`.
 
-`ra`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`ra`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of register `$rA`.
 
-`rb`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`rb`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of register `$rB`.
 
-`rc`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`rc`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of register `$rC`.
 
-`rd`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`rd`: [`U64`](/docs/reference/scalars/#u64)
 
 The value of register `$rD`.
 
-`len`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`len`: [`U64`](/docs/reference/scalars/#u64)
 
 The length of the receipt.
 
-`receiptType`: <a href="/docs/reference/enums/#receipttype">`ReceiptType!`</a>
+`receiptType`: [`ReceiptType!`](/docs/reference/enums/#receipttype)
 
 The type of receipt.
 
-`result`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`result`: [`U64`](/docs/reference/scalars/#u64)
 
 `0` if script exited successfully, `any` otherwise.
 
-`gasUsed`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`gasUsed`: [`U64`](/docs/reference/scalars/#u64)
 
 The amount of gas consumed by the script.
 
-`data`: <a href="/docs/reference/scalars/#hexstring">`HexString`</a>
+`data`: [`HexString`](/docs/reference/scalars/#hexstring)
 
 The receipt data.
 
-`sender`: <a href="/docs/reference/scalars/#address">`Address`</a>
+`sender`: [`Address`](/docs/reference/scalars/#address)
 
 The address of the message sender.
 
-`recipient`: <a href="/docs/reference/scalars/#address">`Address`</a>
+`recipient`: [`Address`](/docs/reference/scalars/#address)
 
 The address of the message recipient.
 
-`nonce`: <a href="/docs/reference/scalars/#nonce">`Nonce`</a>
+`nonce`: [`Nonce`](/docs/reference/scalars/#nonce)
 
 The nonce value for a message.
 
-`contractId`: <a href="/docs/reference/scalars/#contractid">`ContractId`</a>
+`contractId`: [`ContractId`](/docs/reference/scalars/#contractid)
 
 The contract id.
 
-`subId`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
+`subId`: [`Bytes32`](/docs/reference/scalars/#bytes32)
 
 The sub id.
-
-> `rawPayload`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a><sup>_(beta-3 only)_</sup>
-
-> The raw payload hex string.
-
-> `messageId`: <a href="/docs/reference/scalars/#messageid">`MessageId`</a><sup>_(beta-3 only)_</sup>
-
-> The message id.
 
 ## `SpendQueryElementInput`
 
@@ -1319,15 +1253,15 @@ A type used in the `queryPerAsset` argument for the `resourcesToSpend` query.
 
 **fields:**
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId!`</a>
+`assetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id for the asset.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64!`</a>
+`amount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of coins to send.
 
-`max`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`max`: [`U64`](/docs/reference/scalars/#u64)
 
 The max number of resources in the selection.
 
@@ -1347,15 +1281,15 @@ The status of a successful transaction.
 
 **fields:**
 
-`block`: <a href="#block">`Block!`</a>
+`block`: [`Block!`](#block)
 
 The block of the transaction.
 
-`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+`time`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
 The time of the transaction.
 
-`programState`: <a href="#programstate">`ProgramState`</a>
+`programState`: [`ProgramState`](#programstate)
 
 The state of the program execution.
 
@@ -1365,7 +1299,7 @@ The status for a submitted transaction.
 
 **fields:**
 
-`time`: <a href="/docs/reference/scalars/#tai64timestamp">`Tai64Timestamp!`</a>
+`time`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
 The time a transaction was submitted
 
@@ -1375,11 +1309,11 @@ An object containing information about block times
 
 **fields:**
 
-`startTime`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`startTime`: [`U64`](/docs/reference/scalars/#u64)
 
 The time to set on the first block.
 
-`blockTimeInterval`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`blockTimeInterval`: [`U64`](/docs/reference/scalars/#u64)
 
 The time interval between subsequent blocks.
 
@@ -1389,31 +1323,31 @@ An object containing information about a transaction.
 
 **fields:**
 
-`id`: <a href="/docs/reference/scalars/#transactionid">`TransactionId!`</a>
+`id`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
 
 A unique transaction id.
 
-`inputAssetIds`: <a href="/docs/reference/scalars/#assetid">`[AssetId!]`</a>
+`inputAssetIds`: [`[AssetId!]`](/docs/reference/scalars/#assetid)
 
 An array of asset ids used for the transaction inputs.
 
-`inputContracts`: <a href="#contract">`[Contract!]`</a>
+`inputContracts`: [`[Contract!]`](#contract)
 
 An array of contracts used for the transaction inputs.
 
-`gasPrice`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`gasPrice`: [`U64`](/docs/reference/scalars/#u64)
 
 The gas price for the transaction.
 
-`gasLimit`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`gasLimit`: [`U64`](/docs/reference/scalars/#u64)
 
 The gas limit for the transaction.
 
-`maturity`: <a href="/docs/reference/scalars/#u32">`U32`</a>
+`maturity`: [`U32`](/docs/reference/scalars/#u32)
 
 The minimum block height that the transaction can be included at.
 
-`txPointer`: <a href="/docs/reference/scalars/#txpointer">`TxPointer`</a>
+`txPointer`: [`TxPointer`](/docs/reference/scalars/#txpointer)
 
 The location of the transaction in the block.
 
@@ -1429,35 +1363,35 @@ Whether or not the transaction is creating a new contract.
 
 Whether or not the transaction is minting new coins.
 
-`inputs`: <a href="/docs/reference/unions/#input">`[Input!]`</a>
+`inputs`: [`[Input!]`](/docs/reference/unions/#input)
 
 An array of inputs for the transaction.
 
-`outputs`: <a href="/docs/reference/unions/#output">`[Output!]!`</a>
+`outputs`: [`[Output!]!`](/docs/reference/unions/#output)
 
 An array of outputs for the transaction.
 
-`witnesses`: <a href="/docs/reference/scalars/#hexstring">`[HexString!]`</a>
+`witnesses`: [`[HexString!]`](/docs/reference/scalars/#hexstring)
 
 An array of witnesses.
 
-`receiptsRoot`: <a href="/docs/reference/scalars/#bytes32">`Bytes32`</a>
+`receiptsRoot`: [`Bytes32`](/docs/reference/scalars/#bytes32)
 
 The root of the receipts.
 
-`status`: <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus`</a>
+`status`: [`TransactionStatus`](/docs/reference/unions/#transactionstatus)
 
 The status of the transaction.
 
-`receipts`: <a href="#receipt">`[Receipt!]`</a>
+`receipts`: [`[Receipt!]`](#receipt)
 
 An array of the receipts produced by the transaction.
 
-`script`: <a href="/docs/reference/scalars/#hexstring">`HexString`</a>
+`script`: [`HexString`](/docs/reference/scalars/#hexstring)
 
 The script to execute.
 
-`scriptData`: <a href="/docs/reference/scalars/#hexstring">`HexString`</a>
+`scriptData`: [`HexString`](/docs/reference/scalars/#hexstring)
 
 The script input parameters.
 
@@ -1465,19 +1399,19 @@ The script input parameters.
 
 The witness index of contract bytecode.
 
-`bytecodeLength`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`bytecodeLength`: [`U64`](/docs/reference/scalars/#u64)
 
 The length of the transaction bytecode.
 
-`salt`: <a href="/docs/reference/scalars/#salt">`Salt`</a>
+`salt`: [`Salt`](/docs/reference/scalars/#salt)
 
 The salt value for the transaction.
 
-`storageSlots`: <a href="/docs/reference/scalars/#hexstring">`[HexString!]`</a>
+`storageSlots`: [`[HexString!]`](/docs/reference/scalars/#hexstring)
 
 An array of storage slot.
 
-`rawPayload`: <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`rawPayload`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 A hex string of the raw transaction payload.
 
@@ -1487,14 +1421,14 @@ The output type for a transaction that outputs an amount that may vary based on 
 
 **fields:**
 
-`to`: <a href="/docs/reference/scalars/#address">`Address`</a>
+`to`: [`Address`](/docs/reference/scalars/#address)
 
 The address the coins were sent to.
 
-`amount`: <a href="/docs/reference/scalars/#u64">`U64`</a>
+`amount`: [`U64`](/docs/reference/scalars/#u64)
 
 The amount of coins in the output.
 
-`assetId`: <a href="/docs/reference/scalars/#assetid">`AssetId`</a>
+`assetId`: [`AssetId`](/docs/reference/scalars/#assetid)
 
 The asset id for the coins sent.

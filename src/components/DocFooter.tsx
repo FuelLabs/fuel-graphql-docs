@@ -1,8 +1,7 @@
 import { cssObj } from '@fuel-ui/css';
 import { Box, Icon } from '@fuel-ui/react';
 import Link from 'next/link';
-import { useRouter } from 'next/router'
-
+import { useRouter } from 'next/router';
 import { useDocContext } from '~/src/hooks/useDocContext';
 
 export function DocFooter() {
@@ -13,14 +12,20 @@ export function DocFooter() {
       <Box css={{ flex: 1 }}>
         {docLink.prev && (
           <Link href={docLink.prev.slug!}>
-            <Icon icon={Icon.is('ArrowLeft')} size={24} /> {docLink.prev.label}
+            <Icon icon={'ArrowLeft'} size={24} /> {docLink.prev.label}
           </Link>
         )}
       </Box>
       <Box>
         {docLink.next && (
-          <Link href={router.asPath == "/" ? `docs/${docLink.next.slug!}` : docLink.next.slug!}>
-            {docLink.next.label} <Icon icon={Icon.is('ArrowRight')} size={24} />
+          <Link
+            href={
+              router.asPath == '/'
+                ? `docs/${docLink.next.slug!}`
+                : docLink.next.slug!
+            }
+          >
+            {docLink.next.label} <Icon icon={'ArrowRight'} size={24} />
           </Link>
         )}
       </Box>

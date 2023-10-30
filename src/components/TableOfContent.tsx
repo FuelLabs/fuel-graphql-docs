@@ -1,6 +1,5 @@
 import { cssObj } from '@fuel-ui/css';
 import { Box, Heading, Link, List, Text } from '@fuel-ui/react';
-
 import { useDocContext } from '~/src/hooks/useDocContext';
 
 export function TableOfContent() {
@@ -13,12 +12,16 @@ export function TableOfContent() {
         <List>
           {headings.map((heading) => (
             <List.Item key={heading.title}>
-              <a className='page-link' href={`#${heading.id}`}>{heading.title}</a>
+              <a className="page-link" href={`#${heading.id}`}>
+                {heading.title}
+              </a>
               {heading.children && (
                 <List type="ordered">
                   {heading.children.map((heading) => (
                     <List.Item key={heading.title}>
-                      <a className='page-link' href={`#${heading.id}`}>{heading.title}</a>
+                      <a className="page-link" href={`#${heading.id}`}>
+                        {heading.title}
+                      </a>
                     </List.Item>
                   ))}
                 </List>

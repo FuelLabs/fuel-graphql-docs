@@ -7,22 +7,22 @@ category: Reference
 
 ## `statusChange`
 
-Returns a stream of <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus!`</a> updates for the given transaction id if the current status is `[TransactionStatus::Submitted]`.
+Returns a stream of [`TransactionStatus!`](/docs/reference/unions/#transactionstatus) updates for the given transaction id if the current status is `[TransactionStatus::Submitted]`.
 
 This stream will wait forever so it's advised to use within a timeout. It is possible for the stream to miss an update if it is polled slower then the updates arrive. In such a case the stream will close without a status. If this occurs the stream can simply be restarted to return the latest status.
 
 **args:**
 
-`id`: <a href="/docs/reference/scalars/#transactionid">`TransactionId!`</a>
+`id`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
 
 The id of the transaction to stream status updates for.
 
 ## `submitAndAwait`
 
-Submits transaction to the `TxPool` and await returns <a href="/docs/reference/unions/#transactionstatus">`TransactionStatus!`</a>.
+Submits transaction to the `TxPool` and await returns [`TransactionStatus!`](/docs/reference/unions/#transactionstatus).
 
 **args:**
 
-`tx:` <a href="/docs/reference/scalars/#hexstring">`HexString!`</a>
+`tx:` [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.

@@ -1,7 +1,6 @@
 import { cssObj } from '@fuel-ui/css';
 import { Box, Icon, Text } from '@fuel-ui/react';
 import Link from 'next/link';
-
 import type { DocType } from '~/src/types';
 
 type BreadcrumbProps = {
@@ -16,7 +15,11 @@ export function Breadcrumb({ doc }: BreadcrumbProps) {
       </Text>
       {doc.category && (
         <Text as="span" rightIcon={Icon.is('CaretRight')}>
-          <Link href={`/docs/${doc.category.toLowerCase().replace(/\s+/g, '-')}`}>{doc.category}</Link>
+          <Link
+            href={`/docs/${doc.category.toLowerCase().replace(/\s+/g, '-')}`}
+          >
+            {doc.category}
+          </Link>
         </Text>
       )}
       <Text as="span">{doc.title}</Text>

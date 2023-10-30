@@ -27,7 +27,7 @@ export function Pre({ children, title }: PreProps) {
         variant="ghost"
         color="gray"
         aria-label="Copy to Clipborad"
-        onPress={() =>
+        onClick={() =>
           typeof window !== 'undefined' && navigator.clipboard.writeText(code)
         }
       />

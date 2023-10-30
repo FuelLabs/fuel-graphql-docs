@@ -2,20 +2,19 @@ import { cssObj, cx } from '@fuel-ui/css';
 import { Button, Box, Icon, List } from '@fuel-ui/react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import type { SidebarLinkItem } from '~/src/types';
 
 import { SidebarLink } from './SidebarLink';
 
-import type { SidebarLinkItem } from '~/src/types';
-
 interface SidebarSubmenuProps extends SidebarLinkItem {
-  handleClick: () => void
+  handleClick: () => void;
 }
 
 export function SidebarSubmenu({
   label,
   submenu,
   subpath,
-  handleClick
+  handleClick,
 }: SidebarSubmenuProps) {
   const pathname = usePathname();
   const isActive = pathname?.startsWith(`/docs/${subpath}`);
@@ -27,28 +26,33 @@ export function SidebarSubmenu({
 
   return (
     <Box.Flex css={styles.root}>
-      <div style={{display: "flex", justifyContent: "space-between"}}>
-        <SidebarLink handleClick={handleClick} item={{label, slug: label.replace(/\s+/g, '-').toLowerCase()}}/>
-      <Button
-        variant="link"
-        rightIcon={isOpened ? Icon.is('CaretUp') : Icon.is('CaretDown')}
-        onPress={toggle}
-        className={cx({ active: isActive })}
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <SidebarLink
+          handleClick={handleClick}
+          item={{ label, slug: label.replace(/\s+/g, '-').toLowerCase() }}
+        />
+        <Button
+          variant="link"
+          rightIcon={isOpened ? Icon.is('CaretUp') : Icon.is('CaretDown')}
+          onClick={toggle}
+          className={cx({ active: isActive })}
         />
       </div>
       {isOpened && (
         <List>
           {submenu?.map((item) => {
-            if(item.label.replace(/\s+/g, '-').toLowerCase() != subpath){
-            return ( <List.Item
-              key={item.slug}
-              icon={Icon.is('ArrowRight')}
-              iconSize={10}
-              iconColor="gray6"
-            >
-              
-              <SidebarLink handleClick={handleClick} item={item} />
-            </List.Item>)}
+            if (item.label.replace(/\s+/g, '-').toLowerCase() != subpath) {
+              return (
+                <List.Item
+                  key={item.slug}
+                  icon={Icon.is('ArrowRight')}
+                  iconSize={10}
+                  iconColor="gray6"
+                >
+                  <SidebarLink handleClick={handleClick} item={item} />
+                </List.Item>
+              );
+            }
           })}
         </List>
       )}
