@@ -7,7 +7,6 @@ import { MobileMenu } from './MobileMenu';
 import { Search } from './Search';
 
 export function Header() {
-
   return (
     <Box.Flex as="header" css={styles.root}>
       <Box css={{ flex: 1 }}>
