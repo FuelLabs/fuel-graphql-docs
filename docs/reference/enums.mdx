@@ -7,7 +7,7 @@ category: Reference
 
 ## `ReceiptType`
 
-The receipt type inidicating what kind of transaction generated the receipt.
+The receipt type indicating what kind of transaction generated the receipt.
 
 `CALL`:
 The receipt was generated from a contract call.
@@ -25,10 +25,10 @@ The receipt was generated from a failed contract call that panicked.
 The receipt was generated from a failed contract call that reverted.
 
 `LOG`:
-The receipt was generated from a log in the contract. The Log receipt is generated for non-reference types, namely bool, u8, u16, u32, and u64.
+The receipt was generated from a log in the contract. The Log receipt is generated for non-reference types, namely `bool`, `u8`, `u16`, `u32`, and `u64`.
 
 `LOG_DATA`:
-The receipt was generated from a log in the contract. LogData is generated for reference types which include all types except for the non_reference types mentioned above.
+The receipt was generated from a log in the contract. `LogData` is generated for reference types which include all types except for the non_reference types mentioned above.
 
 `TRANSFER`:
 The receipt was generated from a transaction that transferred coins to a contract.
