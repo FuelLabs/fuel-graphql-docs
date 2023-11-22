@@ -22,10 +22,11 @@ jobs:
           npm run test:examples
 
   test-docs:
-    uses: FuelLabs/github-actions/.github/workflows/next-docs.yml@master
+    uses: FuelLabs/github-actions/.github/workflows/next-docs.yml@sarah/spell-check
     with:
       doc-folder-path: 'docs'
       src-folder-path: 'src'
+      spellcheck-config-path: '.spellcheck.yml'
 
   lint-code:
     name: Lint Code
