@@ -26,6 +26,7 @@ jobs:
     with:
       doc-folder-path: 'docs'
       src-folder-path: 'src'
+      spellcheck-config-path: '.spellcheck.yml'
 
   lint-code:
     name: Lint Code

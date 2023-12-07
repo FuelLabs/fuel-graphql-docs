@@ -36,7 +36,7 @@ GraphQL comes with a set of default scalar types out-of-the-box such as below:
 - `Float`: A signed double-precision floating-point value.
 - `String`: A UTF‐8 character sequence.
 - `Boolean`: true or false.
-- `ID`: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
+- `ID`: The ID scalar type represents a unique identifier, often used to re-fetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
 
 Fields can also be of types that are not scalar by default, but resolve to scalar values upon querying. For instance, in the following query, the `name` and `appearsIn` fields resolve to scalar types.
 
@@ -154,7 +154,7 @@ edges: [SomethingEdge!]!
 nodes: [Something!]!
 ```
 
-### PageInfo
+### `PageInfo`
 
 `pageInfo` returns an object that includes information about the returned page of results:
 
