@@ -3,7 +3,81 @@ title: Mutations
 category: Reference
 ---
 
+{/* TODO: Finish this mutation */}
+
 # Mutations
+
+## `startSession`
+
+### `startSession` `args`
+
+`id: ID!`
+
+returns `Boolean!`
+
+## `endSession`
+
+### `endSession` `args`
+
+`id: ID!`
+
+returns `Boolean!`
+
+## `reset`
+
+### `reset` `args`
+
+`id: ID!`
+
+returns `Boolean!`
+
+## `execute`
+
+### `execute` `args`
+
+`id: ID!`
+
+`op: String!` 
+
+returns `Boolean!`
+
+## `setSingleStepping`
+
+### `setSingleStepping` `args`
+
+`id: ID!`
+
+`enable: boolean` 
+
+returns `Boolean!`
+
+## `setBreakpoint`
+
+### `setBreakpoint` `args`
+
+`id: ID!`
+
+`breakpoint`: [`Breakpoint!`](/docs/reference/objects/#breakpoint)
+
+returns `Boolean!`
+
+## `startTx`
+
+### `startTx` `args`
+
+`id: ID!`
+
+`txJson: String!`
+
+returns `RunResult!`
+
+## `continueTx`
+
+### `continueTx` `args`
+
+`id: ID!`
+
+returns `RunResult!`
 
 ## `dryRun`
 

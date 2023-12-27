@@ -15,7 +15,7 @@ export function Query(props: QueryProps) {
 
   function runQuery() {
     setLoading(true);
-    fetch('https://beta-4.fuel.network/graphql', {
+    fetch('https://beta-5.fuel.network/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
