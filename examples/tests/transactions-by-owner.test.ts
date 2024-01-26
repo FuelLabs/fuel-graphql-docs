@@ -84,7 +84,7 @@ describe('Transactions by owner', () => {
 
     const args = {
       address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
     };
 
     const getTransactions = async () => {
@@ -178,7 +178,7 @@ describe('Transactions by owner', () => {
 
     const args = {
       address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
     };
 
     const getTransactions = async () => {
@@ -264,7 +264,7 @@ describe('Transactions by owner', () => {
 
     const args = {
       address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
     };
 
     const getTransactions = async () => {

@@ -81,14 +81,6 @@ The human-readable string name of the chain. i.e. beta-5
 
 The most recently created block.
 
-> `baseChainHeight`: [`U32!`](/docs/reference/scalars/#u32) <sup>_(beta-4 only)_</sup>
-
-> Returns 0 (in development mode, this will change). This should return the height of the chain at start.
-
-> `peerCount: Int!` <sup>_(beta-4 only)_</sup>
-
-> The number of nodes that node is peered with.
-
 `consensusParameters`: [`ConsensusParameters!`](#consensusparameters)
 
 The consensus parameters used to validate blocks.
@@ -191,8 +183,6 @@ The consensus parameters used for validating blocks.
 
 **fields:**
 
-{/* TODO NEW */}
-
 `txParams`: [`TxParameters!`](#TxParameters)
 
 The allowed parameters of transactions
@@ -205,73 +195,17 @@ The allowed parameters of predicates
 
 The allowed parameters of scripts
 
-`contractParams`: [`ContractParameters!`](#ContractParameters)
+`contractParams`: [`ContractParameters!`](#contractparameters)
 
 The allowed parameters of contracts
 
-`feeParams`: [`FeeParameters!`](#FeeParameters)
+`feeParams`: [`FeeParameters!`](#feeparameters)
 
 The allowed parameters of fees
 
 `baseAssetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id of the "base" asset used for gas fees.
-
-> `contractMaxSize`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum contract size, in bytes.
-
-> `maxInputs`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum number of inputs.
-
-> `maxOutputs`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum number of outputs.
-
-> `maxWitnesses`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum number of witnesses.
-
-> `maxGasPerTx`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum gas per transaction.
-
-> `maxScriptLength`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum length of a script, in instructions.
-
-> `maxGasPerPredicate`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum gas per predicate transaction.
-
-> `maxScriptDataLength`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum length of script data, in bytes.
-
-> `maxStorageSlots`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum number of initial storage slots.
-
-> `maxPredicateLength`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum length of a predicate, in instructions.
-
-> `maxPredicateDataLength`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The maximum length of predicate data, in bytes.
-
-> `gasPriceFactor`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> A factor to convert between gas and the transaction assets value.
-
-> `gasPerByte`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> A fixed ratio linking metered bytes to a gas price.
-
-> `maxMessageDataLength`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-The maximum length of message data, in bytes.
 
 `chainId`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -369,21 +303,7 @@ Maximum size of a contract in bytes
 
 `maxStorageSlots`: [`U64!`](/docs/reference/scalars/#u64)
 
-Maximum number of storage slots 
-
-## `DependentCost`<sup>_(beta-4 only)_</sup>
-
-Contains the dependent cost of opcodes.
-
-**fields:**
-
-`base`: [`U64!`](/docs/reference/scalars/#u64)
-
-The base gas cost.
-
-`depPerUnit`: [`U64!`](/docs/reference/scalars/#u64)
-
-The dependent gas cost per unit.
+Maximum number of storage slots
 
 ## `ExcludeInput`
 
@@ -585,10 +505,6 @@ The gas cost of using the `$jnef` control flow opcode.
 
 The gas cost of using the `$jneb` control flow opcode.
 
-> `k256`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The gas cost of using the `$k256` cryptographic opcode.
-
 `lb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$lb` memory opcode.
@@ -604,10 +520,6 @@ The gas cost of using the `$lt` ALU opcode.
 `lw`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$lw` memory opcode.
-
-> `mcpi`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The gas cost of using the `$mcpi` memory opcode.
 
 `mint`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -689,17 +601,9 @@ The gas cost of using the `$ret` opcode.
 
 The gas cost of using the `$rvrt` contract opcode.
 
-> `s256`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The gas cost of using the `$s256` cryptographic opcode.
-
 `sb`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$sb` memory opcode.
-
-> `scwq`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The gas cost of using the `$scwq` contract opcode.
 
 `sll`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -736,10 +640,6 @@ The gas cost of using the `$sw` memory opcode.
 `sww`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$sww` contract opcode.
-
-> `swwq`: [`U64!`](/docs/reference/scalars/#u64) <sup>_(beta-4 only)_</sup>
-
-> The gas cost of using the `$swwq` contract opcode.
 
 `time`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -853,7 +753,7 @@ The `dependent` gas cost of using the `$mcli` memory opcode.
 
 The `dependent` gas cost of using the `$mcp` memory opcode.
 
-`mcpi`: [`DependentCost`](/docs/reference/unions/#dependentcost) 
+`mcpi`: [`DependentCost`](/docs/reference/unions/#dependentcost)
 
 The `dependent` gas cost of using the `$mcpi` memory opcode.
 
@@ -865,11 +765,11 @@ The `dependent` gas cost of using the `$meq` memory opcode.
 
 The `dependent` gas cost of using the `$retd` contract opcode.
 
-`s256`: [`DependentCost`](/docs/reference/unions/#dependentcost) 
+`s256`: [`DependentCost`](/docs/reference/unions/#dependentcost)
 
 The `dependent` gas cost of using the `$mcpi` cryptographic opcode.
 
-`scwq`: [`DependentCost`](/docs/reference/unions/#dependentcost) 
+`scwq`: [`DependentCost`](/docs/reference/unions/#dependentcost)
 
 The `dependent` gas cost of using the `$scwq` cryptographic opcode.
 
@@ -923,7 +823,7 @@ The binary Merkle tree root of state, balances, and the contracts code hash of e
 
 The binary merkle tree root of all genesis messages.
 
-## `HeavyOperation` 
+## `HeavyOperation`
 
 The operation dependent on the size of its inputs, and the time required per unit of input exceeding that of a single no-op operation
 
@@ -1093,7 +993,7 @@ The predicate bytecode.
 
 The predicate input parameters.
 
-## `LightOperation` 
+## `LightOperation`
 
 The operation dependent on the size of its inputs, and the time required per unit of input less that of a single no-op operation
 
@@ -1227,17 +1127,27 @@ The amount sent in the message.
 
 The data from the message.
 
+## `MessageStatus`
+
+The status type of a message.
+
+**fields:**
+
+`state`: [`MessageState`](/docs/reference/enums/#messagestate)
+
+The state of the message.
+
 ## `NodeInfo`
 
 Information about a node.
 
 **fields:**
 
-`utxoValidation: Boolean!`
+`utxoValidation`: `Boolean!`
 
 Whether or not the node is using UTXO validation.
 
-`vmBacktrace: Boolean!`
+`vmBacktrace`: `Boolean!`
 
 Whether or not logging of backtraces from VM errors is enabled.
 
@@ -1253,7 +1163,7 @@ The maximum number of transactions.
 
 The maximum number of connected UTXOs allowed, excluding contracts.
 
-`nodeVersion: String!`
+`nodeVersion`: `String!`
 
 The node version.
 
@@ -1263,7 +1173,7 @@ The information about the node's peers.
 
 ## `OutputBreakpoint`
 
-A breakpoint during debugging
+A breakpoint during debugging.
 
 `contract`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
@@ -1273,7 +1183,35 @@ The contract address.
 
 The value of the program counter register `$pc`, which is the memory address of the current instruction.
 
-## `peer`
+## `PeerInfo`
+
+Information about a peer node.
+
+**fields:**
+
+`id`: `String!`
+
+The `libp2p` ID of the peer node.
+
+`addresses`: [`String!`]!
+
+The advertised addresses that can be used to connect to this peer node.
+
+`clientVersion`: `String`
+
+The self-reported version of the client the peer node is using.
+
+`blockHeight`: `U32`
+
+The last reported height of the peer node.
+
+`lastHeartbeatMs`: `U64!`
+
+The time of the last heartbeat from this peer node in unix epoch time milliseconds.
+
+`appScore`: `Float!`
+
+The internal Fuel peer-to-peer reputation of this peer node.
 
 ## `PoAConsensus`
 
@@ -1298,6 +1236,50 @@ The type of return response for the transaction.
 `data`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The data returned from the transaction.
+
+## `Policies`
+
+Information about the policies of a transaction.
+
+**fields:**
+
+`gasPrice`: [`U64`](/docs/reference/scalars/#u64)
+
+The price for each unit of gas consumed during the transaction execution.
+
+`witnessLimit`: [`U64`](/docs/reference/scalars/#u64)
+
+The limit of witnesses that can be included in the transaction.
+
+`maturity`: [`U32`](/docs/reference/scalars/#u32)
+
+The minimum block height that the transaction can be included at.
+
+`maxFee`: [`U64`](/docs/reference/scalars/#u64)
+
+The maximum fee allowed for the transaction to consume.
+
+## `PredicateParameters`
+
+The consensus parameters for a predicate.
+
+**fields:**
+
+`maxPredicateLength`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum length of a predicate.
+
+`maxPredicateDataLength`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum length of predicate data.
+
+`maxGasPerPredicate`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maxiumum amount of gas allowed for a predicate.
+
+`maxMessageDataLength`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum length of message data for a predicate.
 
 ## `Receipt`
 
@@ -1416,6 +1398,38 @@ The contract id.
 `subId`: [`Bytes32`](/docs/reference/scalars/#bytes32)
 
 The sub id.
+
+## `RunResult`
+
+The result of a transaction execution.
+
+**fields:**
+
+`state`: `RunState!`
+
+The state of the transaction execution.
+
+`breakpoint`: `OutputBreakpoint`
+
+A breakpoint during debugging.
+
+`jsonReceipts`: `[String!]!`
+
+The receipts of the transaction in JSON format.
+
+## `ScriptParameters`
+
+The consensus parameters for a script.
+
+**fields:**
+
+`maxScriptLength`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum length of a script.
+
+`maxScriptDataLength`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum length of script data.
 
 ## `SpendQueryElementInput`
 
@@ -1584,6 +1598,32 @@ An array of storage slot.
 `rawPayload`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 A hex string of the raw transaction payload.
+
+## `TxParameters`
+
+The consensus parameters for a transaction.
+
+**fields:**
+
+`maxInputs`: [`U8!`](/docs/reference/scalars/#u8)
+
+The maximum number of inputs allowed for a transaction.
+
+`maxOutputs`: [`U8!`](/docs/reference/scalars/#u8)
+
+The maximum number of outputs allowed for a transaction.
+
+`maxWitnesses`: [`U32!`](/docs/reference/scalars/#u32)
+
+The maximum number of witnesses allowed for a transaction.
+
+`maxGasPerTx`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum amoutn of gas allowed for a transaction.
+
+`maxSize`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum size allowed for a transaction.
 
 ## `VariableOutput`
 
