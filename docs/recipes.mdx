@@ -106,7 +106,7 @@ query Transactions($address: Address) {
           }
         }
         ... on InputMessage {
-          messageId
+          nonce
           sender
           recipient
           amount
@@ -199,7 +199,7 @@ query LatestTransactions {
           }
         }
         ... on InputMessage {
-          messageId
+          nonce
           sender
           recipient
           amount
@@ -349,7 +349,7 @@ query LatestBlocks {
             }
           }
           ... on InputMessage {
-            messageId
+            nonce
             sender
             recipient
             amount

@@ -48,6 +48,10 @@ query IntrospectionQuery {
         type {
           name
           kind
+          ofType {
+            kind
+            name
+          }
         }
       }
     }
@@ -66,6 +70,10 @@ query IntrospectionQuery {
         type {
           name
           kind
+          ofType {
+            kind
+            name
+          }
         }
       }
     }

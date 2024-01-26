@@ -4,6 +4,8 @@ import remarkParse from 'remark-parse';
 import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
 
+const inputArgExceptions = ['first', 'last', 'after', 'before'];
+
 const headingsExceptions = (heading) => {
   if (heading.startsWith('title: ')) {
     return false;
@@ -14,7 +16,7 @@ const headingsExceptions = (heading) => {
       'Mutations',
       'Subscriptions',
       'Objects',
-      'Unions',
+      'Union Types',
       'Enums',
       'Scalars',
     ].includes(heading)
@@ -50,7 +52,34 @@ async function request(query) {
   return json;
 }
 
-async function fetchNames(query, kind) {
+export async function fetchObjects(query, kind) {
+  try {
+    const response = await request(query);
+    const objects = response.data.__schema.types
+      .filter((type) => type.kind === kind)
+      .filter(
+        (type) =>
+          !type.name.endsWith('Connection') && !type.name.endsWith('Edge')
+      )
+      .map((item) => {
+        const newItem = { name: item.name };
+        const fields = item.fields || item.inputFields;
+        if (fields) {
+          newItem.fields = fields.map((field) => ({
+            name: field.name,
+            type: getType(field.type),
+          }));
+        }
+        return newItem;
+      });
+    return objects;
+  } catch (error) {
+    console.error(`Error fetching ${kind} names:`, error);
+    return [];
+  }
+}
+
+export async function fetchNames(query, kind) {
   try {
     const response = await request(query);
     const names = response.data.__schema.types
@@ -75,6 +104,22 @@ export function compare(actual, headings, exceptions, itemName) {
     }
   });
   assert(missing.length === 0, `MISSING FROM ${itemName}: ${missing}`);
+
+  if (itemName === 'INPUT_OBJECTs' || itemName === 'OBJECTs') {
+    return;
+  }
+
+  const extraHeadings = [];
+  headings.forEach((item) => {
+    if (!actual.includes(item)) {
+      extraHeadings.push(item);
+    }
+  });
+
+  assert(
+    extraHeadings.length === 0,
+    `EXTRA HEADINGS IN ${itemName}: ${extraHeadings}`
+  );
 }
 
 export async function checkAndCompare(query, kind, filepath, exceptions = []) {
@@ -103,7 +148,7 @@ function getType(type) {
   return nestedTypeName;
 }
 
-function processQueryOrMutation(fields, exceptions) {
+function processData(fields, exceptions) {
   return fields
     .filter((query) => !exceptions.includes(query.name))
     .map((query) => ({
@@ -120,14 +165,69 @@ export async function fetchData(query, kind, exceptions, schemaType) {
   try {
     const response = await request(query);
     const fields = response.data.__schema[schemaType].fields;
-    return processQueryOrMutation(fields, exceptions);
+    return processData(fields, exceptions);
   } catch (error) {
     console.error(`Error fetching ${kind} names:`, error);
     return [];
   }
 }
 
-export async function checkQueryOrMutationHeadings(
+export function getArgsOrFields(filepath, name) {
+  const file = readFileSync(filepath, 'utf8');
+  const processor = unified().use(remarkParse);
+  const ast = processor.parse(file);
+  const headingArgs = {};
+  let currentHeading = '';
+  let currentIndex = 0;
+  const args = {};
+  visit(ast, '', (node, _i, parent) => {
+    if (node.type === 'heading') {
+      currentHeading = node.children[0].value;
+    }
+
+    if (node.value === name) {
+      headingArgs[currentHeading] = true;
+    }
+
+    if (headingArgs[currentHeading] && node.type === 'inlineCode') {
+      if (
+        (parent.children[1] && parent.children[1].value === ': ') ||
+        parent.children[1] === undefined
+      ) {
+        if (args[currentHeading] && !args[currentHeading][currentIndex].type) {
+          args[currentHeading][currentIndex].type = node.value;
+        } else {
+          if (!args[currentHeading]) {
+            args[currentHeading] = [];
+          }
+          args[currentHeading].push({ name: node.value });
+          currentIndex = args[currentHeading].length - 1;
+        }
+      }
+    }
+  });
+  return args;
+}
+
+export function checkIfEqual(a, b) {
+  if (a.length !== b.length) {
+    console.log('DIFFERENT LENGTHS');
+    return false;
+  }
+
+  return a.every((value, index) => {
+    const bVal = b[index];
+    const isEqual = value.id === bVal.id && value.name === bVal.name;
+    if (!isEqual) {
+      console.log('!!!!!!NOT EQUAL!!!!');
+      console.log('VALUE A:', value);
+      console.log('VALUE B:', bVal);
+    }
+    return isEqual;
+  });
+}
+
+export async function checkHeadings(
   filepath,
   query,
   kind,
@@ -135,12 +235,36 @@ export async function checkQueryOrMutationHeadings(
   schemaType
 ) {
   const headings = await getHeadings(filepath);
+  const args = getArgsOrFields(filepath, 'args:');
   const items = await fetchData(query, kind, exceptions, schemaType);
   const missing = [];
+  const wrongArgs = [];
   items.forEach((item) => {
     if (!headings.includes(item.name)) {
       missing.push(item.name);
     }
+
+    const cleanedArgs = item.args.filter(
+      (arg) => !inputArgExceptions.includes(arg.name)
+    );
+    if (cleanedArgs && cleanedArgs.length > 0) {
+      const argsFromDocs = args[item.name];
+      if (!argsFromDocs) {
+        console.log('NO ARGS IN DOCS:', item.name);
+        wrongArgs.push(item.name);
+      } else {
+        const argsMatch = checkIfEqual(cleanedArgs, argsFromDocs);
+        if (!argsMatch) {
+          console.log(
+            `DIFF ARGS IN DOCS FOR ${item.name}:`,
+            cleanedArgs,
+            argsFromDocs
+          );
+          wrongArgs.push(item.name);
+        }
+      }
+    }
   });
   assert(missing.length === 0, `MISSING FROM ${kind}: ${missing}`);
+  assert(wrongArgs.length === 0, `ARGS ARE WRONG IN ${kind}: ${wrongArgs}`);
 }
