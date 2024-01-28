@@ -52,18 +52,26 @@ export async function request(query) {
   return json;
 }
 
-export async function fetchNames(query, kind) {
+export async function fetchItems(query, kind) {
   try {
     const response = await request(query);
-    const names = response.data.__schema.types
+    const objects = response.data.__schema.types
       .filter((type) => type.kind === kind)
-      .map((type) => type.name)
-      .filter((name) => !name.endsWith('Connection') && !name.endsWith('Edge'));
-    return names;
+      .filter(
+        (type) =>
+          !type.name.endsWith('Connection') && !type.name.endsWith('Edge')
+      );
+    return objects;
   } catch (error) {
     console.error(`Error fetching ${kind} names:`, error);
     return [];
   }
+}
+
+export async function fetchNames(query, kind) {
+  const objects = await fetchItems(query, kind);
+  const names = objects.map((object) => object.name);
+  return names;
 }
 
 export function compare(actual, headings, exceptions, itemName) {
@@ -245,4 +253,28 @@ export async function checkHeadings(
   });
   assert(missing.length === 0, `MISSING FROM ${kind}: ${missing}`);
   assert(wrongArgs.length === 0, `ARGS ARE WRONG IN ${kind}: ${wrongArgs}`);
+}
+
+export function compareFields(actual, docs, fieldName, kind) {
+  const wrongFields = [];
+  actual.forEach((item) => {
+    if (item[fieldName]) {
+      const fieldsFromDocs = docs[item.name];
+      if (!fieldsFromDocs) {
+        console.log('NO FIELDS IN DOCS:', item.name);
+        wrongFields.push(item.name);
+      } else {
+        const fieldsMatch = checkIfEqual(item[fieldName], fieldsFromDocs);
+        if (!fieldsMatch) {
+          console.log(
+            `DIFF FIELDS IN DOCS FOR ${item.name}:`,
+            item[fieldName],
+            fieldsFromDocs
+          );
+          wrongFields.push(item.name);
+        }
+      }
+    }
+  });
+  assert(wrongFields.length === 0, `WRONG FIELDS IN ${kind}: ${wrongFields}`);
 }

@@ -1,30 +1,13 @@
-import { assert } from 'console';
 import { visit } from 'unist-util-visit';
 
 import { GET_UNIONS } from './queries.mjs';
 import {
-  checkIfEqual,
-  request,
+  compareFields,
+  fetchItems,
   getAST,
   getHeadings,
   compare,
 } from './utils.mjs';
-
-async function fetchUnions(query, kind) {
-  try {
-    const response = await request(query);
-    const objects = response.data.__schema.types
-      .filter((type) => type.kind === kind)
-      .filter(
-        (type) =>
-          !type.name.endsWith('Connection') && !type.name.endsWith('Edge')
-      );
-    return objects;
-  } catch (error) {
-    console.error(`Error fetching ${kind} names:`, error);
-    return [];
-  }
-}
 
 export function getUnionFieldsFromDocs(filepath) {
   const ast = getAST(filepath);
@@ -54,38 +37,14 @@ export function getUnionFieldsFromDocs(filepath) {
   return args;
 }
 
-function checkUnionFields(unions, unionsFromDocs) {
-  const wrongFields = [];
-  unions.forEach((item) => {
-    if (item.possibleTypes) {
-      const fieldsFromDocs = unionsFromDocs[item.name];
-      if (!fieldsFromDocs) {
-        console.log('NO FIELDS IN DOCS:', item.name);
-        wrongFields.push(item.name);
-      } else {
-        const fieldsMatch = checkIfEqual(item.possibleTypes, fieldsFromDocs);
-        if (!fieldsMatch) {
-          console.log(
-            `DIFF FIELDS IN DOCS FOR ${item.name}:`,
-            item.possibleTypes,
-            fieldsFromDocs
-          );
-          wrongFields.push(item.name);
-        }
-      }
-    }
-  });
-  assert(wrongFields.length === 0, `WRONG FIELDS IN UNIONS: ${wrongFields}`);
-}
-
 export async function checkUnions() {
   const filepath = 'docs/reference/unions.mdx';
-  const unions = await fetchUnions(GET_UNIONS, 'UNION');
+  const unions = await fetchItems(GET_UNIONS, 'UNION');
 
   const unionNames = unions.map((union) => union.name);
   const headings = await getHeadings(filepath);
   compare(unionNames, headings, [], 'UNIONs');
 
   const unionsFromDocs = getUnionFieldsFromDocs(filepath);
-  checkUnionFields(unions, unionsFromDocs);
+  compareFields(unions, unionsFromDocs, 'possibleTypes', 'UNION');
 }

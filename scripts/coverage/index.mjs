@@ -1,6 +1,6 @@
+import { checkEnums } from './enums.mjs';
 import { checkAllObjects } from './objects.mjs';
 import {
-  GET_ENUMS,
   GET_QUERIES,
   GET_SCALARS,
   GET_MUTATIONS,
@@ -10,7 +10,6 @@ import { checkUnions } from './unions.mjs';
 import { checkHeadings, checkAndCompare } from './utils.mjs';
 
 const scalarExceptions = ['Boolean', 'Float', 'ID', 'Int', 'String'];
-const enumExceptions = ['__DirectiveLocation', '__TypeKind'];
 
 const queryExceptions = ['register', 'memory'];
 const mutationExceptions = [];
@@ -22,15 +21,6 @@ async function checkScalars() {
     'SCALAR',
     'docs/reference/scalars.mdx',
     scalarExceptions
-  );
-}
-
-async function checkEnums() {
-  await checkAndCompare(
-    GET_ENUMS,
-    'ENUM',
-    'docs/reference/enums.mdx',
-    enumExceptions
   );
 }
 
