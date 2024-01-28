@@ -199,7 +199,7 @@ export function checkIfEqual(a, b) {
     const bVal = b[index];
     const isEqual = value.id === bVal.id && value.name === bVal.name;
     if (!isEqual) {
-      console.log('!!!!!!NOT EQUAL!!!!');
+      console.log('*********NOT EQUAL*********');
       console.log('VALUE A:', value);
       console.log('VALUE B:', bVal);
     }

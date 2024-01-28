@@ -9,53 +9,53 @@ category: Reference
 
 ## `startSession`
 
-### `startSession` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
 returns `Boolean!`
 
 ## `endSession`
 
-### `endSession` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
 returns `Boolean!`
 
 ## `reset`
 
-### `reset` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
 returns `Boolean!`
 
 ## `execute`
 
-### `execute` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
-`op: String!`
+`op`: `String!`
 
 returns `Boolean!`
 
 ## `setSingleStepping`
 
-### `setSingleStepping` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
-`enable: boolean`
+`enable`: `boolean`
 
 returns `Boolean!`
 
 ## `setBreakpoint`
 
-### `setBreakpoint` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
 `breakpoint`: [`Breakpoint!`](/docs/reference/objects/#breakpoint)
 
@@ -63,19 +63,19 @@ returns `Boolean!`
 
 ## `startTx`
 
-### `startTx` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
-`txJson: String!`
+`txJson`: `String!`
 
 returns `RunResult!`
 
 ## `continueTx`
 
-### `continueTx` `args`
+**args:**
 
-`id: ID!`
+`id`: `ID!`
 
 returns `RunResult!`
 
@@ -85,20 +85,20 @@ A mutation that spins up a new temporary node from the current state and emulate
 It returns a [`[Receipt!]!`](/docs/reference/objects/#receipt) for the emulated transaction.
 You can optionally use UTXO validation.
 
-### `dryRun` `args`
+**args:**
 
 `tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.
 
-`utxoValidation: Boolean`:
+`utxoValidation`: `Boolean`:
 Whether or not to use UTXO validation.
 
 ## `produceBlocks`
 
 A mutation that produces blocks, that can be used for testing that requires block advancement. Returns a [`U32!`](/docs/reference/scalars/#u32).
 
-### `produceBlocks` `args`
+**args:**
 
 `startTimestamp`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
@@ -112,8 +112,8 @@ The number of blocks to produce.
 
 A mutation that submits transaction to the transaction pool and returns a [`Transaction!`](/docs/reference/objects/#transaction).
 
-### `submit` `args`
+**args:**
 
-`tx:` [`HexString!`](/docs/reference/scalars/#hexstring)
+`tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.
