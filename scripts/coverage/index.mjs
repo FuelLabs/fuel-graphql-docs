@@ -3,10 +3,10 @@ import {
   GET_ENUMS,
   GET_QUERIES,
   GET_SCALARS,
-  GET_UNIONS,
   GET_MUTATIONS,
   GET_SUBSCRIPTIONS,
 } from './queries.mjs';
+import { checkUnions } from './unions.mjs';
 import { checkHeadings, checkAndCompare } from './utils.mjs';
 
 const scalarExceptions = ['Boolean', 'Float', 'ID', 'Int', 'String'];
@@ -32,10 +32,6 @@ async function checkEnums() {
     'docs/reference/enums.mdx',
     enumExceptions
   );
-}
-
-async function checkUnions() {
-  await checkAndCompare(GET_UNIONS, 'UNION', 'docs/reference/unions.mdx');
 }
 
 async function checkQueries() {
@@ -74,7 +70,7 @@ async function checkDocs() {
   await checkUnions();
   await checkAllObjects();
   await checkQueries();
-  // await checkMutations();
+  await checkMutations();
   await checkSubscriptions();
 }
 

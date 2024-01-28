@@ -37,7 +37,7 @@ export async function getHeadings(filepath) {
   return headings.filter(headingsExceptions);
 }
 
-async function request(query) {
+export async function request(query) {
   const response = await fetch('https://beta-5.fuel.network/graphql', {
     method: 'POST',
     headers: {
@@ -50,33 +50,6 @@ async function request(query) {
   });
   const json = await response.json();
   return json;
-}
-
-export async function fetchObjects(query, kind) {
-  try {
-    const response = await request(query);
-    const objects = response.data.__schema.types
-      .filter((type) => type.kind === kind)
-      .filter(
-        (type) =>
-          !type.name.endsWith('Connection') && !type.name.endsWith('Edge')
-      )
-      .map((item) => {
-        const newItem = { name: item.name };
-        const fields = item.fields || item.inputFields;
-        if (fields) {
-          newItem.fields = fields.map((field) => ({
-            name: field.name,
-            type: getType(field.type),
-          }));
-        }
-        return newItem;
-      });
-    return objects;
-  } catch (error) {
-    console.error(`Error fetching ${kind} names:`, error);
-    return [];
-  }
 }
 
 export async function fetchNames(query, kind) {
@@ -128,7 +101,7 @@ export async function checkAndCompare(query, kind, filepath, exceptions = []) {
   compare(names, headings, exceptions, `${kind}s`);
 }
 
-function getType(type) {
+export function getType(type) {
   if (!type) {
     return null;
   }
@@ -172,10 +145,15 @@ export async function fetchData(query, kind, exceptions, schemaType) {
   }
 }
 
-export function getArgsOrFields(filepath, name) {
+export function getAST(filepath) {
   const file = readFileSync(filepath, 'utf8');
   const processor = unified().use(remarkParse);
   const ast = processor.parse(file);
+  return ast;
+}
+
+export function getArgsOrFields(filepath, name) {
+  const ast = getAST(filepath);
   const headingArgs = {};
   let currentHeading = '';
   let currentIndex = 0;
