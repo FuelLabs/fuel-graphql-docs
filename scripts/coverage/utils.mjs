@@ -103,12 +103,6 @@ export function compare(actual, headings, exceptions, itemName) {
   );
 }
 
-export async function checkAndCompare(query, kind, filepath, exceptions = []) {
-  const names = await fetchNames(query, kind);
-  const headings = await getHeadings(filepath);
-  compare(names, headings, exceptions, `${kind}s`);
-}
-
 export function getType(type) {
   if (!type) {
     return null;

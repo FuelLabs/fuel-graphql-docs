@@ -7,21 +7,15 @@ import {
   GET_SUBSCRIPTIONS,
 } from './queries.mjs';
 import { checkUnions } from './unions.mjs';
-import { checkHeadings, checkAndCompare } from './utils.mjs';
+import { checkHeadings, fetchNames, getHeadings, compare } from './utils.mjs';
 
 const scalarExceptions = ['Boolean', 'Float', 'ID', 'Int', 'String'];
-
 const queryExceptions = ['register', 'memory'];
-const mutationExceptions = [];
-const subscriptionExceptions = [];
 
 async function checkScalars() {
-  await checkAndCompare(
-    GET_SCALARS,
-    'SCALAR',
-    'docs/reference/scalars.mdx',
-    scalarExceptions
-  );
+  const names = await fetchNames(GET_SCALARS, 'SCALAR');
+  const headings = await getHeadings('docs/reference/scalars.mdx');
+  compare(names, headings, scalarExceptions, 'SCALARs');
 }
 
 async function checkQueries() {
@@ -39,7 +33,7 @@ async function checkMutations() {
     'docs/reference/mutations.mdx',
     GET_MUTATIONS,
     'MUTATION',
-    mutationExceptions,
+    [],
     'mutationType'
   );
 }
@@ -49,7 +43,7 @@ async function checkSubscriptions() {
     'docs/reference/subscriptions.mdx',
     GET_SUBSCRIPTIONS,
     'SUBSCRIPTION',
-    subscriptionExceptions,
+    [],
     'subscriptionType'
   );
 }
@@ -65,3 +59,7 @@ async function checkDocs() {
 }
 
 await checkDocs();
+
+// TODO:
+// CHECK FOR RETURN TYPES FOR QUERIES, MUTATIONS, SUBSCRIPTIONS
+// CHECK FOR LINKS TO RELEVANT TYPES
