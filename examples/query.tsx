@@ -1,6 +1,9 @@
 import { Box, Button, Spinner } from '@fuel-ui/react';
 import { useState } from 'react';
+import { Code } from '~/src/components/Code';
 import { ExampleBox } from '~/src/components/ExampleBox';
+import { Paragraph } from '~/src/components/Paragraph';
+import { Pre } from '~/src/components/Pre';
 
 interface QueryProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -47,21 +50,42 @@ export function Query(props: QueryProps) {
   };
 
   return (
-    <ExampleBox>
-      <Box.Flex direction="column" gap="$4">
+    <>
+      {props.query && (
         <>
-          <Button intent="base" variant="outlined" onClick={runQuery}>
-            {loading ? <Spinner /> : 'Run'}
-          </Button>
+          <Pre>
+            <Code className="language-graphql">{props.query}</Code>
+          </Pre>
 
-          {resp && (
+          {props.args && Object.keys(props.args).length > 0 && (
             <>
-              <div>Response:</div>
-              <PrettyPrintJson data={resp} />
+              <Paragraph>Variables:</Paragraph>
+              <Pre>
+                <Code className="language-json">
+                  {JSON.stringify(props.args, null, 2)}
+                </Code>
+              </Pre>
             </>
           )}
         </>
-      </Box.Flex>
-    </ExampleBox>
+      )}
+
+      <ExampleBox>
+        <Box.Flex direction="column" gap="$4">
+          <>
+            <Button intent="base" variant="outlined" onClick={runQuery}>
+              {loading ? <Spinner /> : 'Run'}
+            </Button>
+
+            {resp && (
+              <>
+                <div>Response:</div>
+                <PrettyPrintJson data={resp} />
+              </>
+            )}
+          </>
+        </Box.Flex>
+      </ExampleBox>
+    </>
   );
 }
