@@ -5,6 +5,19 @@ category: Reference
 
 # Enums
 
+## `MessageState`
+
+The state of a message, either `UNSPENT`, `SPENT`, or `NOT_FOUND`.
+
+`UNSPENT`:
+The message is unspent.
+
+`SPENT`:
+The message is spent.
+
+`NOT_FOUND`:
+The message was not found.
+
 ## `ReceiptType`
 
 The receipt type indicating what kind of transaction generated the receipt.
@@ -60,3 +73,13 @@ Indicates the transaction returned some data.
 
 `REVERT`:
 Indicates the transaction reverted.
+
+## `RunState`
+
+The state of a [`RunResult`](/docs/reference/objects/#runresult).
+
+`COMPLETED`:
+All breakpoints have been processed, and the program has terminated.
+
+`BREAKPOINT`:
+The program stopped on a breakpoint.

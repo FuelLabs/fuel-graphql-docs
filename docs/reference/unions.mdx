@@ -11,9 +11,9 @@ The type of coin being used.
 
 **Types:**
 
-[`Coin`](/docs/reference/objects/#coin): Coin
+[`Coin`](/docs/reference/objects/#coin): A standard coin.
 
-[`MessageCoin`](/docs/reference/objects/#messagecoin): `MessageCoin`
+[`MessageCoin`](/docs/reference/objects/#messagecoin): A message coin.
 
 ## `Consensus`
 
@@ -25,6 +25,16 @@ The type of consensus mechanism used to validate a block.
 
 [`PoAConsensus`](/docs/reference/objects/#poaconsensus): PoA
 consensus
+
+## `DependentCost`
+
+Contains the dependent cost of opcodes.
+
+**Types:**
+
+[`LightOperation`](/docs/reference/objects/#lightoperation): Operations that can process many units with 1 gas
+
+[`HeavyOperation`](/docs/reference/objects/#heavyoperation): Operations that require more than 1 gas to process a single unit
 
 ## `Input`
 
@@ -49,6 +59,7 @@ An output type for a transaction.
 
 [`CoinOutput`](/docs/reference/objects/#coinoutput): Indicates coins
 were forwarded from one address to another.
+Can be used during transaction creation when the recipient, asset, and amount is known.
 
 [`ContractOutput`](/docs/reference/objects/#contractoutput):
 Indicates the transaction updated the state of a contract.
@@ -70,6 +81,8 @@ Indicates a contract was deployed.
 ## `TransactionStatus`
 
 The status type of a transaction.
+
+**Types:**
 
 [`SubmittedStatus`](/docs/reference/objects/#submittedstatus): The transaction has been submitted.
 

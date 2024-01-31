@@ -127,13 +127,25 @@ A filter for the contract balances.
 
 Estimate the predicate gas and returns a [`Transaction!`](/docs/reference/objects/#transaction).
 
-`tx:` [`HexString!`](/docs/reference/scalars/#hexstring)
+**args:**
+
+`tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.
 
 ## `health`
 
 Returns `true` if the API is running or `false` if the API is down.
+
+## `messageStatus`
+
+Returns the [`MessageStatus`](/docs/reference/objects/#messagestatus) for a given message [`Nonce`](/docs/reference/scalars/#nonce).
+
+**args:**
+
+`nonce`: [`Nonce`](/docs/reference/scalars/#nonce)
+
+The nonce of the message.
 
 ## `messageProof`
 
@@ -145,15 +157,15 @@ Returns the [`MessageProof`](/docs/reference/objects/#messageproof) for a given 
 
 The transaction id for the message.
 
-`messageId`: [`MessageId!`](/docs/reference/scalars/#messageid)
+`nonce`: [`Nonce`](/docs/reference/scalars/#nonce)
 
-The id of the message.
+The message nonce.
 
-`id`: [`BlockId`](/docs/reference/scalars/#blockid)
+`commitBlockId`: [`BlockId`](/docs/reference/scalars/#blockid)
 
 The block id.
 
-`height`: [`U64`](/docs/reference/scalars/#u64)
+`commitBlockHeight`: [`U32`](/docs/reference/scalars/#u32)
 
 The block height.
 

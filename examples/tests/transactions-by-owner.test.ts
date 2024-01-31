@@ -3,12 +3,12 @@ import { Client, cacheExchange, fetchExchange } from 'urql';
 import 'isomorphic-fetch';
 
 const apolloClient = new ApolloClient({
-  uri: 'https://beta-4.fuel.network/graphql',
+  uri: 'https://beta-5.fuel.network/graphql',
   cache: new InMemoryCache(),
 });
 
 const urqlClient = new Client({
-  url: 'https://beta-4.fuel.network/graphql',
+  url: 'https://beta-5.fuel.network/graphql',
   exchanges: [cacheExchange, fetchExchange],
 });
 
@@ -84,11 +84,11 @@ describe('Transactions by owner', () => {
 
     const args = {
       address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
     };
 
     const getTransactions = async () => {
-      const response = await fetch('https://beta-4.fuel.network/graphql', {
+      const response = await fetch('https://beta-5.fuel.network/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -178,7 +178,7 @@ describe('Transactions by owner', () => {
 
     const args = {
       address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
     };
 
     const getTransactions = async () => {
@@ -264,7 +264,7 @@ describe('Transactions by owner', () => {
 
     const args = {
       address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
     };
 
     const getTransactions = async () => {
