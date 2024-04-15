@@ -2,6 +2,7 @@
   "extends": "@fuels/ts-config/base.json",
   "compilerOptions": {
     "types": ["@fuel-wallet/sdk", "jest"],
+    "lib": ["es2021"],
     "plugins": [{ "name": "next" }],
     "allowJs": true,
     "noEmit": true,

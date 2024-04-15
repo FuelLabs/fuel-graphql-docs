@@ -1,7 +1,7 @@
 import { cssObj } from '@fuel-ui/css';
 import { Link, Tabs, Box } from '@fuel-ui/react';
 
-import { REPO_LINK } from '../constants';
+import { REPO_LINK, TESTNET_ENDPOINT } from '../constants';
 
 import { Pre } from './Pre';
 
@@ -58,7 +58,7 @@ export function CodeExamples({
   const apolloImport = `import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const apolloClient= new ApolloClient({
-  uri: 'https://beta-5.fuel.network/graphql',
+  uri: '${TESTNET_ENDPOINT}',
   cache: new InMemoryCache(),
 });
 
@@ -67,7 +67,7 @@ const apolloClient= new ApolloClient({
   const urqlImport = `import { Client, cacheExchange, fetchExchange } from 'urql';
 
 const urqlClient = new Client({
-  url: 'https://beta-5.fuel.network/graphql',
+  url: '${TESTNET_ENDPOINT}',
   exchanges: [cacheExchange, fetchExchange],
 });
 

@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { Client, cacheExchange, fetchExchange } from 'urql';
 import 'isomorphic-fetch';
+import { TESTNET_ENDPOINT } from '~/src/constants';
 
 const apolloClient = new ApolloClient({
-  uri: 'https://beta-5.fuel.network/graphql',
+  uri: TESTNET_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
 const urqlClient = new Client({
-  url: 'https://beta-5.fuel.network/graphql',
+  url: TESTNET_ENDPOINT,
   exchanges: [cacheExchange, fetchExchange],
 });
 
@@ -31,7 +33,7 @@ describe('Balances', () => {
     };
 
     const getBalances = async () => {
-      const response = await fetch('https://beta-5.fuel.network/graphql', {
+      const response = await fetch(TESTNET_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +44,7 @@ describe('Balances', () => {
           variables: args,
         }),
       });
-      const json = await response.json();
+      const json: any = await response.json();
       console.log('BALANCES:', json.data.balances);
       expect(json.data.balances.nodes).toBeTruthy();
     };

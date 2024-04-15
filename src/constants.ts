@@ -10,3 +10,5 @@ export const DEFAULT_SLUG = ['overview'];
 export const META_DESC = 'Official documentation for the Fuel GraphQL API';
 
 export const META_OGIMG = URL + ogImage.src;
+
+export const TESTNET_ENDPOINT = 'https://beta-5.fuel.network/graphql';
