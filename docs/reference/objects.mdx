@@ -43,6 +43,10 @@ Information about a block in the network.
 
 A unique identifier for the block.
 
+`height`: [`U32!`](/docs/reference/scalars/#u32)
+
+The height of the block.
+
 `header`: [`Header!`](#header)
 
 Metadata about a block.
@@ -136,10 +140,6 @@ The amount of coins.
 
 The asset id of the coin.
 
-`maturity`: [`U32!`](/docs/reference/scalars/#u32)
-
-The UTXO being spent must have been created at least this many blocks ago.
-
 `blockCreated`: [`U32!`](/docs/reference/scalars/#u32)
 
 The block when the coins were created.
@@ -186,29 +186,37 @@ The consensus parameters used for validating blocks.
 
 **fields:**
 
+`version`: [`ConsensusParametersVersion!`](/docs/reference/unions/#consensusparametersversion)
+
+The version of the consensus parameters.
+
 `txParams`: [`TxParameters!`](#txparameters)
 
-The allowed parameters of transactions
+The allowed parameters of transactions.
 
 `predicateParams`: [`PredicateParameters!`](#predicateparameters)
 
-The allowed parameters of predicates
+The allowed parameters of predicates.
 
 `scriptParams`: [`ScriptParameters!`](#scriptparameters)
 
-The allowed parameters of scripts
+The allowed parameters of scripts.
 
 `contractParams`: [`ContractParameters!`](#contractparameters)
 
-The allowed parameters of contracts
+The allowed parameters of contracts.
 
 `feeParams`: [`FeeParameters!`](#feeparameters)
 
-The allowed parameters of fees
+The allowed parameters of fees.
 
 `baseAssetId`: [`AssetId!`](/docs/reference/scalars/#assetid)
 
 The asset id of the "base" asset used for gas fees.
+
+`blockGasLimit`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum amount of gas spend allowed in a block.
 
 `chainId`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -217,6 +225,8 @@ A unique identifier for the chain.
 `gasCosts`: [`GasCosts!`](#gascosts)
 
 The gas cost of each opcode.
+
+`privilegedAddress`: [`Address!`](/docs/reference/scalars/#address)
 
 ## `Contract`
 
@@ -298,17 +308,79 @@ The state root of contract after transaction execution.
 
 ## `ContractParameters`
 
-An object containing information about a contract.
+Contract-specific consensus parameters.
 
 **fields:**
 
+`version`: [`ContractParametersVersion!`](/docs/reference/unions/#contractparametersversion)
+
+The version of the contract-specific consensus parameters.
+
 `contractMaxSize`: [`U64!`](/docs/reference/scalars/#u64)
 
-Maximum size of a contract in bytes
+Maximum size of a contract in bytes.
 
 `maxStorageSlots`: [`U64!`](/docs/reference/scalars/#u64)
 
-Maximum number of storage slots
+Maximum number of storage slots.
+
+## `DryRunTransactionExecutionStatus`
+
+Details about the status of a transaction dry run.
+
+**fields:**
+
+`id`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
+
+The transaction ID.
+
+`status`: [`DryRunTransactionStatus!`](/docs/reference/unions/#dryruntransactionstatus)
+
+The status of the transaction dry run.
+
+`receipts`: [`[Receipt!]!`](#receipt)
+
+The receipts for the transaction dry run.
+
+## `DryRunFailureStatus`
+
+The status details of a failed transaction dry run.
+
+**fields:**
+
+`programState`: [`ProgramState`](#programstate)
+
+The state of the program execution.
+
+`reason`: `String!`
+
+The reason why the transaction dry run failed.
+
+`receipts`: [`[Receipt!]!`](#receipt)
+
+The transaction dry run receipts.
+
+## `DryRunSuccessStatus`
+
+The status details of a successful transaction dry run.
+
+**fields:**
+
+`programState`: [`ProgramState`](#programstate)
+
+The state of the program execution.
+
+`receipts`: [`[Receipt!]!`](#receipt)
+
+The transaction dry run receipts.
+
+## `EstimateGasPrice`
+
+The estimated gas price for a transaction.
+
+**fields:**
+
+`gasPrice`: [`U64!`](/docs/reference/scalars/#u64)
 
 ## `ExcludeInput`
 
@@ -360,19 +432,27 @@ The consensus parameters for fees.
 
 **fields:**
 
+`version`: [`FeeParametersVersion!`](/docs/reference/unions/#feeparametersversion)
+
+The version of the consensus parameters.
+
 `gasPriceFactor`: [`U64!`](/docs/reference/scalars/#u64)
 
-The dynamic adjustment of gas costs
+The dynamic adjustment of gas costs.
 
 `gasPerByte`: [`U64!`](/docs/reference/scalars/#u64)
 
-The gas cost per byte
+The gas cost per byte.
 
 ## `GasCosts`
 
 The breakdown of the gas costs of each opcode.
 
 **fields:**
+
+`version`: [`GasCostsVersion!`](/docs/reference/unions/#gascostsversion)
+
+The version of the gas-specific consensus parameters.
 
 `add`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -421,10 +501,6 @@ The gas cost of using the `$cfei` memory opcode.
 `cfsi`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$cfsi` memory opcode.
-
-`croo`: [`U64!`](/docs/reference/scalars/#u64)
-
-The gas cost of using the `$croo` contract opcode.
 
 `div`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -738,6 +814,10 @@ The `dependent` gas cost of using the `$call` contract opcode.
 
 The `dependent` gas cost of using the `$ccp` contract opcode.
 
+`croo`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
+
+The `dependent` gas cost of using the `$croo` contract opcode.
+
 `csiz`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
 
 The `dependent` gas cost of using the `$csiz` contract opcode.
@@ -864,6 +944,14 @@ The current block id.
 
 The block height for the data availability layer up to which (inclusive) input messages are processed.
 
+`consensusParametersVersion`: [`U32!`](/docs/reference/scalars/#u32)
+
+The version of the consensus parameters.
+
+`stateTransitionBytecodeVersion`: [`U32!`](/docs/reference/scalars/#u32)
+
+The version of the state transition bytecode.
+
 `transactionsCount`: [`U64!`](/docs/reference/scalars/#u64)
 
 The number of transactions in the block.
@@ -876,7 +964,11 @@ The number of receipt messages in the block.
 
 The merkle root of the transactions in the block.
 
-`messageReceiptRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
+`messageOutboxRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
+
+The merkle root of the receipt messages in the block.
+
+`eventInboxRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The merkle root of the receipt messages in the block.
 
@@ -926,10 +1018,6 @@ A pointer to the transaction whose output is being spent.
 
 The index of the witness that authorizes spending the coin.
 
-`maturity`: [`U32!`](/docs/reference/scalars/#u32)
-
-The UTXO being spent must have been created at least this many blocks ago.
-
 `predicateGasUsed`: [`U64!`](/docs/reference/scalars/#u64)
 
 The amount of gas used in the predicate transaction.
@@ -964,9 +1052,9 @@ The state root of contract before transaction execution.
 
 A pointer to the TX whose output is being spent.
 
-`contract`: [`Contract!`](#contract)
+`contractId`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
-The input contract.
+The input contract's ID.
 
 ## `InputMessage`
 
@@ -1009,6 +1097,20 @@ The predicate bytecode.
 `predicateData`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The predicate input parameters.
+
+## `LatestGasPrice`
+
+Information about the latest price of gas.
+
+**fields:**
+
+`gasPrice`: [`U64!`](/docs/reference/scalars/#u64)
+
+The gas price for the latest block produced.
+
+`blockHeight`: [`U32!`](/docs/reference/scalars/#u32)
+
+The block height for the latest block produced.
 
 ## `LightOperation`
 
@@ -1164,10 +1266,6 @@ Whether or not the node is using UTXO validation.
 
 Whether or not logging of backtraces from VM errors is enabled.
 
-`minGasPrice`: [`U64!`](/docs/reference/scalars/#u64)
-
-The minimum gas price for the node.
-
 `maxTx`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum number of transactions.
@@ -1258,9 +1356,9 @@ Information about the policies of a transaction.
 
 **fields:**
 
-`gasPrice`: [`U64`](/docs/reference/scalars/#u64)
+`tip`: [`U64`](/docs/reference/scalars/#u64)
 
-The price for each unit of gas consumed during the transaction execution.
+The tip amount paid to the block producer.
 
 `witnessLimit`: [`U64`](/docs/reference/scalars/#u64)
 
@@ -1276,9 +1374,13 @@ The maximum fee allowed for the transaction to consume.
 
 ## `PredicateParameters`
 
-The consensus parameters for a predicate.
+The consensus parameters for predicates.
 
 **fields:**
+
+`version`: [`PredicateParametersVersion!`](/docs/reference/unions/#predicateparametersversion)
+
+The version of the consensus parameters.
 
 `maxPredicateLength`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -1302,9 +1404,9 @@ An object representing all possible types of receipts.
 
 **fields:**
 
-`contract`: [`Contract`](#contract)
+`id`: [`ContractId!`](/docs/reference/scalars/#contractid)
 
-The contract that produced the receipt.
+The ID of the contract that produced the receipt.
 
 `pc`: [`U64`](/docs/reference/scalars/#u64)
 
@@ -1438,6 +1540,10 @@ The consensus parameters for a script.
 
 **fields:**
 
+`version`: [`ScriptParametersVersion!`](/docs/reference/unions/#scriptparametersversion)
+
+The version of the consensus parameters.
+
 `maxScriptLength`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum length of a script.
@@ -1536,10 +1642,6 @@ A contract used for the transaction input.
 
 The policies for the transaction.
 
-`gasPrice`: [`U64`](/docs/reference/scalars/#u64)
-
-The gas price for the transaction.
-
 `scriptGasLimit`: [`U64`](/docs/reference/scalars/#u64)
 
 The gas limit for the transaction.
@@ -1555,6 +1657,10 @@ The amount minted in the transaction.
 `mintAssetId`: [`AssetId`](/docs/reference/scalars/#assetid)
 
 The asset ID for coins minted in the transaction.
+
+`mintGasPrice`: [`U64!`](/docs/reference/scalars/#u64)
+
+The gas price for minting coins.
 
 `txPointer`: [`TxPointer`](/docs/reference/scalars/#txpointer)
 
@@ -1596,10 +1702,6 @@ The root of the receipts.
 
 The status of the transaction.
 
-`receipts`: [`[Receipt!]`](#receipt)
-
-An array of the receipts produced by the transaction.
-
 `script`: [`HexString`](/docs/reference/scalars/#hexstring)
 
 The script to execute.
@@ -1611,10 +1713,6 @@ The script input parameters.
 `bytecodeWitnessIndex`: `Int`
 
 The witness index of contract bytecode.
-
-`bytecodeLength`: [`U64`](/docs/reference/scalars/#u64)
-
-The length of the transaction bytecode.
 
 `salt`: [`Salt`](/docs/reference/scalars/#salt)
 
@@ -1633,6 +1731,10 @@ A hex string of the raw transaction payload.
 The consensus parameters for a transaction.
 
 **fields:**
+
+`version`: [`TxParametersVersion!`](/docs/reference/unions/#txparametersversion)
+
+The version of the consensus parameters.
 
 `maxInputs`: [`U8!`](/docs/reference/scalars/#u8)
 
@@ -1671,3 +1773,11 @@ The amount of coins in the output.
 `assetId`: [`AssetId`](/docs/reference/scalars/#assetid)
 
 The asset id for the coins sent.
+
+## `Version`
+
+The version of the consensus parameters.
+
+**fields:**
+
+`value`: [`U8`](/docs/reference/scalars/#u8)

@@ -108,15 +108,15 @@ The session ID.
 
 ## `dryRun`
 
-Spin up a new temporary node from the current state and emulate a given transaction.
+Spin up a new temporary node from the current state and emulate a given transaction or set of transactions.
 Returns a [`[Receipt!]!`](/docs/reference/objects/#receipt) for the emulated transaction.
 You can optionally use UTXO validation.
 
 **args:**
 
-`tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
+`txs`: [`[HexString!]!`](/docs/reference/scalars/#hexstring)
 
-The transaction hex string.
+An array of transaction hex strings.
 
 `utxoValidation`: `Boolean`
 Whether or not to use UTXO validation.
