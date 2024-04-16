@@ -35,7 +35,10 @@ function extractLines(
   } else {
     end = lines.length;
   }
-  return lines.slice(start - 1, end).join('\n').replaceAll('TESTNET_ENDPOINT', `'${TESTNET_ENDPOINT}'`);
+  return lines
+    .slice(start - 1, end)
+    .join('\n')
+    .replaceAll('TESTNET_ENDPOINT', `'${TESTNET_ENDPOINT}'`);
 }
 
 function getLineOffsets(str: string) {
@@ -64,7 +67,10 @@ function extractTestCase(source: string, testCase: string) {
       if (val && val === testCase) {
         const body = args[1]?.body;
         content = chars.slice(body.start, body.end).join('').slice(1, -1);
-        content = prettier.format(content, { parser: 'babel' }).trimEnd().replaceAll('TESTNET_ENDPOINT', `'${TESTNET_ENDPOINT}'`);
+        content = prettier
+          .format(content, { parser: 'babel' })
+          .trimEnd()
+          .replaceAll('TESTNET_ENDPOINT', `'${TESTNET_ENDPOINT}'`);
         charStart = body.start;
         charEnd = body.end;
       }
