@@ -125,13 +125,13 @@ A filter for the contract balances.
 
 ## `estimateGasPrice`
 
-Estimates the gas price of a block, and returns [`EstimateGasPrice!`](/docs/reference/objects/#estimategasprice).
+Estimates the most expensive the gas price over a given block horizon, and returns [`EstimateGasPrice!`](/docs/reference/objects/#estimategasprice).
 
 **args:**
 
 `blockHorizon`: [`U32!`](/docs/reference/scalars/#u32)
 
-The block horizon.
+The block horizon defines how many blocks in the future you are doing an estimate for.
 
 ## `estimatePredicates`
 

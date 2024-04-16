@@ -228,6 +228,8 @@ The gas cost of each opcode.
 
 `privilegedAddress`: [`Address!`](/docs/reference/scalars/#address)
 
+The address used to authorize network upgrades via the `Upgrade` transaction.
+
 ## `Contract`
 
 An object representing a deployed contract.
@@ -966,11 +968,11 @@ The merkle root of the transactions in the block.
 
 `messageOutboxRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
-The merkle root of the receipt messages in the block.
+The merkle root of the outgoing messages back to the data availability (DA) layer from Fuel, where the inputs are the IDs (`MessageId`) of the messages. The IDs are produced by executing transactions and collecting IDs from the receipts of the `Message` outputs.
 
 `eventInboxRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
-The merkle root of the receipt messages in the block.
+The merkle root of the incoming events from the data availability (DA) layer to Fuel, where the tree inputs are the hashes of these events. 
 
 `height`: [`U32!`](/docs/reference/scalars/#u32)
 
@@ -1358,7 +1360,7 @@ Information about the policies of a transaction.
 
 `tip`: [`U64`](/docs/reference/scalars/#u64)
 
-The tip amount paid to the block producer.
+The user-defined `tip` is a new transaction policy that replaced the `GasPrice` transaction policy. `Tip` allows the user to specify how much they want to pay to the block producer to incentivize them to include the user's transaction in the block.
 
 `witnessLimit`: [`U64`](/docs/reference/scalars/#u64)
 
@@ -1660,7 +1662,7 @@ The asset ID for coins minted in the transaction.
 
 `mintGasPrice`: [`U64!`](/docs/reference/scalars/#u64)
 
-The gas price for minting coins.
+The gas price at the time of minting the block.
 
 `txPointer`: [`TxPointer`](/docs/reference/scalars/#txpointer)
 
