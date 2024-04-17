@@ -11,7 +11,7 @@ This section covers just a few options available to get you started.
 
 ```javascript
 export async function getHealth() {
-  let response = await fetch('https://beta-5.fuel.network/graphql', {
+  let response = await fetch(TESTNET_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -83,5 +83,3 @@ export const checkHealth = async () => {
 ```
 
 You can see more examples in the next section.
-import { TESTNET_ENDPOINT } from "../src/constants"
-
