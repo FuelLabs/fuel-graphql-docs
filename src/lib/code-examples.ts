@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import * as acorn from 'acorn';
+import * as acornLoose from 'acorn-loose';
 import * as walk from 'acorn-walk';
 import fs from 'node:fs';
 import { EOL } from 'os';
@@ -8,13 +8,14 @@ import path from 'path';
 import * as prettier from 'prettier';
 import type { Root } from 'remark-gfm';
 import { visit } from 'unist-util-visit';
-import type { Parent } from 'unist-util-visit';
+import type { Parent } from 'unist-util-visit/lib';
+
 import { TESTNET_ENDPOINT } from '../constants';
 
 const ROOT_DIR = path.resolve(__dirname, '../../../');
 
 function toAST(content: string) {
-  return acorn.parse(content, {
+  return acornLoose.parse(content, {
     ecmaVersion: 'latest',
     sourceType: 'module',
   });
@@ -106,11 +107,11 @@ export function codeExamples(options: Options = { filepath: '' }) {
   const dirname = path.relative(rootDir, path.dirname(filepath));
 
   return function transformer(tree: Root) {
-    const nodes: [any, number | null, Parent][] = [];
+    const nodes: [any, number | null, Parent<any, any>][] = [];
 
     visit(tree, 'mdxJsxFlowElement', (node: any, idx, parent) => {
       if (node.name === 'CodeExamples') {
-        nodes.push([node as any, idx, parent as Parent]);
+        nodes.push([node as any, idx!, parent as Parent<any, any>]);
       }
     });
 
