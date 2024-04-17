@@ -106,9 +106,7 @@ export const LATEST_BLOCKS_QUERY = `query LatestBlocks {
             }
             ... on InputContract {
               utxoId
-              contract {
-                id
-              }
+              contractId
             }
             ... on InputMessage {
               sender
@@ -140,13 +138,10 @@ export const LATEST_BLOCKS_QUERY = `query LatestBlocks {
               assetId
             }
             ... on ContractCreated {
-              contract {
-                id
-              }
+              contract
               stateRoot
             }
           }
-          gasPrice
         }
       }
     }
@@ -166,9 +161,7 @@ export const LATEST_BLOCKS_QUERY = `query LatestBlocks {
           }
           ... on InputContract {
             utxoId
-            contract {
-              id
-            }
+            contractId
           }
           ... on InputMessage {
             sender
@@ -200,9 +193,7 @@ export const LATEST_BLOCKS_QUERY = `query LatestBlocks {
             assetId
           }
           ... on ContractCreated {
-            contract {
-              id
-            }
+            contract
             stateRoot
           }
         }
@@ -220,71 +211,67 @@ export const LATEST_BLOCKS_QUERY = `query LatestBlocks {
   }`;
 
 export const TRANSACTIONS_QUERY = `query Transactions($address: Address) {
-    transactionsByOwner(owner: $address, first: 5) {
-      nodes {
-        id
-        inputs {
-          __typename
-          ... on InputCoin {
-            owner
-            utxoId
-            amount
-            assetId
-          }
-          ... on InputContract {
-            utxoId
-            contract {
-              id
-            }
-          }
-          ... on InputMessage {
-            sender
-            recipient
-            amount
-            data
-          }
+  transactionsByOwner(owner: $address, first: 5) {
+    nodes {
+      id
+      inputs {
+        __typename
+        ... on InputCoin {
+          owner
+          utxoId
+          amount
+          assetId
         }
-        outputs {
-          __typename
-          ... on CoinOutput {
-            to
-            amount
-            assetId
-          }
-          ... on ContractOutput {
-            inputIndex
-            balanceRoot
-            stateRoot
-          }
-          ... on ChangeOutput {
-            to
-            amount
-            assetId
-          }
-          ... on VariableOutput {
-            to
-            amount
-            assetId
-          }
-          ... on ContractCreated {
-            contract {
-              id
-            }
-            stateRoot
-          }
+        ... on InputContract {
+          utxoId
+          contractId
         }
-        status {
-          __typename
-          ... on FailureStatus {
-            reason
-            programState {
-              returnType
-            }
+        ... on InputMessage {
+          sender
+          recipient
+          amount
+          data
+        }
+      }
+      outputs {
+        __typename
+        ... on CoinOutput {
+          to
+          amount
+          assetId
+        }
+        ... on ContractOutput {
+          inputIndex
+          balanceRoot
+          stateRoot
+        }
+        ... on ChangeOutput {
+          to
+          amount
+          assetId
+        }
+        ... on VariableOutput {
+          to
+          amount
+          assetId
+        }
+        ... on ContractCreated {
+          contract
+          stateRoot
+        }
+      }
+      status {
+        __typename
+        ... on FailureStatus {
+          reason
+          programState {
+            returnType
           }
         }
       }
     }
-  }`;
+  }
+}`;
 
 export const TRANSACTIONS_ARGS = {
     address:
