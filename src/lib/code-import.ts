@@ -9,6 +9,7 @@ import * as prettier from 'prettier';
 import type { Root } from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 import type { Parent } from 'unist-util-visit';
+import { TESTNET_ENDPOINT } from '../constants';
 
 const ROOT_DIR = path.resolve(__dirname, '../../../../../../../');
 
@@ -103,8 +104,13 @@ export function codeImport(options: Options = { filepath: '' }) {
 
     visit(tree, 'mdxJsxFlowElement', (node: any, idx, parent) => {
       if (node.name === 'CodeImport') {
-        nodes.push([node as any, idx, parent as Parent]);
+        nodes.push([node as any, idx!, parent as Parent]);
       }
+    });
+
+    visit(tree, '', (node: any, _idx, _parent) => {
+      if(node.type === 'code' && node.value.includes("TESTNET_ENDPOINT"))
+        node.value = node.value.replaceAll("TESTNET_ENDPOINT", `'${TESTNET_ENDPOINT}'`);
     });
 
     nodes.forEach(([node]) => {
