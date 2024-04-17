@@ -11,6 +11,10 @@ const config: JestConfigWithTsJest = {
   },
   testTimeout: 100000,
   verbose: true,
+  moduleNameMapper: {
+    // Maps all imports starting with "~/" to the correct directory
+    "^~/(.*)$": "<rootDir>/$1",
+  },
 };
 
 export default config;

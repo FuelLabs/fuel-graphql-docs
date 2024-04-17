@@ -14,7 +14,8 @@ interface QueryProps {
 }
 
 export function Query(props: QueryProps) {
-  const [resp, setResp] = useState();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [resp, setResp] = useState<any>();
   const [loading, setLoading] = useState(false);
 
   function runQuery() {

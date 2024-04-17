@@ -2,8 +2,9 @@ import { cssObj } from '@fuel-ui/css';
 import { Box } from '@fuel-ui/react';
 import Head from 'next/head';
 import type { ReactNode } from 'react';
+import ogImage from '~/public/og-image.png';
 
-import { META_DESC, META_OGIMG } from '../constants';
+import { META_DESC, URL } from '../constants';
 
 import { Header } from './Header';
 
@@ -16,6 +17,8 @@ export function Layout({ title, children }: LayoutProps) {
   const titleText = title
     ? `${title} | Fuel GraphQL Docs`
     : 'Fuel GraphQL Docs';
+  const META_OGIMG = URL + ogImage.src;
+  
   return (
     <>
       <Head>

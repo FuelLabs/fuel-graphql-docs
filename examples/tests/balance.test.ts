@@ -4,6 +4,8 @@ import { Client, cacheExchange, fetchExchange } from 'urql';
 import 'isomorphic-fetch';
 import { TESTNET_ENDPOINT } from '~/src/constants';
 
+import { BALANCE_ARGS, BALANCE_QUERY } from '../queries';
+
 const apolloClient = new ApolloClient({
   uri: TESTNET_ENDPOINT,
   cache: new InMemoryCache(),
@@ -16,20 +18,9 @@ const urqlClient = new Client({
 
 describe('Balance', () => {
   test('get balance with ts', async () => {
-    const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId) {
-      balance(owner: $address, assetId: $assetId) {
-        owner
-        amount
-        assetId
-      }
-    }`;
+    // BALANCE_QUERY
 
-    const args = {
-      address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
-      assetId:
-        '0x0000000000000000000000000000000000000000000000000000000000000000',
-    };
+    // BALANCE_ARGS
 
     const getBalance = async () => {
       const response = await fetch(TESTNET_ENDPOINT, {
@@ -40,7 +31,7 @@ describe('Balance', () => {
         },
         body: JSON.stringify({
           query: BALANCE_QUERY,
-          variables: args,
+          variables: BALANCE_ARGS,
         }),
       });
       const json: any = await response.json();
@@ -52,25 +43,14 @@ describe('Balance', () => {
   });
 
   test('get balance with apollo', async () => {
-    const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId) {
-      balance(owner: $address, assetId: $assetId) {
-        owner
-        amount
-        assetId
-      }
-    }`;
+    // BALANCE_QUERY
 
-    const args = {
-      address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
-      assetId:
-        '0x0000000000000000000000000000000000000000000000000000000000000000',
-    };
+    // BALANCE_ARGS
 
     const getBalance = async () => {
       const response = await apolloClient.query({
         query: gql(BALANCE_QUERY),
-        variables: args,
+        variables: BALANCE_ARGS,
       });
       console.log('BALANCE:', response.data.balance);
       expect(response.data.balance.amount).toBeTruthy();
@@ -80,23 +60,12 @@ describe('Balance', () => {
   });
 
   test('get balance with urql', async () => {
-    const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId) {
-      balance(owner: $address, assetId: $assetId) {
-        owner
-        amount
-        assetId
-      }
-    }`;
+    // BALANCE_QUERY
 
-    const args = {
-      address:
-        '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
-      assetId:
-        '0x0000000000000000000000000000000000000000000000000000000000000000',
-    };
+    // BALANCE_ARGS
 
     const getBalance = async () => {
-      const response = await urqlClient.query(BALANCE_QUERY, args).toPromise();
+      const response = await urqlClient.query(BALANCE_QUERY, BALANCE_ARGS).toPromise();
       console.log('BALANCE:', response.data.balance);
       expect(response.data.balance.amount).toBeTruthy();
     };

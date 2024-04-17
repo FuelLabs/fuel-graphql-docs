@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import * as acornLoose from 'acorn-loose';
 import * as walk from 'acorn-walk';
 import fs from 'node:fs';
@@ -9,8 +8,10 @@ import * as prettier from 'prettier';
 import type { Root } from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 import type { Parent } from 'unist-util-visit/lib';
+import { ALL_QUERY_CONSTANTS } from '~/examples/queries';
 
 import { TESTNET_ENDPOINT } from '../constants';
+
 
 const ROOT_DIR = path.resolve(__dirname, '../../../');
 
@@ -86,6 +87,37 @@ function extractTestCase(source: string, testCase: string) {
     lineStart,
     lineEnd: lineEnd !== lineStart ? lineEnd : undefined,
   };
+}
+
+function addQuery(content: string) {
+  let queryLine;
+  let queryName;
+  let argsLine;
+  let argsName;
+  const lines = content.split(EOL);
+  for(let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim().replace('// ', '');
+    const found = Object.keys(ALL_QUERY_CONSTANTS).includes(trimmed);
+    if(found){
+      if(trimmed.includes("QUERY")){
+        queryLine = i;
+        queryName = trimmed;
+      } else if (trimmed.includes("ARGS")){
+        argsLine = i;
+        argsName = trimmed;
+      }
+    }
+  }
+
+  if(queryName && queryLine !== undefined && queryLine !== null){
+    lines[queryLine] = `const ${queryName} = ` + "`" + `${ALL_QUERY_CONSTANTS[queryName]}` + "`";
+  }
+  if(argsName && argsLine){
+    lines[argsLine] = `const ${argsName} = ${JSON.stringify(ALL_QUERY_CONSTANTS[argsName], null, 2)}`;
+  }
+
+ return lines
+  .join('\n');
 }
 
 const files = new Map<string, string>();
@@ -207,17 +239,17 @@ export function codeExamples(options: Options = { filepath: '' }) {
         {
           name: '__ts_content',
           type: 'mdxJsxAttribute',
-          value: ts_content,
+          value: addQuery(ts_content),
         },
         {
           name: '__apollo_content',
           type: 'mdxJsxAttribute',
-          value: apollo_content,
+          value: addQuery(apollo_content),
         },
         {
           name: '__urql_content',
           type: 'mdxJsxAttribute',
-          value: urql_content,
+          value: addQuery(urql_content),
         },
         {
           name: '__filepath',

@@ -19,7 +19,7 @@
     "prettier:format": "prettier --write ."
   },
   "dependencies": {
-    "@apollo/client": "^3.8.6",
+    "@apollo/client": "^3.9.11",
     "@docsearch/css": "^3.5.2",
     "@docsearch/react": "3.5.2",
     "@fuel-ui/css": "0.21.0-pr-305-04b8434",
@@ -72,7 +72,7 @@
     "unified": "^10.1.2",
     "unist-util-visit": "^5.0.0",
     "updates": "^15.0.2",
-    "urql": "^4.0.5",
+    "urql": "^4.0.7",
     "vfile": "^6.0.1"
   },
   "devDependencies": {

@@ -4,6 +4,8 @@ import { Client, cacheExchange, fetchExchange } from 'urql';
 import 'isomorphic-fetch';
 import { TESTNET_ENDPOINT } from '~/src/constants';
 
+import { LATEST_TRANSACTIONS_QUERY } from '../queries';
+
 const apolloClient = new ApolloClient({
   uri: TESTNET_ENDPOINT,
   cache: new InMemoryCache(),
@@ -16,74 +18,8 @@ const urqlClient = new Client({
 
 describe('Latest transactions', () => {
   test('get latest transactions with ts', async () => {
-    const LATEST_TRANSACTIONS_QUERY = `
-      query LatestTransactions {
-          transactions(last: 5) {
-            nodes {
-              id
-              inputs {
-                __typename
-                ... on InputCoin {
-                  owner
-                  utxoId
-                  amount
-                  assetId
-                }
-                ... on InputContract {
-                  utxoId
-                  contract {
-                    id
-                  }
-                }
-                ... on InputMessage {
-                  sender
-                  recipient
-                  amount
-                  data
-                }
-              }
-              outputs {
-                __typename
-                ... on CoinOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on ContractOutput {
-                  inputIndex
-                  balanceRoot
-                  stateRoot
-                }
-                ... on ChangeOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on VariableOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on ContractCreated {
-                  contract {
-                    id
-                  }
-                  stateRoot
-                }
-              }
-              status {
-                __typename
-                ... on FailureStatus {
-                  reason
-                  programState {
-                    returnType
-                  }
-                }
-              }
-            }
-          }
-        }`;
-
+    // LATEST_TRANSACTIONS_QUERY
+    
     const getLatestTransactions = async () => {
       const response = await fetch(TESTNET_ENDPOINT, {
         method: 'POST',
@@ -104,73 +40,7 @@ describe('Latest transactions', () => {
   });
 
   test('get latest transactions with apollo', async () => {
-    const LATEST_TRANSACTIONS_QUERY = `
-      query LatestTransactions {
-          transactions(last: 5) {
-            nodes {
-              id
-              inputs {
-                __typename
-                ... on InputCoin {
-                  owner
-                  utxoId
-                  amount
-                  assetId
-                }
-                ... on InputContract {
-                  utxoId
-                  contract {
-                    id
-                  }
-                }
-                ... on InputMessage {
-                  sender
-                  recipient
-                  amount
-                  data
-                }
-              }
-              outputs {
-                __typename
-                ... on CoinOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on ContractOutput {
-                  inputIndex
-                  balanceRoot
-                  stateRoot
-                }
-                ... on ChangeOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on VariableOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on ContractCreated {
-                  contract {
-                    id
-                  }
-                  stateRoot
-                }
-              }
-              status {
-                __typename
-                ... on FailureStatus {
-                  reason
-                  programState {
-                    returnType
-                  }
-                }
-              }
-            }
-          }
-        }`;
+    // LATEST_TRANSACTIONS_QUERY
 
     const getLatestTransactions = async () => {
       const response = await apolloClient.query({
@@ -184,73 +54,7 @@ describe('Latest transactions', () => {
   });
 
   test('get latest transactions with urql', async () => {
-    const LATEST_TRANSACTIONS_QUERY = `
-      query LatestTransactions {
-          transactions(last: 5) {
-            nodes {
-              id
-              inputs {
-                __typename
-                ... on InputCoin {
-                  owner
-                  utxoId
-                  amount
-                  assetId
-                }
-                ... on InputContract {
-                  utxoId
-                  contract {
-                    id
-                  }
-                }
-                ... on InputMessage {
-                  sender
-                  recipient
-                  amount
-                  data
-                }
-              }
-              outputs {
-                __typename
-                ... on CoinOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on ContractOutput {
-                  inputIndex
-                  balanceRoot
-                  stateRoot
-                }
-                ... on ChangeOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on VariableOutput {
-                  to
-                  amount
-                  assetId
-                }
-                ... on ContractCreated {
-                  contract {
-                    id
-                  }
-                  stateRoot
-                }
-              }
-              status {
-                __typename
-                ... on FailureStatus {
-                  reason
-                  programState {
-                    returnType
-                  }
-                }
-              }
-            }
-          }
-        }`;
+    // LATEST_TRANSACTIONS_QUERY
 
     const getLatestTransactions = async () => {
       const response = await urqlClient

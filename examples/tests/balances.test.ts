@@ -4,6 +4,8 @@ import { Client, cacheExchange, fetchExchange } from 'urql';
 import 'isomorphic-fetch';
 import { TESTNET_ENDPOINT } from '~/src/constants';
 
+import { BALANCES_ARGS, BALANCES_QUERY } from '../queries';
+
 const apolloClient = new ApolloClient({
   uri: TESTNET_ENDPOINT,
   cache: new InMemoryCache(),
@@ -16,21 +18,9 @@ const urqlClient = new Client({
 
 describe('Balances', () => {
   test('get balances with ts', async () => {
-    const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
-      balances(filter: $filter, first: 5) {
-        nodes {
-          amount
-          assetId
-        }
-      }
-    }`;
+    // BALANCES_QUERY
 
-    const args = {
-      filter: {
-        owner:
-          '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
-      },
-    };
+    // BALANCES_ARGS
 
     const getBalances = async () => {
       const response = await fetch(TESTNET_ENDPOINT, {
@@ -41,7 +31,7 @@ describe('Balances', () => {
         },
         body: JSON.stringify({
           query: BALANCES_QUERY,
-          variables: args,
+          variables: BALANCES_ARGS,
         }),
       });
       const json: any = await response.json();
@@ -53,26 +43,14 @@ describe('Balances', () => {
   });
 
   test('get balances with apollo', async () => {
-    const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
-      balances(filter: $filter, first: 5) {
-        nodes {
-          amount
-          assetId
-        }
-      }
-    }`;
+    // BALANCES_QUERY
 
-    const args = {
-      filter: {
-        owner:
-          '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
-      },
-    };
+    // BALANCES_ARGS
 
     const getBalances = async () => {
       const response = await apolloClient.query({
         query: gql(BALANCES_QUERY),
-        variables: args,
+        variables: BALANCES_ARGS,
       });
       console.log('BALANCES:', response.data.balances);
       expect(response.data.balances.nodes).toBeTruthy();
@@ -82,24 +60,12 @@ describe('Balances', () => {
   });
 
   test('get balances with urql', async () => {
-    const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
-      balances(filter: $filter, first: 5) {
-        nodes {
-          amount
-          assetId
-        }
-      }
-    }`;
+    // BALANCES_QUERY
 
-    const args = {
-      filter: {
-        owner:
-          '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
-      },
-    };
+    // BALANCES_ARGS
 
     const getBalances = async () => {
-      const response = await urqlClient.query(BALANCES_QUERY, args).toPromise();
+      const response = await urqlClient.query(BALANCES_QUERY, BALANCES_ARGS).toPromise();
       console.log('BALANCES:', response.data.balances);
       expect(response.data.balances.nodes).toBeTruthy();
     };
