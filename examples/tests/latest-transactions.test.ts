@@ -19,7 +19,7 @@ const urqlClient = new Client({
 describe('Latest transactions', () => {
   test('get latest transactions with ts', async () => {
     // LATEST_TRANSACTIONS_QUERY
-    
+
     const getLatestTransactions = async () => {
       const response = await fetch(TESTNET_ENDPOINT, {
         method: 'POST',

@@ -12,7 +12,6 @@ import { ALL_QUERY_CONSTANTS } from '~/examples/queries';
 
 import { TESTNET_ENDPOINT } from '../constants';
 
-
 const ROOT_DIR = path.resolve(__dirname, '../../../');
 
 function toAST(content: string) {
@@ -95,29 +94,33 @@ function addQuery(content: string) {
   let argsLine;
   let argsName;
   const lines = content.split(EOL);
-  for(let i = 0; i < lines.length; i++) {
+  for (let i = 0; i < lines.length; i++) {
     const trimmed = lines[i].trim().replace('// ', '');
     const found = Object.keys(ALL_QUERY_CONSTANTS).includes(trimmed);
-    if(found){
-      if(trimmed.includes("QUERY")){
+    if (found) {
+      if (trimmed.includes('QUERY')) {
         queryLine = i;
         queryName = trimmed;
-      } else if (trimmed.includes("ARGS")){
+      } else if (trimmed.includes('ARGS')) {
         argsLine = i;
         argsName = trimmed;
       }
     }
   }
 
-  if(queryName && queryLine !== undefined && queryLine !== null){
-    lines[queryLine] = `const ${queryName} = ` + "`" + `${ALL_QUERY_CONSTANTS[queryName]}` + "`";
+  if (queryName && queryLine !== undefined && queryLine !== null) {
+    lines[queryLine] =
+      `const ${queryName} = ` + '`' + `${ALL_QUERY_CONSTANTS[queryName]}` + '`';
   }
-  if(argsName && argsLine){
-    lines[argsLine] = `const ${argsName} = ${JSON.stringify(ALL_QUERY_CONSTANTS[argsName], null, 2)}`;
+  if (argsName && argsLine) {
+    lines[argsLine] = `const ${argsName} = ${JSON.stringify(
+      ALL_QUERY_CONSTANTS[argsName],
+      null,
+      2
+    )}`;
   }
 
- return lines
-  .join('\n');
+  return lines.join('\n');
 }
 
 const files = new Map<string, string>();

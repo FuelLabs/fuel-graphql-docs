@@ -18,7 +18,7 @@ export function Layout({ title, children }: LayoutProps) {
     ? `${title} | Fuel GraphQL Docs`
     : 'Fuel GraphQL Docs';
   const META_OGIMG = URL + ogImage.src;
-  
+
   return (
     <>
       <Head>

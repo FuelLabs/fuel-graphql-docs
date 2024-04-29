@@ -65,7 +65,9 @@ describe('Messages', () => {
     // MESSAGE_INFO_ARGS
 
     const getMessages = async () => {
-      const response = await urqlClient.query(MESSAGE_INFO_QUERY, MESSAGE_INFO_ARGS).toPromise();
+      const response = await urqlClient
+        .query(MESSAGE_INFO_QUERY, MESSAGE_INFO_ARGS)
+        .toPromise();
       console.log('MESSAGES:', response.data.messages);
       expect(response.data.messages.nodes).toBeTruthy();
     };

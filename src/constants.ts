@@ -7,4 +7,4 @@ export const DEFAULT_SLUG = ['overview'];
 
 export const META_DESC = 'Official documentation for the Fuel GraphQL API';
 
-export const TESTNET_ENDPOINT = 'https://beta-5.fuel.network/graphql';
+export const TESTNET_ENDPOINT = 'https://testnet.fuel.network/v1/graphql';

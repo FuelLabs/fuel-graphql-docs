@@ -65,7 +65,9 @@ describe('Balances', () => {
     // BALANCES_ARGS
 
     const getBalances = async () => {
-      const response = await urqlClient.query(BALANCES_QUERY, BALANCES_ARGS).toPromise();
+      const response = await urqlClient
+        .query(BALANCES_QUERY, BALANCES_ARGS)
+        .toPromise();
       console.log('BALANCES:', response.data.balances);
       expect(response.data.balances.nodes).toBeTruthy();
     };

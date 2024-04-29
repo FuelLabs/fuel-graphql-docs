@@ -13,7 +13,7 @@ const config: JestConfigWithTsJest = {
   verbose: true,
   moduleNameMapper: {
     // Maps all imports starting with "~/" to the correct directory
-    "^~/(.*)$": "<rootDir>/$1",
+    '^~/(.*)$': '<rootDir>/$1',
   },
 };
 
