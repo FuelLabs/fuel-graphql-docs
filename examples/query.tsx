@@ -4,7 +4,8 @@ import { Code } from '~/src/components/Code';
 import { ExampleBox } from '~/src/components/ExampleBox';
 import { Paragraph } from '~/src/components/Paragraph';
 import { Pre } from '~/src/components/Pre';
-import { TESTNET_ENDPOINT } from '~/src/constants';
+
+import { TESTNET_ENDPOINT } from '../src/constants';
 
 interface QueryProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
