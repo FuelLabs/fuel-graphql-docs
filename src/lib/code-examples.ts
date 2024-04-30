@@ -8,8 +8,8 @@ import * as prettier from 'prettier';
 import type { Root } from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 import type { Parent } from 'unist-util-visit/lib';
-import { ALL_QUERY_CONSTANTS } from '~/examples/queries';
 
+import { ALL_QUERY_CONSTANTS } from '../../examples/queries';
 import { TESTNET_ENDPOINT } from '../constants';
 
 const ROOT_DIR = path.resolve(__dirname, '../../../');
