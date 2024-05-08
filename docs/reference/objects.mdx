@@ -238,11 +238,12 @@ Details about the consensus parameters that are being upgraded.
 
 `witnessIndex`: [`U16!`](/docs/reference/scalars/#u16)
 
-?
+The index of the witness in the `witnesses` field that contains the serialized consensus parameters. For an upgrade to consensus parameters, the upgraded parameters are stored as a witness in the transaction.
 
 `checksum`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
-?
+The hash of the serialized consensus parameters.
+Since the serialized consensus parameters live inside the transaction witnesses (which is malleable data), any party can override them. The `checksum` is used to verify that the data was not modified or tampered with.
 
 ## `Contract`
 
