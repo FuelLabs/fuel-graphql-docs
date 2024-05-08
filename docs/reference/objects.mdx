@@ -230,6 +230,20 @@ The gas cost of each opcode.
 
 The address used to authorize network upgrades via the `Upgrade` transaction.
 
+## `ConsensusParametersPurpose`
+
+Details about the consensus parameters that are being upgraded.
+
+**fields:**
+
+`witnessIndex`: [`U16!`](/docs/reference/scalars/#u16)
+
+?
+
+`checksum`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
+
+?
+
 ## `Contract`
 
 An object representing a deployed contract.
@@ -362,6 +376,14 @@ The reason why the transaction dry run failed.
 
 The transaction dry run receipts.
 
+`totalGas`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total amount of gas used.
+
+`totalFee`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total fee for the transaction.
+
 ## `DryRunSuccessStatus`
 
 The status details of a successful transaction dry run.
@@ -375,6 +397,14 @@ The state of the program execution.
 `receipts`: [`[Receipt!]!`](#receipt)
 
 The transaction dry run receipts.
+
+`totalGas`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total amount of gas used.
+
+`totalFee`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total fee for the transaction.
 
 ## `EstimateGasPrice`
 
@@ -427,6 +457,14 @@ The state of the program execution.
 `receipts`: [`[Receipt!]!`](#receipt)
 
 The receipts for the transaction.
+
+`totalGas`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total amount of gas used.
+
+`totalFee`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total fee for the transaction.
 
 ## `FeeParameters`
 
@@ -917,6 +955,10 @@ The binary Merkle tree root of state, balances, and the contracts code hash of e
 `messagesRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
 The binary merkle tree root of all genesis messages.
+
+`transactionsRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
+
+The binary merkle tree root of all previous transactions.
 
 ## `HeavyOperation`
 
@@ -1518,6 +1560,20 @@ The contract id.
 
 The sub id.
 
+## `RelayedTransactionFailed`
+
+Details about why a relayed transaction from an L1 failed.
+
+**fields:**
+
+`blockHeight`: `U32!`
+
+The block height at the time the relayed transaction failed.
+
+`failure`: `String!`
+
+The reason why the transaction failed.
+
 ## `RunResult`
 
 The result of a transaction execution.
@@ -1582,6 +1638,16 @@ The status for a transaction that was squeezed out of the transaction pool.
 
 The reason why the transaction was squeezed out.
 
+## `StateTransitionPurpose`
+
+Details about a state transition upgrade.
+
+**fields:**
+
+`root`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
+
+The merkle root of the new state.
+
 ## `SuccessStatus`
 
 The status of a successful transaction.
@@ -1607,6 +1673,14 @@ The state of the program execution.
 `receipts`: [`[Receipt!]!`](#receipt)
 
 The transaction receipts.
+
+`totalGas`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total amount of gas used.
+
+`totalFee`: [`U64!`](/docs/reference/scalars/#u64)
+
+The total fee for the transaction.
 
 ## `SubmittedStatus`
 
@@ -1680,6 +1754,14 @@ Whether or not the transaction is creating a new contract.
 
 Whether or not the transaction is minting new coins.
 
+`isUpgrade`: `Boolean!`
+
+Whether or not the transaction is upgrading the network.
+
+`isUpload`: `Boolean!`
+
+Whether or not the transaction is uploading state transition data to prepare for upgrading the network.
+
 `inputs`: [`[Input!]`](/docs/reference/unions/#input)
 
 An array of inputs for the transaction.
@@ -1724,6 +1806,26 @@ The salt value for the transaction.
 
 An array of storage slot.
 
+`bytecodeRoot`: [`Bytes32`](/docs/reference/scalars/#bytes32)
+
+?
+
+`subsectionIndex`: [`U16`](/docs/reference/scalars/#u16)
+
+?
+
+`subsectionsNumber`: [`U16`](/docs/reference/scalars/#u16)
+
+?
+
+`proofSet`: [`[Bytes32!]`](/docs/reference/scalars/#bytes32)
+
+?
+
+`upgradePurpose`: [`UpgradePurpose`](/docs/unions/#upgradepurpose)
+
+The purpose of a network upgrade.
+
 `rawPayload`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 A hex string of the raw transaction payload.
@@ -1757,6 +1859,10 @@ The maximum amount of gas allowed for a transaction.
 `maxSize`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum size allowed for a transaction.
+
+`maxBytecodeSubsections`: [`U16!`](/docs/reference/scalars/#u16)
+
+The maximum number of bytecode subsections allowed for a transaction.
 
 ## `VariableOutput`
 

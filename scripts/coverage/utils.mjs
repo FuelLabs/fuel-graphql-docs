@@ -38,7 +38,7 @@ export async function getHeadings(filepath) {
 }
 
 export async function request(query) {
-  const response = await fetch('https://testnet.swayswap.io/v1/graphql', {
+  const response = await fetch('https://devnet.fuel.network/v1/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

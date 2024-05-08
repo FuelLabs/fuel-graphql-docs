@@ -207,6 +207,16 @@ The nonce of the message.
 
 Returns [`NodeInfo!`](/docs/reference/objects/#nodeinfo) about the current node.
 
+## `relayedTransactionStatus`
+
+Returns [`RelayedTransactionStatus`](/docs/reference/unions/#relayedtransactionstatus) details for a given relayed transaction id.
+
+**args:**
+
+`id`: [`RelayedTransactionId!`](/docs/reference/scalars/#relayedtransactionid)
+
+The ID for the relayed transaction.
+
 ## `transaction`
 
 Returns [`Transaction`](/docs/reference/objects/#transaction) details for a given transaction id.
@@ -215,7 +225,7 @@ Returns [`Transaction`](/docs/reference/objects/#transaction) details for a give
 
 `id`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
 
-The id for the transaction.
+The ID for the transaction.
 
 ## `transactions`
 

@@ -88,6 +88,14 @@ they could be set to a non-zero value.
 [`ContractCreated`](/docs/reference/objects/#contractcreated):
 Indicates a contract was deployed.
 
+## `RelayedTransactionStatus`
+
+The status of a relayed transaction from a L1. If the transaction is valid, it will be included in part of a block. If the transaction is invalid, it will be skipped.
+
+**Types:**
+
+[`RelayedTransactionFailed`](/docs/reference/objects/#relayedtransactionfailed): Details about why the relayed transaction failed.
+
 ## `TransactionStatus`
 
 The status type of a transaction.
@@ -101,3 +109,13 @@ The status type of a transaction.
 [`SqueezedOutStatus`](/docs/reference/objects/#squeezedoutstatus): The transaction was kicked out of the mempool.
 
 [`FailureStatus`](/docs/reference/objects/#failurestatus): The transaction has failed.
+
+## `UpgradePurpose`
+
+The purpose of a network upgrade.
+
+**Types:**
+
+[`ConsensusParametersPurpose`](/docs/reference/objects/#consensusparameterspurpose): The consensus parameters are being upgraded.
+
+[`StateTransitionPurpose`](/docs/reference/objects/#statetransitionpurpose): The state transition is being upgraded.
