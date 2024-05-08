@@ -53,7 +53,9 @@ describe('Transactions by owner', () => {
         variables: TRANSACTIONS_ARGS,
       });
       console.log('TRANSACTIONS:', response.data.transactionsByOwner);
-      expect(Array.isArray(response.data.transactionsByOwner.nodes)).toBeTruthy();
+      expect(
+        Array.isArray(response.data.transactionsByOwner.nodes)
+      ).toBeTruthy();
     };
 
     await getTransactions();
@@ -69,7 +71,9 @@ describe('Transactions by owner', () => {
         .query(TRANSACTIONS_QUERY, TRANSACTIONS_ARGS)
         .toPromise();
       console.log('TRANSACTIONS:', response.data.transactionsByOwner);
-      expect(Array.isArray(response.data.transactionsByOwner.nodes)).toBeTruthy();
+      expect(
+        Array.isArray(response.data.transactionsByOwner.nodes)
+      ).toBeTruthy();
     };
 
     await getTransactions();
