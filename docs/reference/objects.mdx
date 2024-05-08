@@ -1809,19 +1809,19 @@ An array of storage slot.
 
 `bytecodeRoot`: [`Bytes32`](/docs/reference/scalars/#bytes32)
 
-?
+The merkle tree root of the bytecode that is being uploaded.
 
 `subsectionIndex`: [`U16`](/docs/reference/scalars/#u16)
 
-?
+The index of the subsection of the bytecode.
 
 `subsectionsNumber`: [`U16`](/docs/reference/scalars/#u16)
 
-?
+The total number of subsections that the bytecode was divided.
 
 `proofSet`: [`[Bytes32!]`](/docs/reference/scalars/#bytes32)
 
-?
+The proof set helps to verify the connection of the subsection to the `root`.
 
 `upgradePurpose`: [`UpgradePurpose`](/docs/unions/#upgradepurpose)
 
@@ -1863,7 +1863,7 @@ The maximum size allowed for a transaction.
 
 `maxBytecodeSubsections`: [`U16!`](/docs/reference/scalars/#u16)
 
-The maximum number of bytecode subsections allowed for a transaction.
+The maximum number of subsections the new executor bytecode can be broken into.
 
 ## `VariableOutput`
 
