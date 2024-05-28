@@ -959,7 +959,7 @@ The binary merkle tree root of all genesis messages.
 
 `transactionsRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
-The binary merkle tree root of all previous transactions.
+The binary Merkle tree root of all previous transactions.
 
 ## `HeavyOperation`
 
@@ -1011,11 +1011,11 @@ The merkle root of the transactions in the block.
 
 `messageOutboxRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
-The merkle root of the outgoing messages back to the data availability (DA) layer from Fuel, where the inputs are the IDs (`MessageId`) of the messages. The IDs are produced by executing transactions and collecting IDs from the receipts of the `Message` outputs.
+The Merkle root of the outgoing messages back to the data availability (DA) layer from Fuel, where the inputs are the IDs (`MessageId`) of the messages. The IDs are produced by executing transactions and collecting IDs from the receipts of the `Message` outputs.
 
 `eventInboxRoot`: [`Bytes32!`](/docs/reference/scalars/#bytes32)
 
-The merkle root of the incoming events from the data availability (DA) layer to Fuel, where the tree inputs are the hashes of these events.
+The Merkle root of the incoming events from the data availability (DA) layer to Fuel, where the tree inputs are the hashes of these events.
 
 `height`: [`U32!`](/docs/reference/scalars/#u32)
 
@@ -1809,7 +1809,7 @@ An array of storage slot.
 
 `bytecodeRoot`: [`Bytes32`](/docs/reference/scalars/#bytes32)
 
-The merkle tree root of the bytecode that is being uploaded.
+The Merkle tree root of the bytecode that is being uploaded.
 
 `subsectionIndex`: [`U16`](/docs/reference/scalars/#u16)
 
@@ -1817,7 +1817,7 @@ The index of the subsection of the bytecode.
 
 `subsectionsNumber`: [`U16`](/docs/reference/scalars/#u16)
 
-The total number of subsections that the bytecode was divided.
+The total number of subsections that the bytecode was divided into.
 
 `proofSet`: [`[Bytes32!]`](/docs/reference/scalars/#bytes32)
 
