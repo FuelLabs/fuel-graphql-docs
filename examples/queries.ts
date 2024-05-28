@@ -7,8 +7,8 @@ export const BALANCE_QUERY = `query Balance($address: Address, $assetId: AssetId
   }`;
 
 export const BALANCE_ARGS = {
-  address: '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
-  assetId: '0x0000000000000000000000000000000000000000000000000000000000000000',
+  address: '0xce9f8d9367fc4671c0ececce7ab603f6f75d1e66082a82ad12ecdc219b308820',
+  assetId: '0x2a0d0ed9d2217ec7f32dcd9a1902ce2a66d68437aeff84e3a3cc8bebee0d2eea',
 };
 
 export const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
@@ -22,7 +22,7 @@ export const BALANCES_QUERY = `query Balances($filter: BalanceFilterInput) {
 
 export const BALANCES_ARGS = {
   filter: {
-    owner: '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+    owner: '0xce9f8d9367fc4671c0ececce7ab603f6f75d1e66082a82ad12ecdc219b308820',
   },
 };
 
@@ -46,8 +46,8 @@ export const CONTRACT_BALANCE_QUERY = `query ContractBalance($contract: Contract
 
 export const CONTRACT_BALANCE_ARGS = {
   contract:
-    '0xc9a5366c269438d294ef942bc962dd2e6c86121e3bca00192723eb7eb58fa87d',
-  asset: '0x0000000000000000000000000000000000000000000000000000000000000000',
+    '0xf5b08689ada97df7fd2fbd67bee7dea6d219f117c1dc9345245da16fe4e99111',
+  asset: '0x2a0d0ed9d2217ec7f32dcd9a1902ce2a66d68437aeff84e3a3cc8bebee0d2eea',
 };
 
 export const CONTRACT_BALANCES_QUERY = `query ContractBalances($filter: ContractBalanceFilterInput!) {
@@ -62,7 +62,7 @@ export const CONTRACT_BALANCES_QUERY = `query ContractBalances($filter: Contract
 export const CONTRACT_BALANCES_ARGS = {
   filter: {
     contract:
-      '0x0a98320d39c03337401a4e46263972a9af6ce69ec2f35a5420b1bd35784c74b1',
+      '0xf5b08689ada97df7fd2fbd67bee7dea6d219f117c1dc9345245da16fe4e99111',
   },
 };
 
@@ -80,7 +80,7 @@ export const MESSAGE_INFO_QUERY = `query MessageInfo($address: Address) {
   }`;
 
 export const MESSAGE_INFO_ARGS = {
-  address: '0xf65d6448a273b531ee942c133bb91a6f904c7d7f3104cdaf6b9f7f50d3518871',
+  address: '0xce9f8d9367fc4671c0ececce7ab603f6f75d1e66082a82ad12ecdc219b308820',
 };
 
 export const LATEST_BLOCKS_QUERY = `query LatestBlocks {
