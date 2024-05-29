@@ -11,7 +11,7 @@ This section covers just a few options available to get you started.
 
 ```javascript
 export async function getHealth() {
-  let response = await fetch('https://beta-5.fuel.network/graphql', {
+  let response = await fetch(TESTNET_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ npm install @apollo/client graphql
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const apolloClient = new ApolloClient({
-  uri: 'https://beta-5.fuel.network/graphql',
+  uri: TESTNET_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
@@ -66,7 +66,7 @@ npm install urql graphql
 import { Client, cacheExchange, fetchExchange } from 'urql';
 
 const urqlClient = new Client({
-  url: 'https://beta-5.fuel.network/graphql',
+  url: TESTNET_ENDPOINT,
   exchanges: [cacheExchange, fetchExchange],
 });
 

@@ -123,6 +123,16 @@ Returns a [`ContractBalanceConnection!`](/docs/reference/objects/#contractbalanc
 
 A filter for the contract balances.
 
+## `estimateGasPrice`
+
+Estimates the most expensive the gas price over a given block horizon, and returns [`EstimateGasPrice!`](/docs/reference/objects/#estimategasprice).
+
+**args:**
+
+`blockHorizon`: [`U32!`](/docs/reference/scalars/#u32)
+
+The block horizon defines how many blocks in the future you are doing an estimate for.
+
 ## `estimatePredicates`
 
 Estimate the predicate gas and returns a [`Transaction!`](/docs/reference/objects/#transaction).
@@ -137,15 +147,19 @@ The transaction hex string.
 
 Returns `true` if the API is running or `false` if the API is down.
 
-## `messageStatus`
+## `latestGasPrice`
 
-Returns the [`MessageStatus`](/docs/reference/objects/#messagestatus) for a given message [`Nonce`](/docs/reference/scalars/#nonce).
+Returns the [`LatestGasPrice!`](/docs/reference/objects/#latestgasprice) of the latest block.
+
+## `message`
+
+Returns the [`Message`](/docs/reference/objects/#message) for a given message nonce.
 
 **args:**
 
-`nonce`: [`Nonce`](/docs/reference/scalars/#nonce)
+`nonce`: [`Nonce!`](/docs/reference/scalars/#nonce)
 
-The nonce of the message.
+The message nonce.
 
 ## `messageProof`
 
@@ -179,9 +193,29 @@ Returns a [`MessageConnection!`](/docs/reference/objects/#message) for an array 
 
 The owner address of the messages.
 
+## `messageStatus`
+
+Returns the [`MessageStatus`](/docs/reference/objects/#messagestatus) for a given message [`Nonce`](/docs/reference/scalars/#nonce).
+
+**args:**
+
+`nonce`: [`Nonce`](/docs/reference/scalars/#nonce)
+
+The nonce of the message.
+
 ## `nodeInfo`
 
 Returns [`NodeInfo!`](/docs/reference/objects/#nodeinfo) about the current node.
+
+## `relayedTransactionStatus`
+
+Returns [`RelayedTransactionStatus`](/docs/reference/unions/#relayedtransactionstatus) details for a given relayed transaction id.
+
+**args:**
+
+`id`: [`RelayedTransactionId!`](/docs/reference/scalars/#relayedtransactionid)
+
+The ID for the relayed transaction.
 
 ## `transaction`
 
@@ -191,7 +225,7 @@ Returns [`Transaction`](/docs/reference/objects/#transaction) details for a give
 
 `id`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
 
-The id for the transaction.
+The ID for the transaction.
 
 ## `transactions`
 

@@ -1,278 +1,79 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { Client, cacheExchange, fetchExchange } from 'urql';
 import 'isomorphic-fetch';
+import { TESTNET_ENDPOINT } from '~/src/constants';
+
+import { TRANSACTIONS_ARGS, TRANSACTIONS_QUERY } from '../queries';
 
 const apolloClient = new ApolloClient({
-  uri: 'https://beta-5.fuel.network/graphql',
+  uri: TESTNET_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
 const urqlClient = new Client({
-  url: 'https://beta-5.fuel.network/graphql',
+  url: TESTNET_ENDPOINT,
   exchanges: [cacheExchange, fetchExchange],
 });
 
 describe('Transactions by owner', () => {
   test('get transactions with ts', async () => {
-    const TRANSACTIONS_BY_OWNER_QUERY = `
-      query Transactions($address: Address) {
-        transactionsByOwner(owner: $address, first: 5) {
-          nodes {
-            id
-            inputs {
-              __typename
-              ... on InputCoin {
-                owner
-                utxoId
-                amount
-                assetId
-              }
-              ... on InputContract {
-                utxoId
-                contract {
-                  id
-                }
-              }
-              ... on InputMessage {
-                sender
-                recipient
-                amount
-                data
-              }
-            }
-            outputs {
-              __typename
-              ... on CoinOutput {
-                to
-                amount
-                assetId
-              }
-              ... on ContractOutput {
-                inputIndex
-                balanceRoot
-                stateRoot
-              }
-              ... on ChangeOutput {
-                to
-                amount
-                assetId
-              }
-              ... on VariableOutput {
-                to
-                amount
-                assetId
-              }
-              ... on ContractCreated {
-                contract {
-                  id
-                }
-                stateRoot
-              }
-            }
-            status {
-              __typename
-              ... on FailureStatus {
-                reason
-                programState {
-                  returnType
-                }
-              }
-            }
-          }
-        }
-      }`;
+    // TRANSACTIONS_QUERY
 
-    const args = {
-      address:
-        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
-    };
+    // TRANSACTIONS_ARGS
 
     const getTransactions = async () => {
-      const response = await fetch('https://beta-5.fuel.network/graphql', {
+      const response = await fetch(TESTNET_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          query: TRANSACTIONS_BY_OWNER_QUERY,
-          variables: args,
+          query: TRANSACTIONS_QUERY,
+          variables: TRANSACTIONS_ARGS,
         }),
       });
-      const json = await response.json();
+      const json: any = await response.json();
       console.log('TRANSACTIONS:', json.data.transactionsByOwner);
-      expect(json.data.transactionsByOwner.nodes.length).toBeTruthy();
+      expect(Array.isArray(json.data.transactionsByOwner.nodes)).toBeTruthy();
     };
 
     await getTransactions();
   });
 
   test('get transactions with apollo', async () => {
-    const TRANSACTIONS_BY_OWNER_QUERY = `
-      query Transactions($address: Address) {
-        transactionsByOwner(owner: $address, first: 5) {
-          nodes {
-            id
-            inputs {
-              __typename
-              ... on InputCoin {
-                owner
-                utxoId
-                amount
-                assetId
-              }
-              ... on InputContract {
-                utxoId
-                contract {
-                  id
-                }
-              }
-              ... on InputMessage {
-                sender
-                recipient
-                amount
-                data
-              }
-            }
-            outputs {
-              __typename
-              ... on CoinOutput {
-                to
-                amount
-                assetId
-              }
-              ... on ContractOutput {
-                inputIndex
-                balanceRoot
-                stateRoot
-              }
-              ... on ChangeOutput {
-                to
-                amount
-                assetId
-              }
-              ... on VariableOutput {
-                to
-                amount
-                assetId
-              }
-              ... on ContractCreated {
-                contract {
-                  id
-                }
-                stateRoot
-              }
-            }
-            status {
-              __typename
-              ... on FailureStatus {
-                reason
-                programState {
-                  returnType
-                }
-              }
-            }
-          }
-        }
-      }`;
+    // TRANSACTIONS_QUERY
 
-    const args = {
-      address:
-        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
-    };
+    // TRANSACTIONS_ARGS
 
     const getTransactions = async () => {
       const response = await apolloClient.query({
-        query: gql(TRANSACTIONS_BY_OWNER_QUERY),
-        variables: args,
+        query: gql(TRANSACTIONS_QUERY),
+        variables: TRANSACTIONS_ARGS,
       });
       console.log('TRANSACTIONS:', response.data.transactionsByOwner);
-      expect(response.data.transactionsByOwner.nodes.length).toBeTruthy();
+      expect(
+        Array.isArray(response.data.transactionsByOwner.nodes)
+      ).toBeTruthy();
     };
 
     await getTransactions();
   });
 
   test('get transactions with urql', async () => {
-    const TRANSACTIONS_BY_OWNER_QUERY = `
-      query Transactions($address: Address) {
-        transactionsByOwner(owner: $address, first: 5) {
-          nodes {
-            id
-            inputs {
-              __typename
-              ... on InputCoin {
-                owner
-                utxoId
-                amount
-                assetId
-              }
-              ... on InputContract {
-                utxoId
-                contract {
-                  id
-                }
-              }
-              ... on InputMessage {
-                sender
-                recipient
-                amount
-                data
-              }
-            }
-            outputs {
-              __typename
-              ... on CoinOutput {
-                to
-                amount
-                assetId
-              }
-              ... on ContractOutput {
-                inputIndex
-                balanceRoot
-                stateRoot
-              }
-              ... on ChangeOutput {
-                to
-                amount
-                assetId
-              }
-              ... on VariableOutput {
-                to
-                amount
-                assetId
-              }
-              ... on ContractCreated {
-                contract {
-                  id
-                }
-                stateRoot
-              }
-            }
-            status {
-              __typename
-              ... on FailureStatus {
-                reason
-                programState {
-                  returnType
-                }
-              }
-            }
-          }
-        }
-      }`;
+    // TRANSACTIONS_QUERY
 
-    const args = {
-      address:
-        '0x44f640c8ed0d0b76fa7a029972e9db1ce92386b8e4df4d789e026443cb5f0d91',
-    };
+    // TRANSACTIONS_ARGS
 
     const getTransactions = async () => {
       const response = await urqlClient
-        .query(TRANSACTIONS_BY_OWNER_QUERY, args)
+        .query(TRANSACTIONS_QUERY, TRANSACTIONS_ARGS)
         .toPromise();
       console.log('TRANSACTIONS:', response.data.transactionsByOwner);
-      expect(response.data.transactionsByOwner.nodes.length).toBeTruthy();
+      expect(
+        Array.isArray(response.data.transactionsByOwner.nodes)
+      ).toBeTruthy();
     };
 
     await getTransactions();

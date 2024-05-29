@@ -5,6 +5,8 @@ import { ExampleBox } from '~/src/components/ExampleBox';
 import { Paragraph } from '~/src/components/Paragraph';
 import { Pre } from '~/src/components/Pre';
 
+import { TESTNET_ENDPOINT } from '../src/constants';
+
 interface QueryProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   query: any;
@@ -13,12 +15,13 @@ interface QueryProps {
 }
 
 export function Query(props: QueryProps) {
-  const [resp, setResp] = useState();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [resp, setResp] = useState<any>();
   const [loading, setLoading] = useState(false);
 
   function runQuery() {
     setLoading(true);
-    fetch('https://beta-5.fuel.network/graphql', {
+    fetch(TESTNET_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
