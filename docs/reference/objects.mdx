@@ -59,6 +59,10 @@ Metadata about a block.
 
 The type of consensus used.
 
+`transactionIds`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
+
+An array of transaction ids included in the block only.
+
 `transactions`: [`[Transaction!]!`](#transaction)
 
 An array of transactions included in the block.
@@ -442,6 +446,10 @@ The status type of a transaction that has failed.
 `transactionId`: [`TransactionId!`](/docs/reference/scalars/#transactionid)
 
 A unique transaction id.
+
+`blockHeight`: [`U32`](/docs/reference/scalars/#u32)
+
+The block height for the failed transaction.
 
 `block`: [`Block!`](#block)
 
@@ -850,6 +858,18 @@ The gas cost of using the `$xor` ALU opcode.
 `xori`: [`U64!`](/docs/reference/scalars/#u64)
 
 The gas cost of using the `$xori` ALU opcode.
+
+`alocDependentCost`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
+
+The `dependent` gas cost of using the `$aloc` contract opcode.
+
+`cfe`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
+
+The `dependent` gas cost of using the `$cfe` contract opcode.
+
+`cfeiDependentCost`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
+
+The `dependent` gas cost of using the `$cfei` contract opcode.
 
 `call`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
 
@@ -1667,9 +1687,13 @@ The status of a successful transaction.
 
 The ID of the transaction.
 
+`blockHeight`: [`U32`](/docs/reference/scalars/#u32)
+
+The block height for the successful transaction.
+
 `block`: [`Block!`](#block)
 
-The block of the transaction.
+The block for the successful transaction.
 
 `time`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
