@@ -33,6 +33,20 @@ The filter input type used to filter the `balances` query.
 
 The owner address of the balances.
 
+## `Blob`
+
+Information about a blob transaction in the network.
+
+**fields:**
+
+`id`: [`BlobId!`](/docs/reference/scalars/#blobid)
+
+The transaction identifier for the blob.
+
+`bytecode`: [`HexString!`](/docs/reference/scalars/#hexstring)
+
+The blob bytecode.
+
 ## `Block`
 
 Information about a block in the network.
@@ -225,6 +239,10 @@ The asset id of the "base" asset used for gas fees.
 `blockGasLimit`: [`U64!`](/docs/reference/scalars/#u64)
 
 The maximum amount of gas spend allowed in a block.
+
+`blockTransactionSizeLimit`: [`U64!`](/docs/reference/scalars/#u64)
+
+The maximum transaction slots in a block.
 
 `chainId`: [`U64!`](/docs/reference/scalars/#u64)
 
@@ -454,6 +472,10 @@ The block height for the failed transaction.
 `block`: [`Block!`](#block)
 
 The block number for the failed transaction.
+
+`transaction`: [`Transaction!`](#transaction)
+
+The transaction itself.
 
 `time`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
@@ -863,6 +885,14 @@ The gas cost of using the `$xori` ALU opcode.
 
 The `dependent` gas cost of using the `$aloc` contract opcode.
 
+`bldd`: [`DependentCost`](/docs/reference/unions/#dependentcost)
+
+The `dependent` gas cost of using the `$bldd` contract opcode.
+
+`bsiz`: [`DependentCost`](/docs/reference/unions/#dependentcost)
+
+The `dependent` gas cost of using the `$bsiz` contract opcode.
+
 `cfe`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
 
 The `dependent` gas cost of using the `$cfe` contract opcode.
@@ -886,6 +916,10 @@ The `dependent` gas cost of using the `$croo` contract opcode.
 `csiz`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
 
 The `dependent` gas cost of using the `$csiz` contract opcode.
+
+`ed19DependentCost`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
+
+The `dependent` gas cost of using the `$ed19` contract opcode.
 
 `k256`: [`DependentCost!`](/docs/reference/unions/#dependentcost)
 
@@ -1667,6 +1701,20 @@ The status for a transaction that was squeezed out of the transaction pool.
 
 The reason why the transaction was squeezed out.
 
+## `StateTransitionBytecode`
+
+The bytecode of a state transition upgrade.
+
+**fields:**
+
+`root`: [`[HexString!]`](/docs/reference/scalars/#hexstring)
+
+The merkle root of the new state.
+
+`bytecode`: [`[UploadedBytecode!]`](#uploadedbytecode)
+
+The bytecode of the state transition.
+
 ## `StateTransitionPurpose`
 
 Details about a state transition upgrade.
@@ -1694,6 +1742,10 @@ The block height for the successful transaction.
 `block`: [`Block!`](#block)
 
 The block for the successful transaction.
+
+`transaction`: [`Transaction!`](#transaction)
+
+The transaction itself.
 
 `time`: [`Tai64Timestamp!`](/docs/reference/scalars/#tai64timestamp)
 
@@ -1795,6 +1847,10 @@ Whether or not the transaction is upgrading the network.
 
 Whether or not the transaction is uploading state transition data to prepare for upgrading the network.
 
+`isBlob`: `Boolean!`
+
+Whether or not the transaction is a blob.
+
 `inputs`: [`[Input!]`](/docs/reference/unions/#input)
 
 An array of inputs for the transaction.
@@ -1830,6 +1886,10 @@ The script input parameters.
 `bytecodeWitnessIndex`: `Int`
 
 The witness index of contract bytecode.
+
+`blobId`: [`BlobId`](/docs/reference/scalars/#blobid)
+
+A unique hash identifier for a blob transaction.
 
 `salt`: [`Salt`](/docs/reference/scalars/#salt)
 
@@ -1896,6 +1956,22 @@ The maximum size allowed for a transaction.
 `maxBytecodeSubsections`: [`U16!`](/docs/reference/scalars/#u16)
 
 The maximum number of subsections the new executor bytecode can be broken into.
+
+## `UploadedBytecode`
+
+**fields:**
+
+`bytecode`: [`[HexString!]!`](/docs/reference/scalars/#hexstring)
+
+The bytecode that is uploaded.
+
+`uploadedSubsectionsNumber`: `Int`
+
+The number of uploaded subsections.
+
+`completed`: `Boolean!`
+
+Whether or not the bytecode has been uploaded.
 
 ## `VariableOutput`
 

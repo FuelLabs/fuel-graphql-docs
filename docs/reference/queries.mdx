@@ -29,6 +29,16 @@ Returns a [`BalanceConnection!`](/docs/reference/objects/#balance) for an array 
 
 A filter to specify the wallet owner address.
 
+## `blob`
+
+Returns information about a certain [`Blob`](/docs/reference/objects/#blob).
+
+**args:**
+
+`id`: [`BlobId`](/docs/reference/scalars/#blobid)
+
+The transaction identifier for the blob.
+
 ## `block`
 
 Returns information about a certain [`Block`](/docs/reference/objects/#block). Accepts either the block id or block height as an argument.
@@ -88,6 +98,16 @@ The list of requested asset resources. Several entries with the same asset id ar
 `excludedIds`: [`ExcludeInput`](/docs/reference/objects/#excludeinput)
 
 The resources to exclude.
+
+## `consensusParameters`
+
+Returns the [`ConsensusParameters`](/docs/reference/objects/#consensusparameters) for a given version.
+
+**args:**
+
+`version`: `Int!`
+
+The version of the consensus parameters.
 
 ## `contract`
 
@@ -216,6 +236,26 @@ Returns [`RelayedTransactionStatus`](/docs/reference/unions/#relayedtransactions
 `id`: [`RelayedTransactionId!`](/docs/reference/scalars/#relayedtransactionid)
 
 The ID for the relayed transaction.
+
+## `stateTransitionBytecodeByVersion`
+
+Returns [`StateTransitionBytecode`](/docs/reference/objects/#statetransitionbytecode) details for a given version.
+
+**args:**
+
+`version`: `Int!`
+
+The version of the new state.
+
+## `stateTransitionBytecodeByRoot`
+
+Returns [`StateTransitionBytecode`](/docs/reference/objects/#statetransitionbytecode) details for a given root.
+
+**args:**
+
+`root`: [`[HexString!]`](/docs/reference/scalars/#hexstring)
+
+The merkle root of the new state.
 
 ## `transaction`
 
