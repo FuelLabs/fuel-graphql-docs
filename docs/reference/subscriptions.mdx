@@ -26,3 +26,13 @@ Submits a transaction to the `TxPool` and await returns the [`TransactionStatus!
 `tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
 
 The transaction hex string.
+
+## `submitAndAwaitStatus`
+
+Submits the transaction to the `TxPool` and returns a stream of events. Compared to the [`submitAndAwait`](/docs/reference/subscriptions/#submitandawait), the stream also contains [`SubmittedStatus`](/docs/reference/objects/#submittedstatus) as an intermediate state.
+
+**args:**
+
+`tx`: [`HexString!`](/docs/reference/scalars/#hexstring)
+
+The transaction hex string.
