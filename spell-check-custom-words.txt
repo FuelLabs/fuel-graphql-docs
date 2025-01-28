@@ -78,3 +78,5 @@ PeerInfo
 Unix
 incentivize
 devnet
+Ankr
+QuickNode
